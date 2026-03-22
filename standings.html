@@ -4,17 +4,13 @@
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Standings · Ten10 Motorsports</title>
 <link rel="stylesheet" href="style.css">
-<style>
-.note-bar{background:#141414;border:1px solid rgba(192,192,192,0.1);border-left:3px solid #cc0000;border-radius:4px;padding:10px 16px;margin-bottom:20px;font-family:'Rajdhani',sans-serif;font-size:0.82rem;color:#888;letter-spacing:0.04em;}
-.note-bar strong{color:#cc0000;font-family:'Barlow Condensed',sans-serif;letter-spacing:0.08em;text-transform:uppercase;}
-</style>
 </head>
 <body data-page="standings">
 <script src="nav.js"></script>
 <div class="page-wrap">
   <div class="page-header">
     <h1>Driver <span>Standings</span></h1>
-    <p>Season points &amp; stats — Moonday Nights &amp; Thursday Ovals</p>
+    <p>2026 Season 2 · After Round 1 · Moonday Nights TCR &amp; Thursday Ovals ARCA</p>
   </div>
 
   <div class="series-tabs">
@@ -22,72 +18,74 @@
     <button class="series-tab" onclick="switchSeries('thursday',this)">🏁 Thursday Ovals</button>
   </div>
 
-  <div class="season-bar">
-    <label>Season:</label>
-    <select class="season-select" id="seasonSelect" onchange="switchSeason(this.value)">
-      <option value="2026s2">2026 Season 2</option>
-    </select>
-  </div>
-
   <!-- MOONDAY -->
   <div id="series-moonday">
-    <div id="moonday-2026s2" class="season-block">
-      <div class="section-label">2026 Season 2 · Moonday Nights Standings</div>
-      <div class="note-bar"><strong>Note:</strong> Points are combined across both races per night. After 1 Race Night (2 races).</div>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>Pos</th><th>Driver</th><th>Car #</th><th>Points</th><th>Wins</th><th>Podiums</th><th>Top 5s</th><th>Avg Finish</th><th>Laps Led</th><th>Inc / Race</th><th>Win %</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td class="td-pos pos-1">1</td><td class="td-driver">Ryan Rider</td><td class="td-highlight">#18</td><td class="td-highlight">52</td><td>0</td><td>2</td><td>2</td><td>2.0</td><td>2</td><td>3.0</td><td>0.0%</td></tr>
-            <tr><td class="td-pos pos-2">2</td><td class="td-driver">Byron Forest II</td><td class="td-highlight">#824</td><td class="td-highlight">44</td><td>1</td><td>1</td><td>2</td><td>3.0</td><td>12</td><td>1.0</td><td>50.0%</td></tr>
-            <tr><td class="td-pos pos-3">3</td><td class="td-driver">Wadih Maalouf</td><td class="td-highlight">#72</td><td class="td-highlight">35</td><td>0</td><td>1</td><td>2</td><td>4.0</td><td>8</td><td>2.0</td><td>0.0%</td></tr>
-            <tr><td class="td-pos">4</td><td class="td-driver">John Agudelo</td><td class="td-highlight">#48</td><td>32</td><td>0</td><td>1</td><td>1</td><td>7.5</td><td>3</td><td>4.0</td><td>0.0%</td></tr>
-            <tr><td class="td-pos">5</td><td class="td-driver">Jake Harrigan</td><td class="td-highlight">#11</td><td>28</td><td>0</td><td>1</td><td>1</td><td>6.0</td><td>0</td><td>5.5</td><td>0.0%</td></tr>
-            <tr><td class="td-pos">6</td><td class="td-driver">Anthony Orr2</td><td class="td-highlight">#77</td><td>25</td><td>0</td><td>0</td><td>1</td><td>6.0</td><td>0</td><td>0.0</td><td>0.0%</td></tr>
-            <tr><td class="td-pos">7</td><td class="td-driver">Kevin Corea</td><td class="td-highlight">#13</td><td>24</td><td>0</td><td>0</td><td>1</td><td>6.5</td><td>0</td><td>3.5</td><td>0.0%</td></tr>
-            <tr><td class="td-pos">8</td><td class="td-driver">Connor Menard</td><td class="td-highlight">#5</td><td>17</td><td>0</td><td>0</td><td>0</td><td>7.5</td><td>0</td><td>3.0</td><td>0.0%</td></tr>
-            <tr><td class="td-pos">9</td><td class="td-driver">Dylan Foster9</td><td class="td-highlight">#88</td><td>14</td><td>0</td><td>0</td><td>0</td><td>9.5</td><td>0</td><td>4.5</td><td>0.0%</td></tr>
-            <tr><td class="td-pos">9</td><td class="td-driver">Phillip Poole</td><td class="td-highlight">#46</td><td>14</td><td>0</td><td>0</td><td>0</td><td>9.5</td><td>0</td><td>7.0</td><td>0.0%</td></tr>
-            <tr><td class="td-pos">11</td><td class="td-driver">Matt Bond6</td><td class="td-highlight">#19</td><td>13</td><td>0</td><td>0</td><td>0</td><td>9.5</td><td>0</td><td>7.5</td><td>0.0%</td></tr>
-            <tr><td class="td-pos">12</td><td class="td-driver">Ryan Nixon</td><td class="td-highlight">#12</td><td>10</td><td>0</td><td>0</td><td>0</td><td>11.0</td><td>0</td><td>6.0</td><td>0.0%</td></tr>
-            <tr><td class="td-pos">12</td><td class="td-driver">Frank Perreault2</td><td class="td-highlight">#999</td><td>10</td><td>0</td><td>0</td><td>0</td><td>11.0</td><td>0</td><td>4.0</td><td>0.0%</td></tr>
-            <tr><td class="td-pos">14</td><td class="td-driver">Aaron Liebling</td><td class="td-highlight">#6</td><td>8</td><td>0</td><td>0</td><td>0</td><td>12.0</td><td>1</td><td>8.5</td><td>0.0%</td></tr>
-            <tr><td class="td-pos">15</td><td class="td-driver">Joshua S Smith</td><td class="td-highlight">#23</td><td>1</td><td>0</td><td>0</td><td>0</td><td>15.0</td><td>0</td><td>3.0</td><td>0.0%</td></tr>
-          </tbody>
-        </table>
-      </div>
+    <div class="section-label">2026 Season 2 · Moonday Nights TCR · After Round 1 (2 Races)</div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr>
+          <th>Pos</th><th>Driver</th><th>Car #</th><th>Points</th>
+          <th>Wins</th><th>Podiums</th><th>Top 5s</th>
+          <th>Avg Finish</th><th>Laps Led</th><th>Inc / Race</th><th>Win %</th>
+        </tr></thead>
+        <tbody>
+          <tr><td class="td-pos pos-1">1</td><td class="td-driver">Ryan Rider</td><td class="td-highlight">#18</td><td class="td-highlight">52</td><td>0</td><td>2</td><td>2</td><td>2.0</td><td>2</td><td>3.0</td><td>0.0%</td></tr>
+          <tr><td class="td-pos pos-2">2</td><td class="td-driver">Byron Forest II</td><td class="td-highlight">#824</td><td>44</td><td>1</td><td>1</td><td>2</td><td>3.0</td><td>12</td><td>1.0</td><td>50.0%</td></tr>
+          <tr><td class="td-pos pos-3">3</td><td class="td-driver">Wadih Maalouf</td><td class="td-highlight">#72</td><td>35</td><td>0</td><td>1</td><td>2</td><td>4.0</td><td>8</td><td>2.0</td><td>0.0%</td></tr>
+          <tr><td class="td-pos">4</td><td class="td-driver">John Agudelo</td><td class="td-highlight">#48</td><td>32</td><td>1</td><td>1</td><td>1</td><td>7.5</td><td>3</td><td>4.0</td><td>50.0%</td></tr>
+          <tr><td class="td-pos">5</td><td class="td-driver">Jake Harrigan</td><td class="td-highlight">#11</td><td>28</td><td>0</td><td>1</td><td>1</td><td>6.0</td><td>0</td><td>5.5</td><td>0.0%</td></tr>
+          <tr><td class="td-pos">6</td><td class="td-driver">Anthony Orr2</td><td class="td-highlight">#77</td><td>25</td><td>0</td><td>0</td><td>1</td><td>6.0</td><td>0</td><td>0.0</td><td>0.0%</td></tr>
+          <tr><td class="td-pos">7</td><td class="td-driver">Kevin Corea</td><td class="td-highlight">#13</td><td>24</td><td>0</td><td>0</td><td>1</td><td>6.5</td><td>0</td><td>3.5</td><td>0.0%</td></tr>
+          <tr><td class="td-pos">8</td><td class="td-driver">Connor Menard</td><td class="td-highlight">#5</td><td>17</td><td>0</td><td>0</td><td>0</td><td>7.5</td><td>0</td><td>3.0</td><td>0.0%</td></tr>
+          <tr><td class="td-pos">9</td><td class="td-driver">Phillip Poole</td><td class="td-highlight">#46</td><td>14</td><td>0</td><td>0</td><td>0</td><td>9.5</td><td>0</td><td>7.0</td><td>0.0%</td></tr>
+          <tr><td class="td-pos">10</td><td class="td-driver">Dylan Foster9</td><td class="td-highlight">#88</td><td>14</td><td>0</td><td>0</td><td>0</td><td>9.5</td><td>0</td><td>4.5</td><td>0.0%</td></tr>
+          <tr><td class="td-pos">11</td><td class="td-driver">Matt Bond6</td><td class="td-highlight">#19</td><td>13</td><td>0</td><td>0</td><td>0</td><td>9.5</td><td>0</td><td>7.5</td><td>0.0%</td></tr>
+          <tr><td class="td-pos">12</td><td class="td-driver">Ryan Nixon</td><td class="td-highlight">#12</td><td>10</td><td>0</td><td>0</td><td>0</td><td>11.0</td><td>0</td><td>6.0</td><td>0.0%</td></tr>
+          <tr><td class="td-pos">13</td><td class="td-driver">Frank Perreault2</td><td class="td-highlight">#999</td><td>10</td><td>0</td><td>0</td><td>0</td><td>11.0</td><td>0</td><td>4.0</td><td>0.0%</td></tr>
+          <tr><td class="td-pos">14</td><td class="td-driver">Aaron Liebling</td><td class="td-highlight">#6</td><td>8</td><td>0</td><td>0</td><td>0</td><td>12.0</td><td>1</td><td>8.5</td><td>0.0%</td></tr>
+          <tr><td class="td-pos">15</td><td class="td-driver">Joshua S Smith</td><td class="td-highlight">#23</td><td>1</td><td>0</td><td>0</td><td>0</td><td>15.0</td><td>0</td><td>3.0</td><td>0.0%</td></tr>
+        </tbody>
+      </table>
     </div>
   </div>
 
   <!-- THURSDAY -->
   <div id="series-thursday" style="display:none;">
-    <div id="thursday-2026s2" class="season-block">
-      <div class="section-label">2026 Season 2 · Thursday Ovals Standings</div>
-      <div class="note-bar"><strong>Note:</strong> Round 1 results pending — standings will update after each Thursday race.</div>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr><th>Pos</th><th>Driver</th><th>Car #</th><th>Points</th><th>Wins</th><th>Podiums</th><th>Top 5s</th><th>Avg Finish</th><th>Laps Led</th><th>Inc / Race</th><th>Win %</th></tr>
-          </thead>
-          <tbody>
-            <tr><td colspan="11" style="text-align:center;color:#555;font-family:'Rajdhani',sans-serif;letter-spacing:0.08em;text-transform:uppercase;padding:24px;">Round 1 results pending — add data after each Thursday race</td></tr>
-          </tbody>
-        </table>
-      </div>
+    <div class="section-label">2026 Season 2 · Thursday Ovals ARCA · After Round 1</div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr>
+          <th>Pos</th><th>Driver</th><th>Car #</th><th>Points</th>
+          <th>Wins</th><th>Podiums</th><th>Top 5s</th>
+          <th>Avg Finish</th><th>Laps Led</th><th>Inc / Race</th><th>Win %</th>
+        </tr></thead>
+        <tbody>
+          <tr><td class="td-pos pos-1">1</td><td class="td-driver">Dylan Foster9</td><td class="td-highlight">#88</td><td class="td-highlight">43</td><td>1</td><td>1</td><td>1</td><td>1.0</td><td>64</td><td>2.0</td><td>100.0%</td></tr>
+          <tr><td class="td-pos pos-2">2</td><td class="td-driver">Ryan Rider</td><td class="td-highlight">#18</td><td>42</td><td>0</td><td>1</td><td>1</td><td>2.0</td><td>15</td><td>17.0</td><td>0.0%</td></tr>
+          <tr><td class="td-pos pos-3">3</td><td class="td-driver">Joshua S Smith</td><td class="td-highlight">#23</td><td>41</td><td>0</td><td>1</td><td>1</td><td>3.0</td><td>4</td><td>1.0</td><td>0.0%</td></tr>
+          <tr><td class="td-pos">4</td><td class="td-driver">Thomas Pfannkoch</td><td class="td-highlight">#132</td><td>40</td><td>0</td><td>0</td><td>1</td><td>4.0</td><td>0</td><td>12.0</td><td>0.0%</td></tr>
+          <tr><td class="td-pos">5</td><td class="td-driver">Phillip Poole</td><td class="td-highlight">#46</td><td>39</td><td>0</td><td>0</td><td>1</td><td>5.0</td><td>0</td><td>12.0</td><td>0.0%</td></tr>
+          <tr><td class="td-pos">6</td><td class="td-driver">Jake Harrigan</td><td class="td-highlight">#14</td><td>38</td><td>0</td><td>0</td><td>0</td><td>6.0</td><td>0</td><td>6.0</td><td>0.0%</td></tr>
+          <tr><td class="td-pos">7</td><td class="td-driver">Matt Bond6</td><td class="td-highlight">#19</td><td>37</td><td>0</td><td>0</td><td>0</td><td>7.0</td><td>0</td><td>18.0</td><td>0.0%</td></tr>
+          <tr><td class="td-pos">8</td><td class="td-driver">John Agudelo</td><td class="td-highlight">#48</td><td>36</td><td>0</td><td>0</td><td>0</td><td>8.0</td><td>29</td><td>8.0</td><td>0.0%</td></tr>
+          <tr><td class="td-pos">9</td><td class="td-driver">Frank Perreault2</td><td class="td-highlight">#999</td><td>35</td><td>0</td><td>0</td><td>0</td><td>9.0</td><td>3</td><td>20.0</td><td>0.0%</td></tr>
+          <tr><td class="td-pos">10</td><td class="td-driver">William Stiern</td><td class="td-highlight">#418</td><td>34</td><td>0</td><td>0</td><td>0</td><td>10.0</td><td>0</td><td>17.0</td><td>0.0%</td></tr>
+          <tr><td class="td-pos">11</td><td class="td-driver">Aaron Liebling</td><td class="td-highlight">#66</td><td>33</td><td>0</td><td>0</td><td>0</td><td>11.0</td><td>0</td><td>13.0</td><td>0.0%</td></tr>
+          <tr><td class="td-pos">12</td><td class="td-driver">Ryan Nixon</td><td class="td-highlight">#12</td><td>32</td><td>0</td><td>0</td><td>0</td><td>12.0</td><td>0</td><td>3.0</td><td>0.0%</td></tr>
+        </tbody>
+      </table>
     </div>
   </div>
 
 </div>
 <footer><div class="footer-logo">TEN<span>10</span> MOTORSPORTS</div><p>iRacing · Moonday Nights &amp; Thursday Ovals · &copy; <span class="yr"></span></p></footer>
 <script>
-let curSeries='moonday',curSeason='2026s2';
-function switchSeries(s,btn){curSeries=s;document.getElementById('series-moonday').style.display=s==='moonday'?'':'none';document.getElementById('series-thursday').style.display=s==='thursday'?'':'none';document.querySelectorAll('.series-tab').forEach(t=>t.classList.remove('active'));btn.classList.add('active');showSeason(s,curSeason);}
-function switchSeason(v){curSeason=v;showSeason(curSeries,v);}
-function showSeason(s,v){document.querySelectorAll(`#series-${s} .season-block`).forEach(b=>b.style.display='none');const el=document.getElementById(`${s}-${v}`);if(el)el.style.display='';}
+function switchSeries(s,btn){
+  document.getElementById('series-moonday').style.display=s==='moonday'?'':'none';
+  document.getElementById('series-thursday').style.display=s==='thursday'?'':'none';
+  document.querySelectorAll('.series-tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+}
 </script>
 <script>document.querySelectorAll(".yr").forEach(function(e){e.textContent=new Date().getFullYear();});</script>
 </body>

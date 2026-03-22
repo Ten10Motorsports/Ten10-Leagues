@@ -109,7 +109,6 @@ const STAT_LABELS = [
   { key:'wins',       label:'Wins',            higherBetter:true  },
   { key:'podiums',    label:'Podiums',         higherBetter:true  },
   { key:'top5s',      label:'Top 5s',          higherBetter:true  },
-  { key:'poles',      label:'Poles',           higherBetter:true  },
   { key:'avgFinish',  label:'Avg Finish Pos',  higherBetter:false },
   { key:'lapsLed',    label:'Laps Led',        higherBetter:true  },
   { key:'incPerRace', label:'Incidents / Race',higherBetter:false },
@@ -117,6 +116,7 @@ const STAT_LABELS = [
 ];
 
 let curSeries = 'moonday';
+let curSeason = '2026s2';
 
 function setSeries(s, btn) {
   curSeries = s;

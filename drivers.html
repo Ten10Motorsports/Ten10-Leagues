@@ -460,12 +460,7 @@ function renderCards(filter='all') {
         </div>
       </div>
       <div class="dc-bio">${d.bio}</div>
-      <div class="dc-stats">
-        <div class="dc-stat"><div class="v">${d.stats.wins}</div><div class="l">Wins</div></div>
-        <div class="dc-stat"><div class="v">${d.stats.podiums}</div><div class="l">Podiums</div></div>
-        <div class="dc-stat"><div class="v">${d.stats.poles}</div><div class="l">Poles</div></div>
-        <div class="dc-stat"><div class="v">${d.stats.avgFinish}</div><div class="l">Avg Fin</div></div>
-      </div>
+      ${buildStats(d)}
       <div class="dc-recent">
         <div class="dc-recent-title">Recent Results</div>
         ${d.recent.length ? d.recent.map(r => `
@@ -500,12 +495,7 @@ function openLightbox(idx) {
 
     <div class="lb-section">
       <div class="lb-section-title">2026 Season 2 Stats</div>
-      <div class="lb-stats-grid">
-        <div class="lb-stat"><div class="v">${d.stats.wins}</div><div class="l">Wins</div></div>
-        <div class="lb-stat"><div class="v">${d.stats.podiums}</div><div class="l">Podiums</div></div>
-        <div class="lb-stat"><div class="v">${d.stats.poles}</div><div class="l">Poles</div></div>
-        <div class="lb-stat"><div class="v">${d.stats.avgFinish}</div><div class="l">Avg Finish</div></div>
-      </div>
+      ${buildLbStats(d)}
     </div>
 
     <div class="lb-section">
@@ -553,6 +543,401 @@ function filterDrivers(filter, btn) {
   document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   renderCards(filter);
+}
+
+
+// Build per-series stats for card
+function buildStats(d) {
+  if (d.series === 'both') {
+    // Show both series stats separately
+    const mn = d.statsMoonday || {};
+    const th = d.statsThursday || {};
+    return `
+      <div style="border-top:1px solid rgba(192,192,192,0.07);padding:8px 18px 0;">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#cc0000;margin-bottom:6px;">🌙 Moonday Nights</div>
+        <div class="dc-stats" style="border-top:none;">
+          <div class="dc-stat"><div class="v">${mn.wins||0}</div><div class="l">Wins</div></div>
+          <div class="dc-stat"><div class="v">${mn.podiums||0}</div><div class="l">Pods</div></div>
+          <div class="dc-stat"><div class="v">${mn.avgFinish||'—'}</div><div class="l">Avg Fin</div></div>
+          <div class="dc-stat"><div class="v">${mn.incPR||'—'}</div><div class="l">Inc/R</div></div>
+        </div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#cc0000;margin-top:6px;margin-bottom:6px;">🏁 Thursday Ovals</div>
+        <div class="dc-stats" style="border-top:none;margin-bottom:0;">
+          <div class="dc-stat"><div class="v">${th.wins||0}</div><div class="l">Wins</div></div>
+          <div class="dc-stat"><div class="v">${th.podiums||0}</div><div class="l">Pods</div></div>
+          <div class="dc-stat"><div class="v">${th.avgFinish||'—'}</div><div class="l">Avg Fin</div></div>
+          <div class="dc-stat"><div class="v">${th.incPR||'—'}</div><div class="l">Inc/R</div></div>
+        </div>
+      </div>`;
+  }
+  const s = d.stats || {};
+  return `
+    <div class="dc-stats">
+      <div class="dc-stat"><div class="v">${s.wins||0}</div><div class="l">Wins</div></div>
+      <div class="dc-stat"><div class="v">${s.podiums||0}</div><div class="l">Podiums</div></div>
+      <div class="dc-stat"><div class="v">${s.avgFinish||'—'}</div><div class="l">Avg Fin</div></div>
+      <div class="dc-stat"><div class="v">${s.incPR||'—'}</div><div class="l">Inc/R</div></div>
+    </div>`;
+}
+
+// Build per-series stats for lightbox
+function buildLbStats(d) {
+  if (d.series === 'both') {
+    const mn = d.statsMoonday || {};
+    const th = d.statsThursday || {};
+    return `
+      <div style="margin-bottom:12px;">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:#cc0000;margin-bottom:8px;">🌙 Moonday Nights — TCR</div>
+        <div class="lb-stats-grid">
+          <div class="lb-stat"><div class="v">${mn.wins||0}</div><div class="l">Wins</div></div>
+          <div class="lb-stat"><div class="v">${mn.podiums||0}</div><div class="l">Podiums</div></div>
+          <div class="lb-stat"><div class="v">${mn.avgFinish||'—'}</div><div class="l">Avg Finish</div></div>
+          <div class="lb-stat"><div class="v">${mn.incPR||'—'}</div><div class="l">Inc / Race</div></div>
+        </div>
+      </div>
+      <div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:#cc0000;margin-bottom:8px;">🏁 Thursday Ovals — ARCA</div>
+        <div class="lb-stats-grid">
+          <div class="lb-stat"><div class="v">${th.wins||0}</div><div class="l">Wins</div></div>
+          <div class="lb-stat"><div class="v">${th.podiums||0}</div><div class="l">Podiums</div></div>
+          <div class="lb-stat"><div class="v">${th.avgFinish||'—'}</div><div class="l">Avg Finish</div></div>
+          <div class="lb-stat"><div class="v">${th.incPR||'—'}</div><div class="l">Inc / Race</div></div>
+        </div>
+      </div>`;
+  }
+  const s = d.stats || {};
+  return `<div class="lb-stats-grid">
+    <div class="lb-stat"><div class="v">${s.wins||0}</div><div class="l">Wins</div></div>
+    <div class="lb-stat"><div class="v">${s.podiums||0}</div><div class="l">Podiums</div></div>
+    <div class="lb-stat"><div class="v">${s.avgFinish||'—'}</div><div class="l">Avg Finish</div></div>
+    <div class="lb-stat"><div class="v">${s.incPR||'—'}</div><div class="l">Inc / Race</div></div>
+  </div>`;
+}
+
+// Init
+renderCards('all');
+</script>
+<script>document.querySelectorAll(".yr").forEach(function(e){e.textContent=new Date().getFullYear();});</script>
+</body>
+</html>  // ── MOONDAY NIGHTS TCR ──
+  { name:"Ryan Rider",       number:"#18",  initials:"RR", photo:"", series:"moonday",
+    bio:"Leading the 2026 Season 2 Moonday standings after Round 1 with 52 aggregate points. P2 in both races at Okayama — incredibly consistent night.",
+    stats:{wins:0,podiums:2,avgFinish:2.0,incPR:3.0},
+    recent:[{pos:"2nd",track:"Okayama R1",series:"Moonday",posColor:"#c0c0c0"},{pos:"2nd",track:"Okayama R2",series:"Moonday",posColor:"#c0c0c0"}],
+    fav:{car:"Hyundai Elantra N TCR",track:"Okayama International Circuit"} },
+
+  { name:"Byron Forest II",  number:"#824", initials:"BF", photo:"", series:"moonday",
+    bio:"Won Race 2 at Okayama — led 12 laps en route to victory. Currently 2nd in Moonday standings with 44 aggregate points. Win percentage of 50%.",
+    stats:{wins:1,podiums:1,avgFinish:3.0,incPR:1.0},
+    recent:[{pos:"5th",track:"Okayama R1",series:"Moonday",posColor:"#888"},{pos:"1st",track:"Okayama R2",series:"Moonday",posColor:"#ffd700"}],
+    fav:{car:"Hyundai Elantra N TCR",track:"Okayama International Circuit"} },
+
+  { name:"Wadih Maalouf",    number:"#72",  initials:"WM", photo:"", series:"moonday",
+    bio:"Strong opener with P3 in Race 1 and P5 in Race 2. Led 8 laps in Race 1. Sitting 3rd in Moonday standings with 35 points.",
+    stats:{wins:0,podiums:1,avgFinish:4.0,incPR:2.0},
+    recent:[{pos:"3rd",track:"Okayama R1",series:"Moonday",posColor:"#cd7f32"},{pos:"5th",track:"Okayama R2",series:"Moonday",posColor:"#888"}],
+    fav:{car:"Hyundai Elantra N TCR",track:"Okayama International Circuit"} },
+
+  { name:"John Agudelo",     number:"#48",  initials:"JA", photo:"", series:"both",
+    bio:"Won Race 1 at Okayama in the TCR series, then competed Thursday at Texas Motor Speedway where he led 29 laps before disconnecting. Two-series competitor.",
+    statsMoonday:{wins:1,podiums:1,avgFinish:7.5,incPR:4.0},
+    statsThursday:{wins:0,podiums:0,avgFinish:8.0,incPR:8.0},
+    stats:{wins:1,podiums:1,avgFinish:7.5,incPR:4.0},
+    recent:[{pos:"1st",track:"Okayama R1",series:"Moonday",posColor:"#ffd700"},{pos:"DNF",track:"Okayama R2",series:"Moonday",posColor:"#cc0000"},{pos:"8th",track:"Texas (DNF)",series:"Thursday",posColor:"#cc0000"}],
+    fav:{car:"Honda Civic Type R TCR",track:"Okayama International Circuit"} },
+
+  { name:"Jake Harrigan",    number:"#11",  initials:"JH", photo:"", series:"both",
+    bio:"Big turnaround at Okayama — went from P9 in Race 1 to P3 in Race 2. Also competing Thursday Ovals where he finished P6 at Texas.",
+    statsMoonday:{wins:0,podiums:1,avgFinish:6.0,incPR:5.5},
+    statsThursday:{wins:0,podiums:0,avgFinish:6.0,incPR:6.0},
+    stats:{wins:0,podiums:1,avgFinish:6.0,incPR:5.5},
+    recent:[{pos:"9th",track:"Okayama R1",series:"Moonday",posColor:"#888"},{pos:"3rd",track:"Okayama R2",series:"Moonday",posColor:"#cd7f32"},{pos:"6th",track:"Texas",series:"Thursday",posColor:"#888"}],
+    fav:{car:"Hyundai Elantra N TCR",track:"TBD"} },
+
+  { name:"Anthony Orr2",     number:"#77",  initials:"AO", photo:"", series:"moonday",
+    bio:"Zero incidents in Race 2 — one of the cleanest runs of the night. P8 and P4 across both Okayama races. 6th overall with 25 points.",
+    stats:{wins:0,podiums:0,avgFinish:6.0,incPR:0.0},
+    recent:[{pos:"8th",track:"Okayama R1",series:"Moonday",posColor:"#888"},{pos:"4th",track:"Okayama R2",series:"Moonday",posColor:"#888"}],
+    fav:{car:"Hyundai Veloster N TCR",track:"TBD"} },
+
+  { name:"Kevin Corea",      number:"#13",  initials:"KC", photo:"", series:"moonday",
+    bio:"P4 in Race 1 with fast lap of 1:35.968. Dropped to P9 in Race 2. 7th in Moonday standings with 24 points.",
+    stats:{wins:0,podiums:0,avgFinish:6.5,incPR:3.5},
+    recent:[{pos:"4th",track:"Okayama R1",series:"Moonday",posColor:"#888"},{pos:"9th",track:"Okayama R2",series:"Moonday",posColor:"#888"}],
+    fav:{car:"Honda Civic Type R TCR",track:"TBD"} },
+
+  { name:"Connor Menard",    number:"#5",   initials:"CM", photo:"", series:"moonday",
+    bio:"Consistent P7 and P8 across both Okayama races. 8th in Moonday standings with 17 points.",
+    stats:{wins:0,podiums:0,avgFinish:7.5,incPR:3.0},
+    recent:[{pos:"7th",track:"Okayama R1",series:"Moonday",posColor:"#888"},{pos:"8th",track:"Okayama R2",series:"Moonday",posColor:"#888"}],
+    fav:{car:"Honda Civic Type R TCR",track:"TBD"} },
+
+  { name:"Phillip Poole",    number:"#46",  initials:"PP", photo:"", series:"both",
+    bio:"P6 in Moonday Race 1, rough Race 2 with 12 incidents. Also racing Thursday Ovals at Texas where he finished P5.",
+    statsMoonday:{wins:0,podiums:0,avgFinish:9.5,incPR:7.0},
+    statsThursday:{wins:0,podiums:0,avgFinish:5.0,incPR:12.0},
+    stats:{wins:0,podiums:0,avgFinish:9.5,incPR:7.0},
+    recent:[{pos:"6th",track:"Okayama R1",series:"Moonday",posColor:"#888"},{pos:"13th",track:"Okayama R2",series:"Moonday",posColor:"#888"},{pos:"5th",track:"Texas",series:"Thursday",posColor:"#888"}],
+    fav:{car:"Hyundai Elantra N TCR",track:"TBD"} },
+
+  { name:"Dylan Foster9",    number:"#88",  initials:"DF", photo:"", series:"both",
+    bio:"Won Thursday Ovals Round 1 at Texas Motor Speedway, leading 64 laps. Also ran Moonday Nights at Okayama — P13 and P6 across the two races.",
+    statsMoonday:{wins:0,podiums:0,avgFinish:9.5,incPR:4.5},
+    statsThursday:{wins:1,podiums:1,avgFinish:1.0,incPR:2.0},
+    stats:{wins:1,podiums:1,avgFinish:1.0,incPR:2.0},
+    recent:[{pos:"1st",track:"Texas Motor Speedway",series:"Thursday",posColor:"#ffd700"},{pos:"13th",track:"Okayama R1",series:"Moonday",posColor:"#888"},{pos:"6th",track:"Okayama R2",series:"Moonday",posColor:"#888"}],
+    fav:{car:"ARCA Toyota Camry",track:"Texas Motor Speedway"} },
+
+  { name:"Matt Bond6",       number:"#19",  initials:"MB", photo:"", series:"both",
+    bio:"Running both series. P12 and P7 at Okayama in TCR, P7 at Texas in ARCA oval.",
+    statsMoonday:{wins:0,podiums:0,avgFinish:9.5,incPR:7.5},
+    statsThursday:{wins:0,podiums:0,avgFinish:7.0,incPR:18.0},
+    stats:{wins:0,podiums:0,avgFinish:9.5,incPR:7.5},
+    recent:[{pos:"12th",track:"Okayama R1",series:"Moonday",posColor:"#888"},{pos:"7th",track:"Okayama R2",series:"Moonday",posColor:"#888"},{pos:"7th",track:"Texas",series:"Thursday",posColor:"#888"}],
+    fav:{car:"Audi RS3 LMS Gen2 TCR",track:"TBD"} },
+
+  { name:"Ryan Nixon",       number:"#12",  initials:"RN", photo:"", series:"both",
+    bio:"P11 in both Okayama TCR races. Also raced Thursday Ovals at Texas, finishing P12 (DNF). Running both series this season.",
+    statsMoonday:{wins:0,podiums:0,avgFinish:11.0,incPR:6.0},
+    statsThursday:{wins:0,podiums:0,avgFinish:12.0,incPR:3.0},
+    stats:{wins:0,podiums:0,avgFinish:11.0,incPR:6.0},
+    recent:[{pos:"11th",track:"Okayama R1",series:"Moonday",posColor:"#888"},{pos:"11th",track:"Okayama R2",series:"Moonday",posColor:"#888"},{pos:"12th",track:"Texas (DNF)",series:"Thursday",posColor:"#cc0000"}],
+    fav:{car:"Audi RS3 LMS Gen2 TCR",track:"TBD"} },
+
+  { name:"Frank Perreault2", number:"#999", initials:"FP", photo:"", series:"both",
+    bio:"P10 and P12 at Okayama in Moonday TCR. Also raced Thursday Ovals at Texas finishing P9. The #999 hard to miss on any grid.",
+    statsMoonday:{wins:0,podiums:0,avgFinish:11.0,incPR:4.0},
+    statsThursday:{wins:0,podiums:0,avgFinish:9.0,incPR:20.0},
+    stats:{wins:0,podiums:0,avgFinish:11.0,incPR:4.0},
+    recent:[{pos:"10th",track:"Okayama R1",series:"Moonday",posColor:"#888"},{pos:"12th",track:"Okayama R2",series:"Moonday",posColor:"#888"},{pos:"9th",track:"Texas",series:"Thursday",posColor:"#888"}],
+    fav:{car:"Hyundai Veloster N TCR",track:"TBD"} },
+
+  { name:"Aaron Liebling",   number:"#6",   initials:"AL", photo:"", series:"both",
+    bio:"P14 and P10 at Okayama in Moonday TCR. Ran Thursday Ovals at Texas, DNF P11. Running both series in 2026 S2.",
+    statsMoonday:{wins:0,podiums:0,avgFinish:12.0,incPR:8.5},
+    statsThursday:{wins:0,podiums:0,avgFinish:11.0,incPR:13.0},
+    stats:{wins:0,podiums:0,avgFinish:12.0,incPR:8.5},
+    recent:[{pos:"14th",track:"Okayama R1",series:"Moonday",posColor:"#888"},{pos:"10th",track:"Okayama R2",series:"Moonday",posColor:"#888"},{pos:"11th",track:"Texas (DNF)",series:"Thursday",posColor:"#cc0000"}],
+    fav:{car:"Honda Civic Type R TCR",track:"TBD"} },
+
+  { name:"Joshua S Smith",   number:"#23",  initials:"JS", photo:"", series:"both",
+    bio:"Disconnected from both Moonday Races at Okayama (1pt), but bounced back strong with a P3 podium at Texas Motor Speedway in Thursday Ovals.",
+    statsMoonday:{wins:0,podiums:0,avgFinish:15.0,incPR:3.0},
+    statsThursday:{wins:0,podiums:1,avgFinish:3.0,incPR:1.0},
+    stats:{wins:0,podiums:1,avgFinish:3.0,incPR:1.0},
+    recent:[{pos:"DNF",track:"Okayama R1",series:"Moonday",posColor:"#cc0000"},{pos:"DNF",track:"Okayama R2",series:"Moonday",posColor:"#cc0000"},{pos:"3rd",track:"Texas",series:"Thursday",posColor:"#cd7f32"}],
+    fav:{car:"ARCA Toyota Camry",track:"Texas Motor Speedway"} },
+
+  { name:"Thomas Pfannkoch", number:"#132", initials:"TP", photo:"", series:"thursday",
+    bio:"Thursday Ovals competitor. Ran a solid P4 at Texas Motor Speedway in Round 1 of the 2026 ARCA season.",
+    stats:{wins:0,podiums:0,avgFinish:4.0,incPR:12.0},
+    recent:[{pos:"4th",track:"Texas Motor Speedway",series:"Thursday",posColor:"#888"}],
+    fav:{car:"ARCA Ford Mustang",track:"Texas Motor Speedway"} },
+
+  { name:"William Stiern",   number:"#418", initials:"WS", photo:"", series:"thursday",
+    bio:"Thursday Ovals competitor in the 2026 ARCA season. P10 at Texas Motor Speedway in Round 1 before disconnecting.",
+    stats:{wins:0,podiums:0,avgFinish:10.0,incPR:17.0},
+    recent:[{pos:"10th",track:"Texas (DNF)",series:"Thursday",posColor:"#cc0000"}],
+    fav:{car:"ARCA Toyota Camry",track:"TBD"} },
+
+  // ---- ADD MORE DRIVERS ABOVE THIS LINE ----
+];
+
+// ── BUILD CARDS ──
+function buildAvatar(driver, size='card') {
+  if (driver.photo) {
+    return `<div class="${size==='lb'?'lb-avatar':'dc-avatar'}"><img src="${driver.photo}" alt="${driver.name}" onerror="this.parentElement.textContent='${driver.initials}'"></div>`;
+  }
+  return `<div class="${size==='lb'?'lb-avatar':'dc-avatar'}">${driver.initials}</div>`;
+}
+
+function seriesLabel(s) {
+  if (s === 'moonday') return '🌙 Moonday Nights';
+  if (s === 'thursday') return '🏁 Thursday Ovals';
+  return '🌙 Moonday Nights · 🏁 Thursday Ovals';
+}
+
+function posColor(pos) {
+  if (pos === '1st') return '#ffd700';
+  if (pos === '2nd') return '#c0c0c0';
+  if (pos === '3rd') return '#cd7f32';
+  if (pos === 'DNF') return '#cc0000';
+  return '#888';
+}
+
+function renderCards(filter='all') {
+  const grid = document.getElementById('driversGrid');
+  const filtered = filter === 'all' ? DRIVERS : DRIVERS.filter(d => d.series === filter || d.series === 'both');
+
+  if (filtered.length === 0) {
+    grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:60px 20px;color:#555;font-family:'Rajdhani',sans-serif;letter-spacing:0.1em;text-transform:uppercase;">No drivers in this series yet</div>`;
+    return;
+  }
+
+  grid.innerHTML = filtered.map((d, i) => `
+    <div class="driver-card" onclick="openLightbox(${DRIVERS.indexOf(d)})" data-series="${d.series}">
+      <div class="dc-banner"></div>
+      <div class="dc-top">
+        ${buildAvatar(d, 'card')}
+        <div class="dc-identity">
+          <div class="dc-number">${d.number}</div>
+          <div class="dc-name">${d.name}</div>
+          <div class="dc-series">${seriesLabel(d.series)}</div>
+        </div>
+      </div>
+      <div class="dc-bio">${d.bio}</div>
+      ${buildStats(d)}
+      <div class="dc-recent">
+        <div class="dc-recent-title">Recent Results</div>
+        ${d.recent.length ? d.recent.map(r => `
+          <div class="dc-recent-row">
+            <span class="rpos" style="color:${r.posColor||posColor(r.pos)}">${r.pos}</span>
+            <span>${r.track}</span>
+            <span style="color:#888;font-size:0.75rem;">${r.series}</span>
+          </div>`).join('') : `<div class="dc-recent-row"><span style="color:#555;">No results yet</span></div>`}
+      </div>
+      <div class="dc-expand-hint">▲ Click to expand full profile</div>
+    </div>
+  `).join('');
+}
+
+// ── LIGHTBOX ──
+function openLightbox(idx) {
+  const d = DRIVERS[idx];
+  const lb = document.getElementById('lbOverlay');
+  const content = document.getElementById('lbContent');
+
+  content.innerHTML = `
+    <div class="lb-header">
+      ${buildAvatar(d, 'lb')}
+      <div class="lb-identity">
+        <div class="lb-number">${d.number}</div>
+        <div class="lb-name">${d.name}</div>
+        <div class="lb-series">${seriesLabel(d.series)}</div>
+      </div>
+    </div>
+
+    <div class="lb-bio">${d.bio}</div>
+
+    <div class="lb-section">
+      <div class="lb-section-title">2026 Season 2 Stats</div>
+      ${buildLbStats(d)}
+    </div>
+
+    <div class="lb-section">
+      <div class="lb-section-title">Recent Race History</div>
+      ${d.recent.length ? `
+      <table class="lb-history-table">
+        <thead><tr><th>Pos</th><th>Track</th><th>Series</th></tr></thead>
+        <tbody>
+          ${d.recent.map(r=>`
+            <tr>
+              <td class="hpos" style="color:${r.posColor||posColor(r.pos)}">${r.pos}</td>
+              <td>${r.track}</td>
+              <td style="color:#888;">${r.series}</td>
+            </tr>`).join('')}
+        </tbody>
+      </table>` : `<p style="color:#555;font-family:'Rajdhani',sans-serif;font-size:0.85rem;">No race history yet</p>`}
+    </div>
+
+    ${d.fav ? `
+    <div class="lb-section">
+      <div class="lb-section-title">Driver Favorites</div>
+      <div class="lb-fav">
+        <div class="lb-fav-item">🚗 Favorite Car: <span>${d.fav.car}</span></div>
+        <div class="lb-fav-item">🏁 Favorite Track: <span>${d.fav.track}</span></div>
+      </div>
+    </div>` : ''}
+  `;
+
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  document.getElementById('lbOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function closeLB(e) {
+  if (e.target === document.getElementById('lbOverlay')) closeLightbox();
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+function filterDrivers(filter, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderCards(filter);
+}
+
+
+// Build per-series stats for card
+function buildStats(d) {
+  if (d.series === 'both') {
+    // Show both series stats separately
+    const mn = d.statsMoonday || {};
+    const th = d.statsThursday || {};
+    return `
+      <div style="border-top:1px solid rgba(192,192,192,0.07);padding:8px 18px 0;">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#cc0000;margin-bottom:6px;">🌙 Moonday Nights</div>
+        <div class="dc-stats" style="border-top:none;">
+          <div class="dc-stat"><div class="v">${mn.wins||0}</div><div class="l">Wins</div></div>
+          <div class="dc-stat"><div class="v">${mn.podiums||0}</div><div class="l">Pods</div></div>
+          <div class="dc-stat"><div class="v">${mn.avgFinish||'—'}</div><div class="l">Avg Fin</div></div>
+          <div class="dc-stat"><div class="v">${mn.incPR||'—'}</div><div class="l">Inc/R</div></div>
+        </div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#cc0000;margin-top:6px;margin-bottom:6px;">🏁 Thursday Ovals</div>
+        <div class="dc-stats" style="border-top:none;margin-bottom:0;">
+          <div class="dc-stat"><div class="v">${th.wins||0}</div><div class="l">Wins</div></div>
+          <div class="dc-stat"><div class="v">${th.podiums||0}</div><div class="l">Pods</div></div>
+          <div class="dc-stat"><div class="v">${th.avgFinish||'—'}</div><div class="l">Avg Fin</div></div>
+          <div class="dc-stat"><div class="v">${th.incPR||'—'}</div><div class="l">Inc/R</div></div>
+        </div>
+      </div>`;
+  }
+  const s = d.stats || {};
+  return `
+    <div class="dc-stats">
+      <div class="dc-stat"><div class="v">${s.wins||0}</div><div class="l">Wins</div></div>
+      <div class="dc-stat"><div class="v">${s.podiums||0}</div><div class="l">Podiums</div></div>
+      <div class="dc-stat"><div class="v">${s.avgFinish||'—'}</div><div class="l">Avg Fin</div></div>
+      <div class="dc-stat"><div class="v">${s.incPR||'—'}</div><div class="l">Inc/R</div></div>
+    </div>`;
+}
+
+// Build per-series stats for lightbox
+function buildLbStats(d) {
+  if (d.series === 'both') {
+    const mn = d.statsMoonday || {};
+    const th = d.statsThursday || {};
+    return `
+      <div style="margin-bottom:12px;">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:#cc0000;margin-bottom:8px;">🌙 Moonday Nights — TCR</div>
+        <div class="lb-stats-grid">
+          <div class="lb-stat"><div class="v">${mn.wins||0}</div><div class="l">Wins</div></div>
+          <div class="lb-stat"><div class="v">${mn.podiums||0}</div><div class="l">Podiums</div></div>
+          <div class="lb-stat"><div class="v">${mn.avgFinish||'—'}</div><div class="l">Avg Finish</div></div>
+          <div class="lb-stat"><div class="v">${mn.incPR||'—'}</div><div class="l">Inc / Race</div></div>
+        </div>
+      </div>
+      <div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:#cc0000;margin-bottom:8px;">🏁 Thursday Ovals — ARCA</div>
+        <div class="lb-stats-grid">
+          <div class="lb-stat"><div class="v">${th.wins||0}</div><div class="l">Wins</div></div>
+          <div class="lb-stat"><div class="v">${th.podiums||0}</div><div class="l">Podiums</div></div>
+          <div class="lb-stat"><div class="v">${th.avgFinish||'—'}</div><div class="l">Avg Finish</div></div>
+          <div class="lb-stat"><div class="v">${th.incPR||'—'}</div><div class="l">Inc / Race</div></div>
+        </div>
+      </div>`;
+  }
+  const s = d.stats || {};
+  return `<div class="lb-stats-grid">
+    <div class="lb-stat"><div class="v">${s.wins||0}</div><div class="l">Wins</div></div>
+    <div class="lb-stat"><div class="v">${s.podiums||0}</div><div class="l">Podiums</div></div>
+    <div class="lb-stat"><div class="v">${s.avgFinish||'—'}</div><div class="l">Avg Finish</div></div>
+    <div class="lb-stat"><div class="v">${s.incPR||'—'}</div><div class="l">Inc / Race</div></div>
+  </div>`;
 }
 
 // Init
