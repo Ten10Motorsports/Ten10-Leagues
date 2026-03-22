@@ -132,6 +132,6 @@ function switchSeries(s,btn){curSeries=s;document.getElementById('series-moonday
 function switchSeason(v){curSeason=v;showSeason(curSeries,v);}
 function showSeason(s,v){document.querySelectorAll(`#series-${s} .season-block`).forEach(b=>b.style.display='none');const el=document.getElementById(`${s}-${v}`);if(el)el.style.display='';}
 </script>
-<script>document.querySelectorAll(".yr").forEach(el=>el.textContent=new Date().getFullYear());</script>
+<script>document.querySelectorAll(".yr").forEach(function(e){e.textContent=new Date().getFullYear();});</script>
 </body>
 </html>

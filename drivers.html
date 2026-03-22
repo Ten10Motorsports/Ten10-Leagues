@@ -194,20 +194,23 @@ document.getElementById('yr').textContent = new Date().getFullYear();
 // fav: { car, track }
 // ================================================================
 const DRIVERS = [
-  // ---- PASTE DRIVER OBJECTS HERE ----
-  // Example (remove or replace with real data):
+  // ================================================================
+  // ADD MORE DRIVERS BELOW — copy a block and fill in the details
+  // series: "moonday" | "thursday" | "both"
+  // photo: "images/filename.jpg" or "" for initials
+  // ================================================================
   {
     name: "Byron Forest II",
     number: "#1",
     initials: "BF",
     photo: "",
     series: "moonday",
-    bio: "Moonday Nights competitor. Won Round 1 of 2026 Season 2 at Okayama International Circuit.",
+    bio: "Moonday Nights driver competing in the 2026 TCR season. Came out swinging in Season 2, taking the Round 1 victory at Okayama International Circuit to start the season on top of the standings.",
     stats: { wins: 1, podiums: 1, poles: 0, avgFinish: 1.0 },
     recent: [
-      { pos: "1st", track: "Okayama", series: "Moonday", posColor: "#ffd700" },
+      { pos: "1st", track: "Okayama International Circuit", series: "Moonday", posColor: "#ffd700" },
     ],
-    fav: { car: "TCR Car", track: "Okayama International Circuit" }
+    fav: { car: "TCR — Touring Car", track: "Okayama International Circuit" }
   },
   {
     name: "Dylan Foster9",
@@ -215,12 +218,12 @@ const DRIVERS = [
     initials: "DF",
     photo: "",
     series: "thursday",
-    bio: "Thursday Ovals competitor. Won Round 1 of 2026 Season 2 at Texas Motor Speedway.",
+    bio: "Thursday Ovals driver competing in the 2026 ARCA season. Opened Season 2 with a dominant win at [Legacy] Texas Motor Speedway, setting the tone for what looks to be a strong oval campaign.",
     stats: { wins: 1, podiums: 1, poles: 0, avgFinish: 1.0 },
     recent: [
       { pos: "1st", track: "Texas Motor Speedway", series: "Thursday", posColor: "#ffd700" },
     ],
-    fav: { car: "ARCA Car", track: "Texas Motor Speedway" }
+    fav: { car: "ARCA Menards Series", track: "Texas Motor Speedway" }
   },
   // ---- ADD MORE DRIVERS ABOVE THIS LINE ----
 ];
@@ -366,5 +369,6 @@ function filterDrivers(filter, btn) {
 // Init
 renderCards('all');
 </script>
+<script>document.querySelectorAll(".yr").forEach(function(e){e.textContent=new Date().getFullYear();});</script>
 </body>
 </html>

@@ -9,34 +9,94 @@
 .media-tab{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.9rem;letter-spacing:0.07em;text-transform:uppercase;color:#888;padding:8px 20px;border-radius:4px;border:none;background:none;cursor:pointer;transition:all 0.2s;}
 .media-tab:hover{color:#f0f0f0;background:rgba(255,255,255,0.05);}
 .media-tab.active{background:#cc0000;color:#fff;box-shadow:0 0 16px rgba(204,0,0,0.25);}
-/* PHOTO GALLERY */
-.photo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;}
-.photo-item{position:relative;aspect-ratio:16/9;border-radius:6px;overflow:hidden;border:1px solid rgba(192,192,192,0.1);cursor:pointer;background:#141414;transition:border-color 0.2s,transform 0.2s;}
-.photo-item:hover{border-color:rgba(204,0,0,0.4);transform:scale(1.01);}
+
+/* COUNT BADGE */
+.tab-count{display:inline-flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.15);border-radius:10px;font-size:0.7rem;padding:1px 7px;margin-left:6px;}
+.media-tab.active .tab-count{background:rgba(0,0,0,0.2);}
+
+/* PHOTO GRID */
+.photo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;}
+.photo-item{
+  position:relative;aspect-ratio:16/9;border-radius:6px;overflow:hidden;
+  border:1px solid rgba(192,192,192,0.1);cursor:pointer;background:#141414;
+  transition:border-color 0.2s,transform 0.2s,box-shadow 0.2s;
+}
+.photo-item:hover{border-color:rgba(204,0,0,0.45);transform:scale(1.015);box-shadow:0 6px 24px rgba(204,0,0,0.2);}
 .photo-item img{width:100%;height:100%;object-fit:cover;display:block;}
-.photo-caption{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,0.85));padding:12px 14px 10px;font-family:'Rajdhani',sans-serif;font-size:0.78rem;letter-spacing:0.06em;color:#ddd;opacity:0;transition:opacity 0.2s;}
+.photo-caption{
+  position:absolute;bottom:0;left:0;right:0;
+  background:linear-gradient(transparent,rgba(0,0,0,0.88));
+  padding:24px 14px 12px;
+  font-family:'Rajdhani',sans-serif;font-size:0.82rem;letter-spacing:0.06em;color:#ddd;
+  opacity:0;transition:opacity 0.2s;
+}
 .photo-item:hover .photo-caption{opacity:1;}
-.photo-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:#333;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;}
-.photo-placeholder svg{opacity:0.3;}
+.photo-loading{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  background:#141414;font-family:'Rajdhani',sans-serif;font-size:0.78rem;
+  letter-spacing:0.1em;text-transform:uppercase;color:#444;
+  transition:opacity 0.3s;
+}
+.photo-item img.loaded + .photo-loading,
+.photo-item img.loaded ~ .photo-loading{opacity:0;pointer-events:none;}
+
+/* PHOTO PLACEHOLDER */
+.photo-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:#333;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;height:100%;}
+
 /* YOUTUBE GRID */
-.yt-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;}
-.yt-card{background:#141414;border:1px solid rgba(192,192,192,0.12);border-radius:6px;overflow:hidden;transition:border-color 0.2s,box-shadow 0.2s;}
-.yt-card:hover{border-color:rgba(204,0,0,0.4);box-shadow:0 4px 20px rgba(204,0,0,0.18);}
+.yt-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:18px;}
+.yt-card{background:#141414;border:1px solid rgba(192,192,192,0.12);border-radius:8px;overflow:hidden;transition:border-color 0.2s,box-shadow 0.2s;}
+.yt-card:hover{border-color:rgba(204,0,0,0.4);box-shadow:0 6px 24px rgba(204,0,0,0.2);}
 .yt-embed{position:relative;aspect-ratio:16/9;background:#000;}
-.yt-embed iframe{width:100%;height:100%;border:none;}
-.yt-meta{padding:12px 14px;}
-.yt-title{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;color:#f0f0f0;line-height:1.2;margin-bottom:4px;}
-.yt-sub{font-family:'Rajdhani',sans-serif;font-size:0.78rem;color:#888;letter-spacing:0.06em;}
+.yt-embed iframe{width:100%;height:100%;border:none;display:block;}
+.yt-meta{padding:14px 16px;}
+.yt-badge{display:inline-flex;align-items:center;gap:5px;font-family:'Barlow Condensed',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#cc0000;background:rgba(204,0,0,0.1);padding:3px 10px;border-radius:3px;margin-bottom:8px;}
+.yt-title{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.1rem;color:#f0f0f0;line-height:1.25;margin-bottom:4px;}
+.yt-sub{font-family:'Rajdhani',sans-serif;font-size:0.82rem;color:#888;letter-spacing:0.04em;}
+
 /* LIGHTBOX */
-.lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:9999;align-items:center;justify-content:center;padding:20px;}
-.lightbox.open{display:flex;}
-.lightbox img{max-width:90vw;max-height:85vh;border-radius:6px;border:1px solid rgba(204,0,0,0.3);}
-.lightbox-close{position:fixed;top:20px;right:24px;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:2rem;color:#888;cursor:pointer;background:none;border:none;transition:color 0.2s;}
-.lightbox-close:hover{color:#cc0000;}
+.lightbox{
+  display:none;position:fixed;inset:0;background:rgba(0,0,0,0.94);
+  z-index:9999;align-items:center;justify-content:center;padding:20px;
+  backdrop-filter:blur(4px);
+}
+.lightbox.open{display:flex;animation:lb-fade 0.2s ease;}
+@keyframes lb-fade{from{opacity:0;}to{opacity:1;}}
+.lightbox img{
+  max-width:92vw;max-height:88vh;border-radius:6px;
+  border:1px solid rgba(204,0,0,0.3);
+  box-shadow:0 20px 60px rgba(0,0,0,0.8);
+  animation:lb-zoom 0.2s ease;
+}
+@keyframes lb-zoom{from{transform:scale(0.95);}to{transform:scale(1);}}
+.lightbox-close{
+  position:fixed;top:18px;right:22px;
+  background:rgba(204,0,0,0.15);border:1px solid rgba(204,0,0,0.3);
+  border-radius:50%;width:36px;height:36px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.1rem;
+  color:#888;cursor:pointer;transition:all 0.2s;
+}
+.lightbox-close:hover{background:rgba(204,0,0,0.4);color:#fff;}
+.lightbox-caption{
+  position:fixed;bottom:20px;left:50%;transform:translateX(-50%);
+  font-family:'Rajdhani',sans-serif;font-size:0.85rem;letter-spacing:0.08em;
+  color:#aaa;background:rgba(0,0,0,0.7);padding:6px 16px;border-radius:20px;
+  white-space:nowrap;
+}
+
 /* ADD INSTRUCTIONS */
-.add-instructions{background:#141414;border:1px dashed rgba(204,0,0,0.25);border-radius:6px;padding:20px 24px;margin-bottom:24px;font-family:'Rajdhani',sans-serif;font-size:0.85rem;color:#666;line-height:1.7;}
+.add-instructions{
+  background:#141414;border:1px dashed rgba(204,0,0,0.2);border-radius:6px;
+  padding:16px 20px;margin-bottom:20px;
+  font-family:'Rajdhani',sans-serif;font-size:0.83rem;color:#555;line-height:1.7;
+}
 .add-instructions strong{color:#cc0000;font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;}
-@media(max-width:600px){.photo-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));}.yt-grid{grid-template-columns:1fr;}}
+
+@media(max-width:600px){
+  .photo-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));}
+  .yt-grid{grid-template-columns:1fr;}
+}
 </style>
 </head>
 <body data-page="media">
@@ -44,50 +104,62 @@
 <div class="page-wrap">
   <div class="page-header">
     <h1>Media <span>Gallery</span></h1>
-    <p>Screenshots, race clips &amp; stream highlights</p>
+    <p>Race screenshots, stream highlights &amp; video clips</p>
   </div>
 
   <div class="media-tabs">
-    <button class="media-tab active" onclick="switchTab('photos',this)">📸 Screenshots</button>
-    <button class="media-tab" onclick="switchTab('videos',this)">▶ Video Clips</button>
+    <button class="media-tab active" onclick="switchTab('photos',this)">
+      📸 Screenshots <span class="tab-count" id="photo-count">3</span>
+    </button>
+    <button class="media-tab" onclick="switchTab('videos',this)">
+      ▶ Videos <span class="tab-count" id="video-count">1</span>
+    </button>
   </div>
 
   <!-- ====== PHOTOS TAB ====== -->
   <div id="tab-photos">
     <div class="add-instructions">
-      <strong>How to add screenshots:</strong><br>
-      1. Upload your image to Google Drive → right-click → "Get link" → set to "Anyone with the link"<br>
-      2. Copy the file ID from the share URL: <code>https://drive.google.com/file/d/<strong>FILE_ID</strong>/view</code><br>
-      3. Use this as src: <code>https://drive.google.com/uc?export=view&amp;id=FILE_ID</code><br>
-      4. Paste a new photo-item block below and fill in the src and caption.
+      <strong>Adding more screenshots:</strong>
+      Upload to Google Drive → Share → "Anyone with the link" →
+      Copy the File ID from the URL → use as:
+      <code>https://drive.google.com/uc?export=view&amp;id=YOUR_FILE_ID</code>
+      then copy any photo-item block below and update the src and caption.
     </div>
+
     <div class="photo-grid" id="photoGrid">
 
-      <!-- ===== PHOTO TEMPLATE — copy and fill in =====
-      <div class="photo-item" onclick="openLightbox(this)">
-        <img src="https://drive.google.com/uc?export=view&id=YOUR_FILE_ID_HERE" alt="Race screenshot" loading="lazy">
-        <div class="photo-caption">Race description or driver name · Track · Date</div>
-      </div>
-      ===== END PHOTO TEMPLATE ===== -->
+      <!-- ===================================================
+           PHOTO TEMPLATE — copy this block to add more:
+           <div class="photo-item" onclick="openLightbox(this)">
+             <img src="https://drive.google.com/uc?export=view&id=FILE_ID_HERE"
+                  alt="Description" loading="lazy" onload="this.classList.add('loaded')">
+             <div class="photo-loading">Loading…</div>
+             <div class="photo-caption">Description · Track · Date</div>
+           </div>
+      =================================================== -->
 
-      <!-- Placeholder tiles -->
-      <div class="photo-item" style="cursor:default;">
-        <div class="photo-placeholder">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#cc0000" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-          Add Screenshot
-        </div>
+      <!-- IMAGE 1 -->
+      <div class="photo-item" onclick="openLightbox(this)">
+        <img src="https://drive.google.com/uc?export=view&id=1oXeuqC2wI4CRH-5I4pXkyImiXk_3tIxM"
+             alt="Ten10 Race Screenshot" loading="lazy" onload="this.classList.add('loaded')">
+        <div class="photo-loading">Loading image…</div>
+        <div class="photo-caption">Ten10 Motorsports · 2026 Season 2</div>
       </div>
-      <div class="photo-item" style="cursor:default;">
-        <div class="photo-placeholder">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#cc0000" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-          Add Screenshot
-        </div>
+
+      <!-- IMAGE 2 -->
+      <div class="photo-item" onclick="openLightbox(this)">
+        <img src="https://drive.google.com/uc?export=view&id=143iYTo6-ayKgQUXvp-VsRpyehfdqVUDx"
+             alt="Ten10 Race Screenshot" loading="lazy" onload="this.classList.add('loaded')">
+        <div class="photo-loading">Loading image…</div>
+        <div class="photo-caption">Ten10 Motorsports · 2026 Season 2</div>
       </div>
-      <div class="photo-item" style="cursor:default;">
-        <div class="photo-placeholder">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#cc0000" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-          Add Screenshot
-        </div>
+
+      <!-- IMAGE 3 -->
+      <div class="photo-item" onclick="openLightbox(this)">
+        <img src="https://drive.google.com/uc?export=view&id=13ISVryAPZjhBrwZNVyC6IId-brXlQiEA"
+             alt="Ten10 Race Screenshot" loading="lazy" onload="this.classList.add('loaded')">
+        <div class="photo-loading">Loading image…</div>
+        <div class="photo-caption">Ten10 Motorsports · 2026 Season 2</div>
       </div>
 
     </div>
@@ -96,69 +168,92 @@
   <!-- ====== VIDEOS TAB ====== -->
   <div id="tab-videos" style="display:none;">
     <div class="add-instructions">
-      <strong>How to add YouTube clips:</strong><br>
-      1. Go to the YouTube video → click Share → Embed<br>
-      2. Copy the embed URL (looks like: <code>https://www.youtube.com/embed/VIDEO_ID</code>)<br>
-      3. Paste a new yt-card block below and fill in the src, title, and sub-label.
+      <strong>Adding more videos:</strong>
+      Go to the YouTube video → Share → Embed → copy the video ID from the embed URL
+      (e.g. <code>https://www.youtube.com/embed/<strong>VIDEO_ID</strong></code>) then copy a yt-card block below.
     </div>
+
     <div class="yt-grid" id="ytGrid">
 
-      <!-- ===== YOUTUBE CARD TEMPLATE — copy and fill in =====
+      <!-- ===================================================
+           VIDEO TEMPLATE — copy this block to add more:
+           <div class="yt-card">
+             <div class="yt-embed">
+               <iframe src="https://www.youtube.com/embed/VIDEO_ID_HERE"
+                 allowfullscreen loading="lazy"
+                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+               </iframe>
+             </div>
+             <div class="yt-meta">
+               <div class="yt-badge">🌙 Moonday Nights</div>
+               <div class="yt-title">Race Title Here</div>
+               <div class="yt-sub">Round # · Track Name · Date</div>
+             </div>
+           </div>
+      =================================================== -->
+
+      <!-- VIDEO 1 — Moonday Nights Live Stream -->
       <div class="yt-card">
         <div class="yt-embed">
-          <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" allowfullscreen loading="lazy"></iframe>
+          <iframe src="https://www.youtube.com/embed/OZhOwUQXyeE"
+            allowfullscreen loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+          </iframe>
         </div>
         <div class="yt-meta">
-          <div class="yt-title">Race Highlight Title Here</div>
-          <div class="yt-sub">Moonday Nights · Round 1 · Track Name · Jan 2025</div>
-        </div>
-      </div>
-      ===== END TEMPLATE ===== -->
-
-      <!-- Placeholder -->
-      <div class="yt-card">
-        <div class="yt-embed" style="display:flex;align-items:center;justify-content:center;background:#0f0f0f;">
-          <div style="text-align:center;color:#333;">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="#cc0000" opacity="0.3"><path d="M23.5 6.5S23.2 4.5 22.4 3.7c-1-1-2.1-1-2.6-1.1C16.8 2.5 12 2.5 12 2.5s-4.8 0-7.8.1c-.5.1-1.6.1-2.6 1.1C.8 4.5.5 6.5.5 6.5S.2 8.8.2 11v2.1c0 2.2.3 4.5.3 4.5s.3 2 1.1 2.8c1 1 2.3 1 2.9 1.1 2.1.2 8.9.2 8.9.2s4.8 0 7.8-.1c.5-.1 1.6-.1 2.6-1.1.8-.8 1.1-2.8 1.1-2.8s.3-2.2.3-4.5V11c0-2.2-.3-4.5-.3-4.5zM9.7 15.5V8.5l6.6 3.5-6.6 3.5z"/></svg>
-            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;color:#333;margin-top:6px;">Add Video Clip</div>
-          </div>
-        </div>
-        <div class="yt-meta">
-          <div class="yt-title" style="color:#333;">No videos yet</div>
-          <div class="yt-sub">Paste YouTube embed links above</div>
+          <div class="yt-badge">🌙 Moonday Nights</div>
+          <div class="yt-title">Moonday Night Racing — Live Stream</div>
+          <div class="yt-sub">2026 Season 2 · Ten10 Motorsports</div>
         </div>
       </div>
 
     </div>
   </div>
 
-</div>
+</div><!-- end page-wrap -->
 
 <!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+<div class="lightbox" id="lightbox" onclick="closeLightboxOverlay(event)">
   <button class="lightbox-close" onclick="closeLightbox()">✕</button>
   <img id="lightboxImg" src="" alt="">
+  <div class="lightbox-caption" id="lightboxCaption"></div>
 </div>
 
-<footer><div class="footer-logo">TEN<span>10</span> MOTORSPORTS</div><p>iRacing · Moonday Nights &amp; Thursday Ovals · &copy; 2025</p></footer>
+<footer>
+  <div class="footer-logo">TEN<span>10</span> MOTORSPORTS</div>
+  <p>iRacing · Moonday Nights &amp; Thursday Ovals · &copy; <span class="yr"></span></p>
+</footer>
+
 <script>
 function switchTab(tab, btn) {
-  document.getElementById('tab-photos').style.display = tab==='photos'?'':'none';
-  document.getElementById('tab-videos').style.display = tab==='videos'?'':'none';
-  document.querySelectorAll('.media-tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('tab-photos').style.display = tab==='photos' ? '' : 'none';
+  document.getElementById('tab-videos').style.display = tab==='videos' ? '' : 'none';
+  document.querySelectorAll('.media-tab').forEach(t => t.classList.remove('active'));
   btn.classList.add('active');
 }
+
 function openLightbox(el) {
   const img = el.querySelector('img');
-  if(!img) return;
+  const caption = el.querySelector('.photo-caption');
+  if (!img) return;
   document.getElementById('lightboxImg').src = img.src;
+  document.getElementById('lightboxCaption').textContent = caption ? caption.textContent : '';
   document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
 }
+
 function closeLightbox() {
   document.getElementById('lightbox').classList.remove('open');
   document.getElementById('lightboxImg').src = '';
+  document.body.style.overflow = '';
 }
-document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeLightbox(); });
+
+function closeLightboxOverlay(e) {
+  if (e.target === document.getElementById('lightbox')) closeLightbox();
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 </script>
+<script>document.querySelectorAll(".yr").forEach(function(e){e.textContent=new Date().getFullYear();});</script>
 </body>
 </html>

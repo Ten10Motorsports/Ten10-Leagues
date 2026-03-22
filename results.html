@@ -206,6 +206,6 @@ function showSeason(series, season) {
   if(el) el.style.display='';
 }
 </script>
-<script>document.querySelectorAll(".yr").forEach(el=>el.textContent=new Date().getFullYear());</script>
+<script>document.querySelectorAll(".yr").forEach(function(e){e.textContent=new Date().getFullYear();});</script>
 </body>
 </html>
