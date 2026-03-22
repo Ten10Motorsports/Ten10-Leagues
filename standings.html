@@ -21,9 +21,7 @@
   <div class="season-bar">
     <label>Season:</label>
     <select class="season-select" id="seasonSelect" onchange="switchSeason(this.value)">
-      <option value="2025s1">2025 Season 1</option>
-      <option value="2024s2">2024 Season 2</option>
-      <option value="2024s1">2024 Season 1</option>
+      <option value="2026s2">2026 Season 2</option>
     </select>
   </div>
 
@@ -36,8 +34,8 @@
 
   <!-- MOONDAY -->
   <div id="series-moonday">
-    <div id="moonday-2025s1" class="season-block">
-      <div class="section-label">2025 Season 1 · Moonday Nights Standings</div>
+    <div id="moonday-2026s2" class="season-block">
+      <div class="section-label">2026 Season 2 · Moonday Nights Standings</div>
       <div class="table-wrap">
         <table>
           <thead>
@@ -55,7 +53,7 @@
               <th>Win %</th>
             </tr>
           </thead>
-          <tbody id="moonday-2025s1-tbody">
+          <tbody id="moonday-2026s2-tbody">
             <!-- ============================================================
                  HOW TO ADD A DRIVER ROW:
                  Copy the block below, change the values, adjust pos-1/2/3 class
@@ -79,20 +77,20 @@
         </table>
       </div>
     </div>
-    <div id="moonday-2024s2" class="season-block" style="display:none;">
-      <div class="section-label">2024 Season 2 · Moonday Nights Standings</div>
+    <div id="moonday-old-s2" class="season-block" style="display:none;">
+      <div class="section-label">— · Moonday Nights Standings</div>
       <div class="card"><div class="card-body" style="text-align:center;color:#555;font-family:'Rajdhani',sans-serif;letter-spacing:0.08em;text-transform:uppercase;padding:32px;">No data for this season yet</div></div>
     </div>
-    <div id="moonday-2024s1" class="season-block" style="display:none;">
-      <div class="section-label">2024 Season 1 · Moonday Nights Standings</div>
+    <div id="moonday-old-s1" class="season-block" style="display:none;">
+      <div class="section-label">— · Moonday Nights Standings</div>
       <div class="card"><div class="card-body" style="text-align:center;color:#555;font-family:'Rajdhani',sans-serif;letter-spacing:0.08em;text-transform:uppercase;padding:32px;">No data for this season yet</div></div>
     </div>
   </div>
 
   <!-- THURSDAY -->
   <div id="series-thursday" style="display:none;">
-    <div id="thursday-2025s1" class="season-block">
-      <div class="section-label">2025 Season 1 · Thursday Ovals Standings</div>
+    <div id="thursday-2026s2" class="season-block">
+      <div class="section-label">2026 Season 2 · Thursday Ovals Standings</div>
       <div class="table-wrap">
         <table>
           <thead>
@@ -116,23 +114,24 @@
         </table>
       </div>
     </div>
-    <div id="thursday-2024s2" class="season-block" style="display:none;">
-      <div class="section-label">2024 Season 2 · Thursday Ovals</div>
+    <div id="thursday-old-s2" class="season-block" style="display:none;">
+      <div class="section-label">— · Thursday Ovals</div>
       <div class="card"><div class="card-body" style="text-align:center;color:#555;font-family:'Rajdhani',sans-serif;letter-spacing:0.08em;text-transform:uppercase;padding:32px;">No data for this season yet</div></div>
     </div>
-    <div id="thursday-2024s1" class="season-block" style="display:none;">
-      <div class="section-label">2024 Season 1 · Thursday Ovals</div>
+    <div id="thursday-old-s1" class="season-block" style="display:none;">
+      <div class="section-label">— · Thursday Ovals</div>
       <div class="card"><div class="card-body" style="text-align:center;color:#555;font-family:'Rajdhani',sans-serif;letter-spacing:0.08em;text-transform:uppercase;padding:32px;">No data for this season yet</div></div>
     </div>
   </div>
 
 </div>
-<footer><div class="footer-logo">TEN<span>10</span> MOTORSPORTS</div><p>iRacing · Moonday Nights &amp; Thursday Ovals · &copy; 2025</p></footer>
+<footer><div class="footer-logo">TEN<span>10</span> MOTORSPORTS</div><p>iRacing · Moonday Nights &amp; Thursday Ovals · &copy; <span class="yr"></span></p></footer>
 <script>
-let curSeries='moonday',curSeason='2025s1';
+let curSeries='moonday',curSeason='2026s2';
 function switchSeries(s,btn){curSeries=s;document.getElementById('series-moonday').style.display=s==='moonday'?'':'none';document.getElementById('series-thursday').style.display=s==='thursday'?'':'none';document.querySelectorAll('.series-tab').forEach(t=>t.classList.remove('active'));btn.classList.add('active');showSeason(s,curSeason);}
 function switchSeason(v){curSeason=v;showSeason(curSeries,v);}
 function showSeason(s,v){document.querySelectorAll(`#series-${s} .season-block`).forEach(b=>b.style.display='none');const el=document.getElementById(`${s}-${v}`);if(el)el.style.display='';}
 </script>
+<script>document.querySelectorAll(".yr").forEach(el=>el.textContent=new Date().getFullYear());</script>
 </body>
 </html>

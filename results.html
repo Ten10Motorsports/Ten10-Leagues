@@ -23,16 +23,14 @@
   <div class="season-bar">
     <label>Season:</label>
     <select class="season-select" id="seasonSelect" onchange="switchSeason(this.value)">
-      <option value="2025s1">2025 Season 1</option>
-      <option value="2024s2">2024 Season 2</option>
-      <option value="2024s1">2024 Season 1</option>
+      <option value="2026s2">2026 Season 2</option>
     </select>
   </div>
 
   <!-- ================================================================
        HOW TO ADD RACE RESULTS:
        1. Find the correct series block (id="moonday" or id="thursday")
-       2. Find the correct season block (id="moonday-2025s1" etc.)
+       2. Find the correct season block (id="moonday-2026s2" etc.)
        3. Copy a <div class="race-event"> block and fill in the data
        4. Each row in tbody = one driver's result for that race
   ================================================================= -->
@@ -41,15 +39,15 @@
   <div id="series-moonday">
 
     <!-- 2025 S1 -->
-    <div id="moonday-2025s1" class="season-block">
-      <div class="section-label">2025 Season 1 · Moonday Nights</div>
+    <div id="moonday-2026s2" class="season-block">
+      <div class="section-label">2026 Season 2 · Moonday Nights</div>
 
       <!-- RACE 1 — copy this whole block for each race -->
       <div class="race-event" style="margin-bottom:32px;">
         <div class="card">
           <div class="card-header">
-            <span>Round 1 — <span class="accent">Track Name Here</span></span>
-            <span style="font-family:'Rajdhani',sans-serif;font-size:0.8rem;color:#888;letter-spacing:0.06em;">Mon, Jan 6, 2025 · 8:30 PM ET</span>
+            <span>Round 1 — <span class="accent">Okayama International Circuit</span></span>
+            <span style="font-family:'Rajdhani',sans-serif;font-size:0.8rem;color:#888;letter-spacing:0.06em;">Mon, Mar 16, 2026 · 8:30 PM ET</span>
           </div>
           <div class="card-body" style="padding:0;">
             <div class="table-wrap" style="border:none;border-radius:0;box-shadow:none;">
@@ -94,16 +92,16 @@
 
       <!-- ADD MORE RACES BELOW — paste another race-event block -->
 
-    </div><!-- end moonday-2025s1 -->
+    </div><!-- end moonday-2026s2 -->
 
     <!-- 2024 S2 -->
-    <div id="moonday-2024s2" class="season-block" style="display:none;">
+    <div id="moonday-old-s2" class="season-block" style="display:none;">
       <div class="section-label">2024 Season 2 · Moonday Nights</div>
       <div class="card"><div class="card-body" style="text-align:center;color:#555;font-family:'Rajdhani',sans-serif;letter-spacing:0.08em;text-transform:uppercase;padding:32px;">No data for this season yet</div></div>
     </div>
 
     <!-- 2024 S1 -->
-    <div id="moonday-2024s1" class="season-block" style="display:none;">
+    <div id="moonday-old-s1" class="season-block" style="display:none;">
       <div class="section-label">2024 Season 1 · Moonday Nights</div>
       <div class="card"><div class="card-body" style="text-align:center;color:#555;font-family:'Rajdhani',sans-serif;letter-spacing:0.08em;text-transform:uppercase;padding:32px;">No data for this season yet</div></div>
     </div>
@@ -114,14 +112,14 @@
   <div id="series-thursday" style="display:none;">
 
     <!-- 2025 S1 -->
-    <div id="thursday-2025s1" class="season-block">
-      <div class="section-label">2025 Season 1 · Thursday Ovals</div>
+    <div id="thursday-2026s2" class="season-block">
+      <div class="section-label">2026 Season 2 · Thursday Ovals</div>
 
       <div class="race-event" style="margin-bottom:32px;">
         <div class="card">
           <div class="card-header">
-            <span>Round 1 — <span class="accent">Track Name Here</span></span>
-            <span style="font-family:'Rajdhani',sans-serif;font-size:0.8rem;color:#888;letter-spacing:0.06em;">Thu, Jan 9, 2025 · 8:30 PM ET</span>
+            <span>Round 1 — <span class="accent">Okayama International Circuit</span></span>
+            <span style="font-family:'Rajdhani',sans-serif;font-size:0.8rem;color:#888;letter-spacing:0.06em;">Thu, Mar 19, 2026 · 8:30 PM ET</span>
           </div>
           <div class="card-body" style="padding:0;">
             <div class="table-wrap" style="border:none;border-radius:0;box-shadow:none;">
@@ -152,11 +150,11 @@
       </div>
     </div>
 
-    <div id="thursday-2024s2" class="season-block" style="display:none;">
+    <div id="thursday-old-s2" class="season-block" style="display:none;">
       <div class="section-label">2024 Season 2 · Thursday Ovals</div>
       <div class="card"><div class="card-body" style="text-align:center;color:#555;font-family:'Rajdhani',sans-serif;letter-spacing:0.08em;text-transform:uppercase;padding:32px;">No data for this season yet</div></div>
     </div>
-    <div id="thursday-2024s1" class="season-block" style="display:none;">
+    <div id="thursday-old-s1" class="season-block" style="display:none;">
       <div class="section-label">2024 Season 1 · Thursday Ovals</div>
       <div class="card"><div class="card-body" style="text-align:center;color:#555;font-family:'Rajdhani',sans-serif;letter-spacing:0.08em;text-transform:uppercase;padding:32px;">No data for this season yet</div></div>
     </div>
@@ -167,7 +165,7 @@
 
 <footer>
   <div class="footer-logo">TEN<span>10</span> MOTORSPORTS</div>
-  <p>iRacing · Moonday Nights &amp; Thursday Ovals · &copy; 2025</p>
+  <p>iRacing · Moonday Nights &amp; Thursday Ovals · &copy; <span class="yr"></span></p>
 </footer>
 
 <script>
@@ -208,5 +206,6 @@ function showSeason(series, season) {
   if(el) el.style.display='';
 }
 </script>
+<script>document.querySelectorAll(".yr").forEach(el=>el.textContent=new Date().getFullYear());</script>
 </body>
 </html>
