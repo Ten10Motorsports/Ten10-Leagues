@@ -4,6 +4,17 @@
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Race Results · Ten10 Motorsports</title>
 <link rel="stylesheet" href="style.css">
+<style>
+.race-night-label{
+  font-family:'Barlow Condensed',sans-serif;font-weight:900;font-style:italic;
+  font-size:1.1rem;letter-spacing:0.08em;text-transform:uppercase;
+  color:#f0f0f0;margin:28px 0 14px;display:flex;align-items:center;gap:12px;
+}
+.race-night-label::after{content:'';flex:1;height:1px;background:rgba(192,192,192,0.1);}
+.race-night-label span{color:#cc0000;}
+.race-pair{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:32px;}
+@media(max-width:900px){.race-pair{grid-template-columns:1fr;}}
+</style>
 </head>
 <body data-page="results">
 <script src="nav.js"></script>
@@ -13,13 +24,11 @@
     <p>Full race-by-race results — Moonday Nights &amp; Thursday Ovals</p>
   </div>
 
-  <!-- SERIES TABS -->
   <div class="series-tabs">
     <button class="series-tab active" onclick="switchSeries('moonday',this)">🌙 Moonday Nights</button>
     <button class="series-tab" onclick="switchSeries('thursday',this)">🏁 Thursday Ovals</button>
   </div>
 
-  <!-- SEASON SELECTOR -->
   <div class="season-bar">
     <label>Season:</label>
     <select class="season-select" id="seasonSelect" onchange="switchSeason(this.value)">
@@ -27,184 +36,103 @@
     </select>
   </div>
 
-  <!-- ================================================================
-       HOW TO ADD RACE RESULTS:
-       1. Find the correct series block (id="moonday" or id="thursday")
-       2. Find the correct season block (id="moonday-2026s2" etc.)
-       3. Copy a <div class="race-event"> block and fill in the data
-       4. Each row in tbody = one driver's result for that race
-  ================================================================= -->
-
   <!-- ===== MOONDAY NIGHTS ===== -->
   <div id="series-moonday">
-
-    <!-- 2025 S1 -->
     <div id="moonday-2026s2" class="season-block">
-      <div class="section-label">2026 Season 2 · Moonday Nights</div>
+      <div class="section-label">2026 Season 2 · Moonday Nights · TCR</div>
 
-      <!-- RACE 1 — copy this whole block for each race -->
-      <div class="race-event" style="margin-bottom:32px;">
+      <!-- NOTE: Moonday runs 2 races per night. Each race-night block contains Race 1 + Race 2 side by side -->
+
+      <!-- RACE NIGHT 1 — Mar 16 -->
+      <div class="race-night-label">Round 1 Night — <span>Okayama International Circuit</span> &nbsp;·&nbsp; Mon Mar 16, 2026 · 8:30 PM ET</div>
+      <div class="race-pair">
+
+        <!-- RACE 1 -->
         <div class="card">
-          <div class="card-header">
-            <span>Round 1 — <span class="accent">Okayama International Circuit</span></span>
-            <span style="font-family:'Rajdhani',sans-serif;font-size:0.8rem;color:#888;letter-spacing:0.06em;">Mon, Mar 16, 2026 · 8:30 PM ET</span>
-          </div>
+          <div class="card-header"><span>Race <span class="accent">1</span></span><span style="font-family:'Rajdhani',sans-serif;font-size:0.78rem;color:#888;">13 Laps</span></div>
           <div class="card-body" style="padding:0;">
             <div class="table-wrap" style="border:none;border-radius:0;box-shadow:none;">
               <table>
-                <thead>
-                  <tr>
-                    <th>Pos</th>
-                    <th>Driver</th>
-                    <th>Car #</th>
-                    <th>Laps Led</th>
-                    <th>Best Lap</th>
-                    <th>Incidents</th>
-                    <th>iRating Δ</th>
-                    <th>Result</th>
-                  </tr>
-                </thead>
+                <thead><tr><th>Pos</th><th>Driver</th><th>Car #</th><th>Car</th><th>Laps Led</th><th>Fast Lap</th><th>Inc</th><th>Pts</th></tr></thead>
                 <tbody>
-                  <!-- COPY A ROW LIKE THIS FOR EACH DRIVER:
-                  <tr>
-                    <td class="td-pos pos-1">1</td>
-                    <td class="td-driver">Driver Name</td>
-                    <td class="td-highlight">#00</td>
-                    <td>45</td>
-                    <td>1:32.450</td>
-                    <td>0x</td>
-                    <td style="color:#4caf50;">+120</td>
-                    <td><span class="badge badge-win">WIN</span></td>
-                  </tr>
-                  -->
-                  <tr>
-                    <td colspan="8" style="text-align:center;color:#555;font-family:'Rajdhani',sans-serif;letter-spacing:0.08em;text-transform:uppercase;padding:20px;">
-                      No results yet — add driver rows here
-                    </td>
-                  </tr>
+                  <tr><td class="td-pos pos-1">1</td><td class="td-driver">John Agudelo</td><td class="td-highlight">#48</td><td style="color:#888;font-size:0.82rem;">Honda Civic TCR</td><td>3</td><td>1:36.004</td><td>2</td><td class="td-highlight">30</td></tr>
+                  <tr><td class="td-pos pos-2">2</td><td class="td-driver">Ryan Rider</td><td class="td-highlight">#18</td><td style="color:#888;font-size:0.82rem;">Hyundai Elantra N</td><td>2</td><td>1:35.695</td><td>3</td><td class="td-highlight">26</td></tr>
+                  <tr><td class="td-pos pos-3">3</td><td class="td-driver">Wadih Maalouf</td><td class="td-highlight">#72</td><td style="color:#888;font-size:0.82rem;">Hyundai Elantra N</td><td>8</td><td>1:36.125</td><td>0</td><td class="td-highlight">21</td></tr>
+                  <tr><td class="td-pos">4</td><td class="td-driver">Kevin Corea</td><td class="td-highlight">#13</td><td style="color:#888;font-size:0.82rem;">Honda Civic TCR</td><td>0</td><td>1:35.968</td><td>3</td><td>17</td></tr>
+                  <tr><td class="td-pos">5</td><td class="td-driver">Byron Forest II</td><td class="td-highlight">#824</td><td style="color:#888;font-size:0.82rem;">Hyundai Elantra N</td><td>0</td><td>1:36.303</td><td>2</td><td>14</td></tr>
+                  <tr><td class="td-pos">6</td><td class="td-driver">Phillip Poole</td><td class="td-highlight">#46</td><td style="color:#888;font-size:0.82rem;">Hyundai Elantra N</td><td>0</td><td>1:36.574</td><td>2</td><td>11</td></tr>
+                  <tr><td class="td-pos">7</td><td class="td-driver">Connor Menard</td><td class="td-highlight">#5</td><td style="color:#888;font-size:0.82rem;">Honda Civic TCR</td><td>0</td><td>1:36.653</td><td>1</td><td>9</td></tr>
+                  <tr><td class="td-pos">8</td><td class="td-driver">Anthony Orr2</td><td class="td-highlight">#77</td><td style="color:#888;font-size:0.82rem;">Hyundai Veloster N</td><td>0</td><td>1:36.371</td><td>0</td><td>8</td></tr>
+                  <tr><td class="td-pos">9</td><td class="td-driver">Jake Harrigan</td><td class="td-highlight">#11</td><td style="color:#888;font-size:0.82rem;">Hyundai Elantra N</td><td>0</td><td>1:36.806</td><td>6</td><td>7</td></tr>
+                  <tr><td class="td-pos">10</td><td class="td-driver">Frank Perreault2</td><td class="td-highlight">#999</td><td style="color:#888;font-size:0.82rem;">Hyundai Veloster N</td><td>0</td><td>1:37.274</td><td>6</td><td>6</td></tr>
+                  <tr><td class="td-pos">11</td><td class="td-driver">Ryan Nixon</td><td class="td-highlight">#12</td><td style="color:#888;font-size:0.82rem;">Audi RS3 LMS Gen2</td><td>0</td><td>1:37.872</td><td>3</td><td>5</td></tr>
+                  <tr><td class="td-pos">12</td><td class="td-driver">Matt Bond6</td><td class="td-highlight">#19</td><td style="color:#888;font-size:0.82rem;">Audi RS3 LMS Gen2</td><td>0</td><td>1:37.448</td><td>10</td><td>4</td></tr>
+                  <tr><td class="td-pos">13</td><td class="td-driver">Dylan Foster9</td><td class="td-highlight">#88</td><td style="color:#888;font-size:0.82rem;">Hyundai Elantra N</td><td>0</td><td>1:36.707</td><td>9</td><td>3</td></tr>
+                  <tr><td class="td-pos">14</td><td class="td-driver">Aaron Liebling</td><td class="td-highlight">#6</td><td style="color:#888;font-size:0.82rem;">Honda Civic TCR</td><td>0</td><td>1:37.936</td><td>9</td><td>2</td></tr>
+                  <tr><td class="td-pos">15</td><td class="td-driver">Joshua S Smith</td><td class="td-highlight">#23</td><td style="color:#888;font-size:0.82rem;">Hyundai Elantra N</td><td>0</td><td>1:37.267</td><td>6</td><td><span class="badge badge-dnf">DNF</span></td></tr>
                 </tbody>
               </table>
             </div>
           </div>
         </div>
-      </div>
-      <!-- END RACE 1 -->
 
-      <!-- ADD MORE RACES BELOW — paste another race-event block -->
+        <!-- RACE 2 -->
+        <div class="card">
+          <div class="card-header"><span>Race <span class="accent">2</span></span><span style="font-family:'Rajdhani',sans-serif;font-size:0.78rem;color:#888;">13 Laps</span></div>
+          <div class="card-body" style="padding:0;">
+            <div class="table-wrap" style="border:none;border-radius:0;box-shadow:none;">
+              <table>
+                <thead><tr><th>Pos</th><th>Driver</th><th>Car #</th><th>Car</th><th>Laps Led</th><th>Fast Lap</th><th>Inc</th><th>Pts</th></tr></thead>
+                <tbody>
+                  <tr><td class="td-pos pos-1">1</td><td class="td-driver">Byron Forest II</td><td class="td-highlight">#824</td><td style="color:#888;font-size:0.82rem;">Hyundai Elantra N</td><td>12</td><td>1:35.739</td><td>0</td><td class="td-highlight">30 <span class="badge badge-win">WIN</span></td></tr>
+                  <tr><td class="td-pos pos-2">2</td><td class="td-driver">Ryan Rider</td><td class="td-highlight">#18</td><td style="color:#888;font-size:0.82rem;">Hyundai Elantra N</td><td>0</td><td>1:35.438</td><td>3</td><td class="td-highlight">26</td></tr>
+                  <tr><td class="td-pos pos-3">3</td><td class="td-driver">Jake Harrigan</td><td class="td-highlight">#11</td><td style="color:#888;font-size:0.82rem;">Hyundai Elantra N</td><td>0</td><td>1:36.975</td><td>5</td><td class="td-highlight">21</td></tr>
+                  <tr><td class="td-pos">4</td><td class="td-driver">Anthony Orr2</td><td class="td-highlight">#77</td><td style="color:#888;font-size:0.82rem;">Hyundai Veloster N</td><td>0</td><td>1:36.426</td><td>0</td><td>17</td></tr>
+                  <tr><td class="td-pos">5</td><td class="td-driver">Wadih Maalouf</td><td class="td-highlight">#72</td><td style="color:#888;font-size:0.82rem;">Hyundai Elantra N</td><td>0</td><td>1:37.060</td><td>4</td><td>14</td></tr>
+                  <tr><td class="td-pos">6</td><td class="td-driver">Dylan Foster9</td><td class="td-highlight">#88</td><td style="color:#888;font-size:0.82rem;">Hyundai Elantra N</td><td>0</td><td>1:37.131</td><td>0</td><td>11</td></tr>
+                  <tr><td class="td-pos">7</td><td class="td-driver">Matt Bond6</td><td class="td-highlight">#19</td><td style="color:#888;font-size:0.82rem;">Audi RS3 LMS Gen2</td><td>0</td><td>1:37.309</td><td>5</td><td>9</td></tr>
+                  <tr><td class="td-pos">8</td><td class="td-driver">Connor Menard</td><td class="td-highlight">#5</td><td style="color:#888;font-size:0.82rem;">Honda Civic TCR</td><td>0</td><td>1:37.190</td><td>5</td><td>8</td></tr>
+                  <tr><td class="td-pos">9</td><td class="td-driver">Kevin Corea</td><td class="td-highlight">#13</td><td style="color:#888;font-size:0.82rem;">Honda Civic TCR</td><td>0</td><td>1:36.022</td><td>4</td><td>7</td></tr>
+                  <tr><td class="td-pos">10</td><td class="td-driver">Aaron Liebling</td><td class="td-highlight">#6</td><td style="color:#888;font-size:0.82rem;">Honda Civic TCR</td><td>1</td><td>1:37.784</td><td>8</td><td>6</td></tr>
+                  <tr><td class="td-pos">11</td><td class="td-driver">Ryan Nixon</td><td class="td-highlight">#12</td><td style="color:#888;font-size:0.82rem;">Audi RS3 LMS Gen2</td><td>0</td><td>1:37.733</td><td>9</td><td>5</td></tr>
+                  <tr><td class="td-pos">12</td><td class="td-driver">Frank Perreault2</td><td class="td-highlight">#999</td><td style="color:#888;font-size:0.82rem;">Hyundai Veloster N</td><td>0</td><td>1:37.411</td><td>2</td><td>4</td></tr>
+                  <tr><td class="td-pos">13</td><td class="td-driver">Phillip Poole</td><td class="td-highlight">#46</td><td style="color:#888;font-size:0.82rem;">Hyundai Elantra N</td><td>0</td><td>1:36.527</td><td>12</td><td>3</td></tr>
+                  <tr><td class="td-pos">14</td><td class="td-driver">John Agudelo</td><td class="td-highlight">#48</td><td style="color:#888;font-size:0.82rem;">Honda Civic TCR</td><td>0</td><td>—</td><td>6</td><td><span class="badge badge-dnf">DNF</span></td></tr>
+                  <tr><td class="td-pos">15</td><td class="td-driver">Joshua S Smith</td><td class="td-highlight">#23</td><td style="color:#888;font-size:0.82rem;">Hyundai Elantra N</td><td>0</td><td>—</td><td>0</td><td><span class="badge badge-dnf">DNF</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- end race-pair -->
+      <!-- ADD FUTURE RACE NIGHTS BELOW — copy the race-night-label + race-pair block above -->
 
     </div><!-- end moonday-2026s2 -->
-
-    <!-- 2024 S2 -->
-    <div id="moonday-old-s2" class="season-block" style="display:none;">
-      <div class="section-label">2024 Season 2 · Moonday Nights</div>
-      <div class="card"><div class="card-body" style="text-align:center;color:#555;font-family:'Rajdhani',sans-serif;letter-spacing:0.08em;text-transform:uppercase;padding:32px;">No data for this season yet</div></div>
-    </div>
-
-    <!-- 2024 S1 -->
-    <div id="moonday-old-s1" class="season-block" style="display:none;">
-      <div class="section-label">2024 Season 1 · Moonday Nights</div>
-      <div class="card"><div class="card-body" style="text-align:center;color:#555;font-family:'Rajdhani',sans-serif;letter-spacing:0.08em;text-transform:uppercase;padding:32px;">No data for this season yet</div></div>
-    </div>
-
   </div><!-- end series-moonday -->
 
   <!-- ===== THURSDAY OVALS ===== -->
   <div id="series-thursday" style="display:none;">
-
-    <!-- 2025 S1 -->
     <div id="thursday-2026s2" class="season-block">
-      <div class="section-label">2026 Season 2 · Thursday Ovals</div>
-
-      <div class="race-event" style="margin-bottom:32px;">
-        <div class="card">
-          <div class="card-header">
-            <span>Round 1 — <span class="accent">Okayama International Circuit</span></span>
-            <span style="font-family:'Rajdhani',sans-serif;font-size:0.8rem;color:#888;letter-spacing:0.06em;">Thu, Mar 19, 2026 · 8:30 PM ET</span>
-          </div>
-          <div class="card-body" style="padding:0;">
-            <div class="table-wrap" style="border:none;border-radius:0;box-shadow:none;">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Pos</th>
-                    <th>Driver</th>
-                    <th>Car #</th>
-                    <th>Laps Led</th>
-                    <th>Best Lap</th>
-                    <th>Incidents</th>
-                    <th>iRating Δ</th>
-                    <th>Result</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td colspan="8" style="text-align:center;color:#555;font-family:'Rajdhani',sans-serif;letter-spacing:0.08em;text-transform:uppercase;padding:20px;">
-                      No results yet — add driver rows here
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
+      <div class="section-label">2026 Season 2 · Thursday Ovals · ARCA</div>
+      <div class="card">
+        <div class="card-body" style="text-align:center;color:#555;font-family:'Rajdhani',sans-serif;letter-spacing:0.08em;text-transform:uppercase;padding:32px;">
+          Round 1 results coming soon — add data after each Thursday race
         </div>
       </div>
+      <!-- ADD RACE RESULTS BELOW — use same race-night-label + table structure as Moonday above -->
+      <!-- Thursday runs 1 race per night, so just use a single card per round -->
     </div>
-
-    <div id="thursday-old-s2" class="season-block" style="display:none;">
-      <div class="section-label">2024 Season 2 · Thursday Ovals</div>
-      <div class="card"><div class="card-body" style="text-align:center;color:#555;font-family:'Rajdhani',sans-serif;letter-spacing:0.08em;text-transform:uppercase;padding:32px;">No data for this season yet</div></div>
-    </div>
-    <div id="thursday-old-s1" class="season-block" style="display:none;">
-      <div class="section-label">2024 Season 1 · Thursday Ovals</div>
-      <div class="card"><div class="card-body" style="text-align:center;color:#555;font-family:'Rajdhani',sans-serif;letter-spacing:0.08em;text-transform:uppercase;padding:32px;">No data for this season yet</div></div>
-    </div>
-
-  </div><!-- end series-thursday -->
+  </div>
 
 </div><!-- end page-wrap -->
-
-<footer>
-  <div class="footer-logo">TEN<span>10</span> MOTORSPORTS</div>
-  <p>iRacing · Moonday Nights &amp; Thursday Ovals · &copy; <span class="yr"></span></p>
-</footer>
-
+<footer><div class="footer-logo">TEN<span>10</span> MOTORSPORTS</div><p>iRacing · Moonday Nights &amp; Thursday Ovals · &copy; <span class="yr"></span></p></footer>
 <script>
-let currentSeries = 'moonday';
-let currentSeason = '2025s1';
-
-// Read URL params on load
-(function(){
-  const p = new URLSearchParams(window.location.search);
-  if(p.get('series')) currentSeries = p.get('series');
-  if(p.get('season')) currentSeason = p.get('season');
-  document.getElementById('seasonSelect').value = currentSeason;
-  document.getElementById('series-moonday').style.display = currentSeries==='moonday'?'':'none';
-  document.getElementById('series-thursday').style.display = currentSeries==='thursday'?'':'none';
-  document.querySelectorAll('.series-tab').forEach((t,i)=>{
-    t.classList.toggle('active',(i===0&&currentSeries==='moonday')||(i===1&&currentSeries==='thursday'));
-  });
-  showSeason(currentSeries, currentSeason);
-})();
-
-function switchSeries(s, btn) {
-  currentSeries = s;
-  document.getElementById('series-moonday').style.display = s==='moonday'?'':'none';
-  document.getElementById('series-thursday').style.display = s==='thursday'?'':'none';
-  document.querySelectorAll('.series-tab').forEach(t=>t.classList.remove('active'));
-  btn.classList.add('active');
-  showSeason(s, currentSeason);
-}
-
-function switchSeason(v) {
-  currentSeason = v;
-  showSeason(currentSeries, v);
-}
-
-function showSeason(series, season) {
-  document.querySelectorAll(`#series-${series} .season-block`).forEach(b=>b.style.display='none');
-  const el = document.getElementById(`${series}-${season}`);
-  if(el) el.style.display='';
-}
+let curSeries='moonday', curSeason='2026s2';
+function switchSeries(s,btn){curSeries=s;document.getElementById('series-moonday').style.display=s==='moonday'?'':'none';document.getElementById('series-thursday').style.display=s==='thursday'?'':'none';document.querySelectorAll('.series-tab').forEach(t=>t.classList.remove('active'));btn.classList.add('active');showSeason(s,curSeason);}
+function switchSeason(v){curSeason=v;showSeason(curSeries,v);}
+function showSeason(s,v){document.querySelectorAll(`#series-${s} .season-block`).forEach(b=>b.style.display='none');const el=document.getElementById(`${s}-${v}`);if(el)el.style.display='';}
+(function(){const p=new URLSearchParams(window.location.search);if(p.get('series'))switchSeries(p.get('series'),document.querySelectorAll('.series-tab')[p.get('series')==='thursday'?1:0]);if(p.get('season'))switchSeason(p.get('season'));})();
 </script>
 <script>document.querySelectorAll(".yr").forEach(function(e){e.textContent=new Date().getFullYear();});</script>
 </body>

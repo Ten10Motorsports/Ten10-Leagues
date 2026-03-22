@@ -199,32 +199,221 @@ const DRIVERS = [
   // series: "moonday" | "thursday" | "both"
   // photo: "images/filename.jpg" or "" for initials
   // ================================================================
+
+  // ── MOONDAY NIGHTS ROSTER ──
   {
     name: "Byron Forest II",
-    number: "#1",
+    number: "#824",
     initials: "BF",
     photo: "",
     series: "moonday",
-    bio: "Moonday Nights driver competing in the 2026 TCR season. Came out swinging in Season 2, taking the Round 1 victory at Okayama International Circuit to start the season on top of the standings.",
-    stats: { wins: 1, podiums: 1, poles: 0, avgFinish: 1.0 },
+    bio: "Hyundai Elantra N TCR pilot. Dominant Race 2 winner at Okayama with 12 laps led and zero incidents. Currently 2nd in the Moonday standings after Round 1 night.",
+    stats: { wins: 1, podiums: 1, poles: 0, avgFinish: "3.0" },
     recent: [
-      { pos: "1st", track: "Okayama International Circuit", series: "Moonday", posColor: "#ffd700" },
+      { pos: "5th",  track: "Okayama — Race 1", series: "Moonday", posColor: "#888" },
+      { pos: "1st",  track: "Okayama — Race 2", series: "Moonday", posColor: "#ffd700" },
     ],
-    fav: { car: "TCR — Touring Car", track: "Okayama International Circuit" }
+    fav: { car: "Hyundai Elantra N TCR", track: "Okayama International Circuit" }
+  },
+  {
+    name: "Ryan Rider",
+    number: "#18",
+    initials: "RR",
+    photo: "",
+    series: "moonday",
+    bio: "Hyundai Elantra N TCR. Consistent podium finisher — P2 in both races at Okayama to lead the Season 2 standings after Round 1 night with 52 aggregate points.",
+    stats: { wins: 0, podiums: 2, poles: 0, avgFinish: "2.0" },
+    recent: [
+      { pos: "2nd", track: "Okayama — Race 1", series: "Moonday", posColor: "#c0c0c0" },
+      { pos: "2nd", track: "Okayama — Race 2", series: "Moonday", posColor: "#c0c0c0" },
+    ],
+    fav: { car: "Hyundai Elantra N TCR", track: "Okayama International Circuit" }
+  },
+  {
+    name: "Wadih Maalouf",
+    number: "#72",
+    initials: "WM",
+    photo: "",
+    series: "moonday",
+    bio: "Hyundai Elantra N TCR. Strong opener at Okayama — P3 in Race 1 with 8 laps led, P5 in Race 2. Sits 3rd in the standings with 35 points.",
+    stats: { wins: 0, podiums: 1, poles: 0, avgFinish: "4.0" },
+    recent: [
+      { pos: "3rd", track: "Okayama — Race 1", series: "Moonday", posColor: "#cd7f32" },
+      { pos: "5th", track: "Okayama — Race 2", series: "Moonday", posColor: "#888" },
+    ],
+    fav: { car: "Hyundai Elantra N TCR", track: "Okayama International Circuit" }
+  },
+  {
+    name: "John Agudelo",
+    number: "#48",
+    initials: "JA",
+    photo: "",
+    series: "moonday",
+    bio: "Honda Civic Type R TCR. Race 1 winner at Okayama with 3 laps led. DNF in Race 2 after disconnecting — still holds 4th in standings with 32 points.",
+    stats: { wins: 1, podiums: 1, poles: 0, avgFinish: "7.5" },
+    recent: [
+      { pos: "1st", track: "Okayama — Race 1", series: "Moonday", posColor: "#ffd700" },
+      { pos: "DNF", track: "Okayama — Race 2", series: "Moonday", posColor: "#cc0000" },
+    ],
+    fav: { car: "Honda Civic Type R TCR", track: "Okayama International Circuit" }
+  },
+  {
+    name: "Jake Harrigan",
+    number: "#11",
+    initials: "JH",
+    photo: "",
+    series: "moonday",
+    bio: "Hyundai Elantra N TCR. Recovered from P9 in Race 1 to take P3 in Race 2 at Okayama. Sits 5th overall with 28 points.",
+    stats: { wins: 0, podiums: 1, poles: 0, avgFinish: "6.0" },
+    recent: [
+      { pos: "9th", track: "Okayama — Race 1", series: "Moonday", posColor: "#888" },
+      { pos: "3rd", track: "Okayama — Race 2", series: "Moonday", posColor: "#cd7f32" },
+    ],
+    fav: { car: "Hyundai Elantra N TCR", track: "Okayama International Circuit" }
+  },
+  {
+    name: "Anthony Orr2",
+    number: "#77",
+    initials: "AO",
+    photo: "",
+    series: "moonday",
+    bio: "Hyundai Veloster N TCR. Zero incidents across both Okayama races. Clean P8 and P4 — 6th in the standings with 25 points.",
+    stats: { wins: 0, podiums: 0, poles: 0, avgFinish: "6.0" },
+    recent: [
+      { pos: "8th", track: "Okayama — Race 1", series: "Moonday", posColor: "#888" },
+      { pos: "4th", track: "Okayama — Race 2", series: "Moonday", posColor: "#888" },
+    ],
+    fav: { car: "Hyundai Veloster N TCR", track: "Okayama International Circuit" }
+  },
+  {
+    name: "Kevin Corea",
+    number: "#13",
+    initials: "KC",
+    photo: "",
+    series: "moonday",
+    bio: "Honda Civic Type R TCR. P4 in Race 1 and P9 in Race 2 at Okayama. 7th in the standings with 24 points.",
+    stats: { wins: 0, podiums: 0, poles: 0, avgFinish: "6.5" },
+    recent: [
+      { pos: "4th", track: "Okayama — Race 1", series: "Moonday", posColor: "#888" },
+      { pos: "9th", track: "Okayama — Race 2", series: "Moonday", posColor: "#888" },
+    ],
+    fav: { car: "Honda Civic Type R TCR", track: "Okayama International Circuit" }
+  },
+  {
+    name: "Connor Menard",
+    number: "#5",
+    initials: "CM",
+    photo: "",
+    series: "moonday",
+    bio: "Honda Civic Type R TCR. P7 and P8 at Okayama Round 1. 8th in standings with 17 points.",
+    stats: { wins: 0, podiums: 0, poles: 0, avgFinish: "7.5" },
+    recent: [
+      { pos: "7th", track: "Okayama — Race 1", series: "Moonday", posColor: "#888" },
+      { pos: "8th", track: "Okayama — Race 2", series: "Moonday", posColor: "#888" },
+    ],
+    fav: { car: "Honda Civic Type R TCR", track: "Okayama International Circuit" }
   },
   {
     name: "Dylan Foster9",
-    number: "#9",
+    number: "#88",
     initials: "DF",
     photo: "",
-    series: "thursday",
-    bio: "Thursday Ovals driver competing in the 2026 ARCA season. Opened Season 2 with a dominant win at [Legacy] Texas Motor Speedway, setting the tone for what looks to be a strong oval campaign.",
-    stats: { wins: 1, podiums: 1, poles: 0, avgFinish: 1.0 },
+    series: "both",
+    bio: "Competing in both Moonday Nights TCR and Thursday Ovals ARCA. Won Round 1 of Thursday Ovals at Texas Motor Speedway. P13 and P6 in the Moonday opener at Okayama.",
+    stats: { wins: 1, podiums: 0, poles: 0, avgFinish: "9.5" },
     recent: [
-      { pos: "1st", track: "Texas Motor Speedway", series: "Thursday", posColor: "#ffd700" },
+      { pos: "13th", track: "Okayama — Race 1", series: "Moonday", posColor: "#888" },
+      { pos: "6th",  track: "Okayama — Race 2", series: "Moonday", posColor: "#888" },
+      { pos: "1st",  track: "Texas Motor Speedway", series: "Thursday", posColor: "#ffd700" },
     ],
-    fav: { car: "ARCA Menards Series", track: "Texas Motor Speedway" }
+    fav: { car: "Hyundai Elantra N TCR / ARCA", track: "Texas Motor Speedway" }
   },
+  {
+    name: "Phillip Poole",
+    number: "#46",
+    initials: "PP",
+    photo: "",
+    series: "moonday",
+    bio: "Hyundai Elantra N TCR. P6 in Race 1, but a tough Race 2 at Okayama with 12 incidents. Sitting 9th with 14 points.",
+    stats: { wins: 0, podiums: 0, poles: 0, avgFinish: "9.5" },
+    recent: [
+      { pos: "6th",  track: "Okayama — Race 1", series: "Moonday", posColor: "#888" },
+      { pos: "13th", track: "Okayama — Race 2", series: "Moonday", posColor: "#888" },
+    ],
+    fav: { car: "Hyundai Elantra N TCR", track: "Okayama International Circuit" }
+  },
+  {
+    name: "Matt Bond6",
+    number: "#19",
+    initials: "MB",
+    photo: "",
+    series: "moonday",
+    bio: "Audi RS3 LMS Gen2 TCR. P12 in Race 1 and P7 in Race 2 at Okayama. 11th in standings with 13 points.",
+    stats: { wins: 0, podiums: 0, poles: 0, avgFinish: "9.5" },
+    recent: [
+      { pos: "12th", track: "Okayama — Race 1", series: "Moonday", posColor: "#888" },
+      { pos: "7th",  track: "Okayama — Race 2", series: "Moonday", posColor: "#888" },
+    ],
+    fav: { car: "Audi RS3 LMS Gen2 TCR", track: "Okayama International Circuit" }
+  },
+  {
+    name: "Ryan Nixon",
+    number: "#12",
+    initials: "RN",
+    photo: "",
+    series: "moonday",
+    bio: "Audi RS3 LMS Gen2 TCR. P11 in both Okayama races. 12th in standings with 10 points.",
+    stats: { wins: 0, podiums: 0, poles: 0, avgFinish: "11.0" },
+    recent: [
+      { pos: "11th", track: "Okayama — Race 1", series: "Moonday", posColor: "#888" },
+      { pos: "11th", track: "Okayama — Race 2", series: "Moonday", posColor: "#888" },
+    ],
+    fav: { car: "Audi RS3 LMS Gen2 TCR", track: "Okayama International Circuit" }
+  },
+  {
+    name: "Frank Perreault2",
+    number: "#999",
+    initials: "FP",
+    photo: "",
+    series: "moonday",
+    bio: "Hyundai Veloster N TCR. P10 in Race 1 and P12 in Race 2 at Okayama. 12th in standings with 10 points.",
+    stats: { wins: 0, podiums: 0, poles: 0, avgFinish: "11.0" },
+    recent: [
+      { pos: "10th", track: "Okayama — Race 1", series: "Moonday", posColor: "#888" },
+      { pos: "12th", track: "Okayama — Race 2", series: "Moonday", posColor: "#888" },
+    ],
+    fav: { car: "Hyundai Veloster N TCR", track: "Okayama International Circuit" }
+  },
+  {
+    name: "Aaron Liebling",
+    number: "#6",
+    initials: "AL",
+    photo: "",
+    series: "moonday",
+    bio: "Honda Civic Type R TCR. P14 in Race 1 but bounced back to P10 in Race 2 — even leading 1 lap. 14th overall with 8 points.",
+    stats: { wins: 0, podiums: 0, poles: 0, avgFinish: "12.0" },
+    recent: [
+      { pos: "14th", track: "Okayama — Race 1", series: "Moonday", posColor: "#888" },
+      { pos: "10th", track: "Okayama — Race 2", series: "Moonday", posColor: "#888" },
+    ],
+    fav: { car: "Honda Civic Type R TCR", track: "Okayama International Circuit" }
+  },
+  {
+    name: "Joshua S Smith",
+    number: "#23",
+    initials: "JS",
+    photo: "",
+    series: "moonday",
+    bio: "Hyundai Elantra N TCR. Tough opening night — disconnected in both races at Okayama. Just 1 point on the board, plenty of season ahead.",
+    stats: { wins: 0, podiums: 0, poles: 0, avgFinish: "15.0" },
+    recent: [
+      { pos: "DNF", track: "Okayama — Race 1", series: "Moonday", posColor: "#cc0000" },
+      { pos: "DNF", track: "Okayama — Race 2", series: "Moonday", posColor: "#cc0000" },
+    ],
+    fav: { car: "Hyundai Elantra N TCR", track: "TBD" }
+  },
+
+  // ── THURSDAY OVALS ROSTER — add Thursday-only drivers below ──
   // ---- ADD MORE DRIVERS ABOVE THIS LINE ----
 ];
 
