@@ -5,50 +5,67 @@
 <title>Ten10 Motorsports</title>
 <link rel="stylesheet" href="style.css">
 <style>
-.hero{position:relative;z-index:1;min-height:440px;display:flex;align-items:center;justify-content:center;text-align:center;padding:70px 24px;overflow:hidden;}
+.hero{position:relative;z-index:1;min-height:420px;display:flex;align-items:center;justify-content:center;text-align:center;padding:70px 24px;overflow:hidden;}
 .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(204,0,0,0.18) 0%,transparent 70%),repeating-linear-gradient(135deg,transparent,transparent 40px,rgba(255,255,255,0.015) 40px,rgba(255,255,255,0.015) 41px);z-index:0;}
 .hero-content{position:relative;z-index:1;max-width:780px;}
-.hero-logo{width:110px;height:110px;object-fit:contain;margin-bottom:20px;filter:drop-shadow(0 0 28px rgba(204,0,0,0.55));animation:pulse-logo 3s ease-in-out infinite;}
+.hero-logo{width:100px;height:100px;object-fit:contain;margin-bottom:18px;filter:drop-shadow(0 0 28px rgba(204,0,0,0.55));animation:pulse-logo 3s ease-in-out infinite;}
 @keyframes pulse-logo{0%,100%{filter:drop-shadow(0 0 20px rgba(204,0,0,0.4));}50%{filter:drop-shadow(0 0 42px rgba(204,0,0,0.75));}}
-.hero h1{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-style:italic;font-size:clamp(3rem,8vw,5.5rem);letter-spacing:0.04em;text-transform:uppercase;color:#f0f0f0;line-height:0.95;margin-bottom:10px;}
+.hero h1{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-style:italic;font-size:clamp(2.8rem,8vw,5.5rem);letter-spacing:0.04em;text-transform:uppercase;color:#f0f0f0;line-height:0.95;margin-bottom:10px;}
 .hero h1 span{color:#cc0000;}
-.hero-sub{font-family:'Rajdhani',sans-serif;font-size:1rem;letter-spacing:0.2em;text-transform:uppercase;color:#888;margin-bottom:36px;}
+.hero-sub{font-family:'Rajdhani',sans-serif;font-size:1rem;letter-spacing:0.2em;text-transform:uppercase;color:#888;margin-bottom:32px;}
 .hero-ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
-.cd-section{position:relative;z-index:1;background:#111;border-top:1px solid rgba(192,192,192,0.12);border-bottom:1px solid rgba(192,192,192,0.12);padding:36px 24px;}
+
+/* COUNTDOWN */
+.cd-section{position:relative;z-index:1;background:#111;border-top:1px solid rgba(192,192,192,0.12);border-bottom:1px solid rgba(192,192,192,0.12);padding:32px 24px;}
 .cd-inner{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:20px;}
 .cd-card{background:#141414;border:1px solid rgba(192,192,192,0.12);border-radius:6px;overflow:hidden;transition:border-color 0.2s,box-shadow 0.2s;}
 .cd-card:hover{border-color:rgba(204,0,0,0.4);box-shadow:0 4px 24px rgba(204,0,0,0.2);}
 .cd-head{background:#cc0000;padding:12px 18px;display:flex;align-items:center;justify-content:space-between;}
-.cd-head .sname{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.15rem;letter-spacing:0.07em;text-transform:uppercase;color:#fff;}
+.cd-head .sname{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.1rem;letter-spacing:0.07em;text-transform:uppercase;color:#fff;}
 .cd-head .sday{font-family:'Rajdhani',sans-serif;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.75);}
-.cd-body{padding:20px;}
-.cd-track{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.2rem;color:#f0f0f0;margin-bottom:3px;}
-.cd-tracksub{font-family:'Rajdhani',sans-serif;font-size:0.78rem;letter-spacing:0.08em;text-transform:uppercase;color:#888;margin-bottom:16px;}
-.cd-nums{display:flex;gap:10px;align-items:flex-start;}
+.cd-body{padding:18px 20px;}
+.cd-track{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.2rem;color:#f0f0f0;margin-bottom:2px;}
+.cd-tracksub{font-family:'Rajdhani',sans-serif;font-size:0.78rem;letter-spacing:0.07em;text-transform:uppercase;color:#666;margin-bottom:14px;}
+.cd-nums{display:flex;gap:8px;align-items:flex-start;}
 .cd-unit{text-align:center;flex:1;}
 .cd-val{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:2.2rem;color:#ff1a1a;line-height:1;display:block;background:#1a1a1a;border-radius:4px;padding:7px 4px;border:1px solid rgba(192,192,192,0.1);}
 .cd-lbl{font-family:'Rajdhani',sans-serif;font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:#888;margin-top:4px;}
 .cd-sep{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.8rem;color:#555;padding-top:7px;flex:none;}
-.live-badge{display:none;align-items:center;gap:6px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;color:#ff1a1a;margin-top:14px;}
+.live-badge{display:none;align-items:center;gap:6px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.9rem;letter-spacing:0.1em;text-transform:uppercase;color:#ff1a1a;margin-top:12px;}
 .live-dot{width:8px;height:8px;background:#ff1a1a;border-radius:50%;animation:blink 1s infinite;}
 @keyframes blink{0%,100%{opacity:1;}50%{opacity:0.2;}}
-.home-grid{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:44px 24px 80px;position:relative;z-index:1;}
+
+/* HOME GRID */
+.home-grid{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:40px 24px 80px;position:relative;z-index:1;}
 .home-card-full{grid-column:1/-1;}
-.tsb{background:linear-gradient(135deg,#141414 0%,#1a1a1a 100%);border:1px solid rgba(192,192,192,0.12);border-left:4px solid #cc0000;border-radius:6px;padding:24px 28px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;}
-.tsb-item .lbl{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:#cc0000;margin-bottom:2px;}
-.tsb-item .val{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:2.2rem;color:#f0f0f0;line-height:1;}
-.rr-row{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid rgba(192,192,192,0.08);}
+
+/* LAST WINNER CARD */
+.winner-card{background:linear-gradient(135deg,#141414 0%,#1a1a1a 100%);border:1px solid rgba(192,192,192,0.12);border-radius:8px;overflow:hidden;}
+.winner-card-head{background:rgba(204,0,0,0.12);border-bottom:1px solid rgba(204,0,0,0.2);padding:10px 18px;display:flex;align-items:center;justify-content:space-between;}
+.winner-card-head .series-tag{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;color:#cc0000;}
+.winner-card-head .round-tag{font-family:'Rajdhani',sans-serif;font-size:0.75rem;letter-spacing:0.08em;text-transform:uppercase;color:#555;}
+.winner-card-body{padding:18px 20px;}
+.winner-trophy{font-size:2rem;line-height:1;margin-bottom:6px;}
+.winner-name{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:2rem;color:#f0f0f0;line-height:1;letter-spacing:0.02em;}
+.winner-detail{font-family:'Rajdhani',sans-serif;font-size:0.85rem;color:#888;margin-top:6px;letter-spacing:0.04em;line-height:1.6;}
+.winner-detail strong{color:#c0c0c0;font-weight:600;}
+.winner-car{display:inline-block;margin-top:8px;font-family:'Barlow Condensed',sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#cc0000;background:rgba(204,0,0,0.1);padding:3px 10px;border-radius:3px;}
+
+/* RECENT RESULTS */
+.rr-row{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid rgba(192,192,192,0.07);}
 .rr-row:last-child{border-bottom:none;}
 .rr-pos{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.2rem;width:30px;text-align:center;}
-.rr-name{font-weight:600;font-size:0.93rem;flex:1;}
+.rr-name{font-weight:600;font-size:0.92rem;flex:1;}
 .rr-track{font-family:'Rajdhani',sans-serif;font-size:0.78rem;color:#888;}
-.rr-series{font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:#cc0000;background:rgba(204,0,0,0.1);padding:2px 8px;border-radius:3px;}
+.rr-series-tag{font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:#cc0000;background:rgba(204,0,0,0.1);padding:2px 8px;border-radius:3px;flex-shrink:0;}
 .card-link{font-size:0.74rem;color:#cc0000;text-decoration:none;font-family:'Rajdhani',sans-serif;letter-spacing:0.08em;text-transform:uppercase;}
-@media(max-width:768px){.cd-inner{grid-template-columns:1fr;}.home-grid{grid-template-columns:1fr;padding:24px 14px 60px;}.tsb{padding:16px;}}
+
+@media(max-width:768px){.cd-inner,.home-grid{grid-template-columns:1fr;}.cd-inner{padding:0;}.home-grid{padding:24px 14px 60px;}}
 </style>
 </head>
 <body data-page="index">
 <script src="nav.js"></script>
+
 <section class="hero">
   <div class="hero-content">
     <img src="logo.jpg" alt="Ten10 Motorsports" class="hero-logo">
@@ -61,16 +78,19 @@
   </div>
 </section>
 
+<!-- COUNTDOWN -->
 <section class="cd-section">
   <div class="cd-inner">
+    <!-- MOONDAY -->
     <div class="cd-card">
       <div class="cd-head">
         <span class="sname">🌙 Moonday Nights</span>
         <span class="sday">Every Monday · 8:30 PM ET</span>
       </div>
       <div class="cd-body">
-        <div class="cd-track" id="mn-track">Next Race Track</div>
-        <div class="cd-tracksub">Update track name in index.html</div>
+        <!-- UPDATE TRACK NAME EACH WEEK -->
+        <div class="cd-track">Summit Point Raceway</div>
+        <div class="cd-tracksub">Round 2 · Summit Point Raceway - Summit Point · 2026 S2</div>
         <div class="cd-nums" id="mn-display">
           <div class="cd-unit"><span class="cd-val" id="mn-d">--</span><div class="cd-lbl">Days</div></div>
           <div class="cd-sep">:</div>
@@ -83,14 +103,16 @@
         <div class="live-badge" id="mn-live"><div class="live-dot"></div>RACE IS LIVE NOW</div>
       </div>
     </div>
+    <!-- THURSDAY -->
     <div class="cd-card">
       <div class="cd-head">
         <span class="sname">🏁 Thursday Ovals</span>
         <span class="sday">Every Thursday · 8:30 PM ET</span>
       </div>
       <div class="cd-body">
-        <div class="cd-track" id="th-track">Next Race Track</div>
-        <div class="cd-tracksub">Update track name in index.html</div>
+        <!-- UPDATE TRACK NAME EACH WEEK -->
+        <div class="cd-track">Southern National Motorsports Park</div>
+        <div class="cd-tracksub">Round 2 · Southern National Motorsports Park · 2026 S2</div>
         <div class="cd-nums" id="th-display">
           <div class="cd-unit"><span class="cd-val" id="th-d">--</span><div class="cd-lbl">Days</div></div>
           <div class="cd-sep">:</div>
@@ -106,61 +128,93 @@
   </div>
 </section>
 
+<!-- MAIN CONTENT -->
 <div class="home-grid">
-  <div class="home-card-full">
-    <div class="tsb">
-      <div class="tsb-item">
-        <div class="lbl">2025 Season</div>
-        <div class="val" style="font-size:1rem;color:#888;">Combined Team Stats — update after each race</div>
+
+  <!-- MOONDAY LAST WINNER -->
+  <div>
+    <div class="winner-card">
+      <div class="winner-card-head">
+        <span class="series-tag">🌙 Moonday Nights — Last Winner</span>
+        <span class="round-tag">Round 1 · Race 2 · Mar 16, 2026</span>
       </div>
-      <!-- UPDATE THESE NUMBERS EACH RACE WEEK -->
-      <div class="tsb-item"><div class="lbl">Total Wins</div><div class="val">0</div></div>
-      <div class="tsb-item"><div class="lbl">Podiums</div><div class="val">0</div></div>
-      <div class="tsb-item"><div class="lbl">Top 5s</div><div class="val">0</div></div>
-      <div class="tsb-item"><div class="lbl">Poles</div><div class="val">0</div></div>
-      <div class="tsb-item"><div class="lbl">Drivers</div><div class="val">0</div></div>
+      <div class="winner-card-body">
+        <div class="winner-trophy">🏆</div>
+        <div class="winner-name">Byron Forest II</div>
+        <div class="winner-detail">
+          <strong>Okayama International Circuit</strong><br>
+          Led 12 of 13 laps · Zero incidents · Race 2 winner
+        </div>
+        <span class="winner-car">#824 · Hyundai Elantra N TCR</span>
+      </div>
     </div>
   </div>
 
+  <!-- THURSDAY LAST WINNER -->
+  <div>
+    <div class="winner-card">
+      <div class="winner-card-head">
+        <span class="series-tag">🏁 Thursday Ovals — Last Winner</span>
+        <span class="round-tag">Round 1 · Mar 19, 2026</span>
+      </div>
+      <div class="winner-card-body">
+        <div class="winner-trophy">🏆</div>
+        <div class="winner-name">Dylan Foster9</div>
+        <div class="winner-detail">
+          <strong>Texas Motor Speedway</strong><br>
+          Led 64 of 115 laps · Wire-to-wire dominant run
+        </div>
+        <span class="winner-car">#88 · ARCA Toyota Camry</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- RECENT RESULTS -->
   <div class="card">
     <div class="card-header">Recent Results <a href="results.html" class="card-link">All Results →</a></div>
     <div class="card-body">
-      <!-- COPY THIS BLOCK TO ADD RECENT RESULTS:
+      <!-- UPDATE AFTER EACH RACE — copy/paste rows -->
       <div class="rr-row">
         <div class="rr-pos" style="color:#ffd700;">1</div>
-        <div><div class="rr-name">Driver Name</div><div class="rr-track">Track · Race #</div></div>
-        <span class="rr-series">Moonday</span>
+        <div><div class="rr-name">Dylan Foster9</div><div class="rr-track">Texas Motor Speedway · R1</div></div>
+        <span class="rr-series-tag">Thursday</span>
       </div>
-      -->
       <div class="rr-row">
-        <div class="rr-pos" style="color:#555;">—</div>
-        <div><div class="rr-name">No results yet</div><div class="rr-track">Add race data to populate</div></div>
-        <span class="rr-series" style="background:rgba(136,136,136,0.1);color:#555;">—</span>
+        <div class="rr-pos" style="color:#ffd700;">1</div>
+        <div><div class="rr-name">Byron Forest II</div><div class="rr-track">Okayama Int'l Circuit · R2</div></div>
+        <span class="rr-series-tag">Moonday</span>
+      </div>
+      <div class="rr-row">
+        <div class="rr-pos" style="color:#ffd700;">1</div>
+        <div><div class="rr-name">John Agudelo</div><div class="rr-track">Okayama Int'l Circuit · R1</div></div>
+        <span class="rr-series-tag">Moonday</span>
       </div>
     </div>
   </div>
 
+  <!-- UPCOMING -->
   <div class="card">
     <div class="card-header">Upcoming Races <a href="schedule.html" class="card-link">Full Schedule →</a></div>
     <div class="card-body">
-      <!-- COPY THIS BLOCK TO ADD UPCOMING RACES:
+      <!-- UPDATE EACH WEEK -->
       <div class="rr-row">
-        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.78rem;color:#cc0000;text-align:center;min-width:44px;">MON<br><span style="font-size:1.3rem;color:#f0f0f0;">24</span></div>
-        <div><div class="rr-name">Moonday Nights — Round 1</div><div class="rr-track">Daytona Road Course · 8:30 PM ET</div></div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.78rem;color:#cc0000;text-align:center;min-width:44px;">MON<br><span style="font-size:1.3rem;color:#f0f0f0;">23</span><br><span style="font-size:0.65rem;color:#666;">MAR</span></div>
+        <div><div class="rr-name">Moonday Nights — Round 2</div><div class="rr-track">Summit Point Raceway · 8:30 PM ET</div></div>
       </div>
-      -->
       <div class="rr-row">
-        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.78rem;color:#cc0000;text-align:center;min-width:44px;">TBD<br><span style="font-size:1.3rem;color:#555;">—</span></div>
-        <div><div class="rr-name">Season schedule coming soon</div><div class="rr-track">Check schedule page for details</div></div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.78rem;color:#cc0000;text-align:center;min-width:44px;">THU<br><span style="font-size:1.3rem;color:#f0f0f0;">26</span><br><span style="font-size:0.65rem;color:#666;">MAR</span></div>
+        <div><div class="rr-name">Thursday Ovals — Round 2</div><div class="rr-track">Southern National Motorsports Park · 8:30 PM ET</div></div>
       </div>
     </div>
   </div>
+
 </div>
 
 <footer>
   <div class="footer-logo">TEN<span>10</span> MOTORSPORTS</div>
   <p>iRacing · Moonday Nights &amp; Thursday Ovals · &copy; <span class="yr"></span></p>
 </footer>
+
 <script>
 function nextRace(dow){
   const now=new Date();
