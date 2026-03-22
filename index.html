@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Ten10 Motorsports</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.hero{position:relative;z-index:1;min-height:440px;display:flex;align-items:center;justify-content:center;text-align:center;padding:70px 24px;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(204,0,0,0.18) 0%,transparent 70%),repeating-linear-gradient(135deg,transparent,transparent 40px,rgba(255,255,255,0.015) 40px,rgba(255,255,255,0.015) 41px);z-index:0;}
+.hero-content{position:relative;z-index:1;max-width:780px;}
+.hero-logo{width:110px;height:110px;object-fit:contain;margin-bottom:20px;filter:drop-shadow(0 0 28px rgba(204,0,0,0.55));animation:pulse-logo 3s ease-in-out infinite;}
+@keyframes pulse-logo{0%,100%{filter:drop-shadow(0 0 20px rgba(204,0,0,0.4));}50%{filter:drop-shadow(0 0 42px rgba(204,0,0,0.75));}}
+.hero h1{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-style:italic;font-size:clamp(3rem,8vw,5.5rem);letter-spacing:0.04em;text-transform:uppercase;color:#f0f0f0;line-height:0.95;margin-bottom:10px;}
+.hero h1 span{color:#cc0000;}
+.hero-sub{font-family:'Rajdhani',sans-serif;font-size:1rem;letter-spacing:0.2em;text-transform:uppercase;color:#888;margin-bottom:36px;}
+.hero-ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.cd-section{position:relative;z-index:1;background:#111;border-top:1px solid rgba(192,192,192,0.12);border-bottom:1px solid rgba(192,192,192,0.12);padding:36px 24px;}
+.cd-inner{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.cd-card{background:#141414;border:1px solid rgba(192,192,192,0.12);border-radius:6px;overflow:hidden;transition:border-color 0.2s,box-shadow 0.2s;}
+.cd-card:hover{border-color:rgba(204,0,0,0.4);box-shadow:0 4px 24px rgba(204,0,0,0.2);}
+.cd-head{background:#cc0000;padding:12px 18px;display:flex;align-items:center;justify-content:space-between;}
+.cd-head .sname{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.15rem;letter-spacing:0.07em;text-transform:uppercase;color:#fff;}
+.cd-head .sday{font-family:'Rajdhani',sans-serif;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.75);}
+.cd-body{padding:20px;}
+.cd-track{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.2rem;color:#f0f0f0;margin-bottom:3px;}
+.cd-tracksub{font-family:'Rajdhani',sans-serif;font-size:0.78rem;letter-spacing:0.08em;text-transform:uppercase;color:#888;margin-bottom:16px;}
+.cd-nums{display:flex;gap:10px;align-items:flex-start;}
+.cd-unit{text-align:center;flex:1;}
+.cd-val{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:2.2rem;color:#ff1a1a;line-height:1;display:block;background:#1a1a1a;border-radius:4px;padding:7px 4px;border:1px solid rgba(192,192,192,0.1);}
+.cd-lbl{font-family:'Rajdhani',sans-serif;font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:#888;margin-top:4px;}
+.cd-sep{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.8rem;color:#555;padding-top:7px;flex:none;}
+.live-badge{display:none;align-items:center;gap:6px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;color:#ff1a1a;margin-top:14px;}
+.live-dot{width:8px;height:8px;background:#ff1a1a;border-radius:50%;animation:blink 1s infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:0.2;}}
+.home-grid{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:44px 24px 80px;position:relative;z-index:1;}
+.home-card-full{grid-column:1/-1;}
+.tsb{background:linear-gradient(135deg,#141414 0%,#1a1a1a 100%);border:1px solid rgba(192,192,192,0.12);border-left:4px solid #cc0000;border-radius:6px;padding:24px 28px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;}
+.tsb-item .lbl{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:#cc0000;margin-bottom:2px;}
+.tsb-item .val{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:2.2rem;color:#f0f0f0;line-height:1;}
+.rr-row{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid rgba(192,192,192,0.08);}
+.rr-row:last-child{border-bottom:none;}
+.rr-pos{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.2rem;width:30px;text-align:center;}
+.rr-name{font-weight:600;font-size:0.93rem;flex:1;}
+.rr-track{font-family:'Rajdhani',sans-serif;font-size:0.78rem;color:#888;}
+.rr-series{font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:#cc0000;background:rgba(204,0,0,0.1);padding:2px 8px;border-radius:3px;}
+.card-link{font-size:0.74rem;color:#cc0000;text-decoration:none;font-family:'Rajdhani',sans-serif;letter-spacing:0.08em;text-transform:uppercase;}
+@media(max-width:768px){.cd-inner{grid-template-columns:1fr;}.home-grid{grid-template-columns:1fr;padding:24px 14px 60px;}.tsb{padding:16px;}}
+</style>
+</head>
+<body data-page="index">
+<script src="nav.js"></script>
+<section class="hero">
+  <div class="hero-content">
+    <img src="logo.jpg" alt="Ten10 Motorsports" class="hero-logo">
+    <h1>TEN<span>10</span><br>MOTORSPORTS</h1>
+    <p class="hero-sub">iRacing · Oval &amp; Sports Car · Built to Win</p>
+    <div class="hero-ctas">
+      <a href="standings.html" class="btn btn-red">View Standings</a>
+      <a href="drivers.html" class="btn btn-ghost">Meet the Drivers</a>
+    </div>
+  </div>
+</section>
+
+<section class="cd-section">
+  <div class="cd-inner">
+    <div class="cd-card">
+      <div class="cd-head">
+        <span class="sname">🌙 Moonday Nights</span>
+        <span class="sday">Every Monday · 8:30 PM ET</span>
+      </div>
+      <div class="cd-body">
+        <div class="cd-track" id="mn-track">Next Race Track</div>
+        <div class="cd-tracksub">Update track name in index.html</div>
+        <div class="cd-nums" id="mn-display">
+          <div class="cd-unit"><span class="cd-val" id="mn-d">--</span><div class="cd-lbl">Days</div></div>
+          <div class="cd-sep">:</div>
+          <div class="cd-unit"><span class="cd-val" id="mn-h">--</span><div class="cd-lbl">Hrs</div></div>
+          <div class="cd-sep">:</div>
+          <div class="cd-unit"><span class="cd-val" id="mn-m">--</span><div class="cd-lbl">Min</div></div>
+          <div class="cd-sep">:</div>
+          <div class="cd-unit"><span class="cd-val" id="mn-s">--</span><div class="cd-lbl">Sec</div></div>
+        </div>
+        <div class="live-badge" id="mn-live"><div class="live-dot"></div>RACE IS LIVE NOW</div>
+      </div>
+    </div>
+    <div class="cd-card">
+      <div class="cd-head">
+        <span class="sname">🏁 Thursday Ovals</span>
+        <span class="sday">Every Thursday · 8:30 PM ET</span>
+      </div>
+      <div class="cd-body">
+        <div class="cd-track" id="th-track">Next Race Track</div>
+        <div class="cd-tracksub">Update track name in index.html</div>
+        <div class="cd-nums" id="th-display">
+          <div class="cd-unit"><span class="cd-val" id="th-d">--</span><div class="cd-lbl">Days</div></div>
+          <div class="cd-sep">:</div>
+          <div class="cd-unit"><span class="cd-val" id="th-h">--</span><div class="cd-lbl">Hrs</div></div>
+          <div class="cd-sep">:</div>
+          <div class="cd-unit"><span class="cd-val" id="th-m">--</span><div class="cd-lbl">Min</div></div>
+          <div class="cd-sep">:</div>
+          <div class="cd-unit"><span class="cd-val" id="th-s">--</span><div class="cd-lbl">Sec</div></div>
+        </div>
+        <div class="live-badge" id="th-live"><div class="live-dot"></div>RACE IS LIVE NOW</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="home-grid">
+  <div class="home-card-full">
+    <div class="tsb">
+      <div class="tsb-item">
+        <div class="lbl">2025 Season</div>
+        <div class="val" style="font-size:1rem;color:#888;">Combined Team Stats — update after each race</div>
+      </div>
+      <!-- UPDATE THESE NUMBERS EACH RACE WEEK -->
+      <div class="tsb-item"><div class="lbl">Total Wins</div><div class="val">0</div></div>
+      <div class="tsb-item"><div class="lbl">Podiums</div><div class="val">0</div></div>
+      <div class="tsb-item"><div class="lbl">Top 5s</div><div class="val">0</div></div>
+      <div class="tsb-item"><div class="lbl">Poles</div><div class="val">0</div></div>
+      <div class="tsb-item"><div class="lbl">Drivers</div><div class="val">0</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">Recent Results <a href="results.html" class="card-link">All Results →</a></div>
+    <div class="card-body">
+      <!-- COPY THIS BLOCK TO ADD RECENT RESULTS:
+      <div class="rr-row">
+        <div class="rr-pos" style="color:#ffd700;">1</div>
+        <div><div class="rr-name">Driver Name</div><div class="rr-track">Track · Race #</div></div>
+        <span class="rr-series">Moonday</span>
+      </div>
+      -->
+      <div class="rr-row">
+        <div class="rr-pos" style="color:#555;">—</div>
+        <div><div class="rr-name">No results yet</div><div class="rr-track">Add race data to populate</div></div>
+        <span class="rr-series" style="background:rgba(136,136,136,0.1);color:#555;">—</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">Upcoming Races <a href="schedule.html" class="card-link">Full Schedule →</a></div>
+    <div class="card-body">
+      <!-- COPY THIS BLOCK TO ADD UPCOMING RACES:
+      <div class="rr-row">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.78rem;color:#cc0000;text-align:center;min-width:44px;">MON<br><span style="font-size:1.3rem;color:#f0f0f0;">24</span></div>
+        <div><div class="rr-name">Moonday Nights — Round 1</div><div class="rr-track">Daytona Road Course · 8:30 PM ET</div></div>
+      </div>
+      -->
+      <div class="rr-row">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.78rem;color:#cc0000;text-align:center;min-width:44px;">TBD<br><span style="font-size:1.3rem;color:#555;">—</span></div>
+        <div><div class="rr-name">Season schedule coming soon</div><div class="rr-track">Check schedule page for details</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">TEN<span>10</span> MOTORSPORTS</div>
+  <p>iRacing · Moonday Nights &amp; Thursday Ovals · &copy; 2025</p>
+</footer>
+<script>
+function nextRace(dow){
+  const now=new Date();
+  const et=new Date(now.toLocaleString('en-US',{timeZone:'America/New_York'}));
+  let diff=(dow-et.getDay()+7)%7;
+  if(diff===0){const mins=et.getHours()*60+et.getMinutes();if(mins>=20*60+30+90)diff=7;}
+  const t=new Date(et);t.setDate(et.getDate()+diff);t.setHours(20,30,0,0);
+  return t-et;
+}
+function fmt(ms,pre,liveId,dispId){
+  const live=document.getElementById(liveId);
+  const disp=document.getElementById(dispId);
+  if(ms<=0&&ms>-5400000){disp.style.display='none';live.style.display='flex';return;}
+  disp.style.display='flex';live.style.display='none';
+  const d=Math.floor(ms/86400000),h=Math.floor((ms%86400000)/3600000),m=Math.floor((ms%3600000)/60000),s=Math.floor((ms%60000)/1000);
+  document.getElementById(pre+'-d').textContent=String(d).padStart(2,'0');
+  document.getElementById(pre+'-h').textContent=String(h).padStart(2,'0');
+  document.getElementById(pre+'-m').textContent=String(m).padStart(2,'0');
+  document.getElementById(pre+'-s').textContent=String(s).padStart(2,'0');
+}
+function tick(){fmt(nextRace(1),'mn','mn-live','mn-display');fmt(nextRace(4),'th','th-live','th-display');}
+tick();setInterval(tick,1000);
+</script>
+</body>
+</html>

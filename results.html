@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Race Results · Ten10 Motorsports</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="results">
+<script src="nav.js"></script>
+<div class="page-wrap">
+  <div class="page-header">
+    <h1>Race <span>Results</span></h1>
+    <p>Full race-by-race results — Moonday Nights &amp; Thursday Ovals</p>
+  </div>
+
+  <!-- SERIES TABS -->
+  <div class="series-tabs">
+    <button class="series-tab active" onclick="switchSeries('moonday',this)">🌙 Moonday Nights</button>
+    <button class="series-tab" onclick="switchSeries('thursday',this)">🏁 Thursday Ovals</button>
+  </div>
+
+  <!-- SEASON SELECTOR -->
+  <div class="season-bar">
+    <label>Season:</label>
+    <select class="season-select" id="seasonSelect" onchange="switchSeason(this.value)">
+      <option value="2025s1">2025 Season 1</option>
+      <option value="2024s2">2024 Season 2</option>
+      <option value="2024s1">2024 Season 1</option>
+    </select>
+  </div>
+
+  <!-- ================================================================
+       HOW TO ADD RACE RESULTS:
+       1. Find the correct series block (id="moonday" or id="thursday")
+       2. Find the correct season block (id="moonday-2025s1" etc.)
+       3. Copy a <div class="race-event"> block and fill in the data
+       4. Each row in tbody = one driver's result for that race
+  ================================================================= -->
+
+  <!-- ===== MOONDAY NIGHTS ===== -->
+  <div id="series-moonday">
+
+    <!-- 2025 S1 -->
+    <div id="moonday-2025s1" class="season-block">
+      <div class="section-label">2025 Season 1 · Moonday Nights</div>
+
+      <!-- RACE 1 — copy this whole block for each race -->
+      <div class="race-event" style="margin-bottom:32px;">
+        <div class="card">
+          <div class="card-header">
+            <span>Round 1 — <span class="accent">Track Name Here</span></span>
+            <span style="font-family:'Rajdhani',sans-serif;font-size:0.8rem;color:#888;letter-spacing:0.06em;">Mon, Jan 6, 2025 · 8:30 PM ET</span>
+          </div>
+          <div class="card-body" style="padding:0;">
+            <div class="table-wrap" style="border:none;border-radius:0;box-shadow:none;">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Pos</th>
+                    <th>Driver</th>
+                    <th>Car #</th>
+                    <th>Laps Led</th>
+                    <th>Best Lap</th>
+                    <th>Incidents</th>
+                    <th>iRating Δ</th>
+                    <th>Result</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- COPY A ROW LIKE THIS FOR EACH DRIVER:
+                  <tr>
+                    <td class="td-pos pos-1">1</td>
+                    <td class="td-driver">Driver Name</td>
+                    <td class="td-highlight">#00</td>
+                    <td>45</td>
+                    <td>1:32.450</td>
+                    <td>0x</td>
+                    <td style="color:#4caf50;">+120</td>
+                    <td><span class="badge badge-win">WIN</span></td>
+                  </tr>
+                  -->
+                  <tr>
+                    <td colspan="8" style="text-align:center;color:#555;font-family:'Rajdhani',sans-serif;letter-spacing:0.08em;text-transform:uppercase;padding:20px;">
+                      No results yet — add driver rows here
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- END RACE 1 -->
+
+      <!-- ADD MORE RACES BELOW — paste another race-event block -->
+
+    </div><!-- end moonday-2025s1 -->
+
+    <!-- 2024 S2 -->
+    <div id="moonday-2024s2" class="season-block" style="display:none;">
+      <div class="section-label">2024 Season 2 · Moonday Nights</div>
+      <div class="card"><div class="card-body" style="text-align:center;color:#555;font-family:'Rajdhani',sans-serif;letter-spacing:0.08em;text-transform:uppercase;padding:32px;">No data for this season yet</div></div>
+    </div>
+
+    <!-- 2024 S1 -->
+    <div id="moonday-2024s1" class="season-block" style="display:none;">
+      <div class="section-label">2024 Season 1 · Moonday Nights</div>
+      <div class="card"><div class="card-body" style="text-align:center;color:#555;font-family:'Rajdhani',sans-serif;letter-spacing:0.08em;text-transform:uppercase;padding:32px;">No data for this season yet</div></div>
+    </div>
+
+  </div><!-- end series-moonday -->
+
+  <!-- ===== THURSDAY OVALS ===== -->
+  <div id="series-thursday" style="display:none;">
+
+    <!-- 2025 S1 -->
+    <div id="thursday-2025s1" class="season-block">
+      <div class="section-label">2025 Season 1 · Thursday Ovals</div>
+
+      <div class="race-event" style="margin-bottom:32px;">
+        <div class="card">
+          <div class="card-header">
+            <span>Round 1 — <span class="accent">Track Name Here</span></span>
+            <span style="font-family:'Rajdhani',sans-serif;font-size:0.8rem;color:#888;letter-spacing:0.06em;">Thu, Jan 9, 2025 · 8:30 PM ET</span>
+          </div>
+          <div class="card-body" style="padding:0;">
+            <div class="table-wrap" style="border:none;border-radius:0;box-shadow:none;">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Pos</th>
+                    <th>Driver</th>
+                    <th>Car #</th>
+                    <th>Laps Led</th>
+                    <th>Best Lap</th>
+                    <th>Incidents</th>
+                    <th>iRating Δ</th>
+                    <th>Result</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td colspan="8" style="text-align:center;color:#555;font-family:'Rajdhani',sans-serif;letter-spacing:0.08em;text-transform:uppercase;padding:20px;">
+                      No results yet — add driver rows here
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="thursday-2024s2" class="season-block" style="display:none;">
+      <div class="section-label">2024 Season 2 · Thursday Ovals</div>
+      <div class="card"><div class="card-body" style="text-align:center;color:#555;font-family:'Rajdhani',sans-serif;letter-spacing:0.08em;text-transform:uppercase;padding:32px;">No data for this season yet</div></div>
+    </div>
+    <div id="thursday-2024s1" class="season-block" style="display:none;">
+      <div class="section-label">2024 Season 1 · Thursday Ovals</div>
+      <div class="card"><div class="card-body" style="text-align:center;color:#555;font-family:'Rajdhani',sans-serif;letter-spacing:0.08em;text-transform:uppercase;padding:32px;">No data for this season yet</div></div>
+    </div>
+
+  </div><!-- end series-thursday -->
+
+</div><!-- end page-wrap -->
+
+<footer>
+  <div class="footer-logo">TEN<span>10</span> MOTORSPORTS</div>
+  <p>iRacing · Moonday Nights &amp; Thursday Ovals · &copy; 2025</p>
+</footer>
+
+<script>
+let currentSeries = 'moonday';
+let currentSeason = '2025s1';
+
+// Read URL params on load
+(function(){
+  const p = new URLSearchParams(window.location.search);
+  if(p.get('series')) currentSeries = p.get('series');
+  if(p.get('season')) currentSeason = p.get('season');
+  document.getElementById('seasonSelect').value = currentSeason;
+  document.getElementById('series-moonday').style.display = currentSeries==='moonday'?'':'none';
+  document.getElementById('series-thursday').style.display = currentSeries==='thursday'?'':'none';
+  document.querySelectorAll('.series-tab').forEach((t,i)=>{
+    t.classList.toggle('active',(i===0&&currentSeries==='moonday')||(i===1&&currentSeries==='thursday'));
+  });
+  showSeason(currentSeries, currentSeason);
+})();
+
+function switchSeries(s, btn) {
+  currentSeries = s;
+  document.getElementById('series-moonday').style.display = s==='moonday'?'':'none';
+  document.getElementById('series-thursday').style.display = s==='thursday'?'':'none';
+  document.querySelectorAll('.series-tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  showSeason(s, currentSeason);
+}
+
+function switchSeason(v) {
+  currentSeason = v;
+  showSeason(currentSeries, v);
+}
+
+function showSeason(series, season) {
+  document.querySelectorAll(`#series-${series} .season-block`).forEach(b=>b.style.display='none');
+  const el = document.getElementById(`${series}-${season}`);
+  if(el) el.style.display='';
+}
+</script>
+</body>
+</html>
