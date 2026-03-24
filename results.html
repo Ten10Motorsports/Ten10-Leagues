@@ -4,13 +4,45 @@
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Race Results · Ten10 Motorsports</title>
 <link rel="stylesheet" href="style.css">
+<style>
+/* Accordion race cards */
+.race-accordion{margin-bottom:12px;}
+.race-accordion-header{
+  display:flex;align-items:center;justify-content:space-between;
+  background:var(--black-light);border:1px solid var(--border);border-radius:6px;
+  padding:14px 18px;cursor:pointer;
+  transition:border-color 0.2s,background 0.2s;
+  user-select:none;
+}
+.race-accordion-header:hover{border-color:var(--border-red);background:#1e1e1e;}
+.race-accordion-header.open{border-color:var(--border-red);border-bottom-left-radius:0;border-bottom-right-radius:0;background:#1e1e1e;}
+.rah-left{display:flex;align-items:center;gap:14px;}
+.rah-round{font-family:var(--font-display);font-weight:900;font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--red);background:rgba(204,0,0,0.12);padding:3px 10px;border-radius:3px;white-space:nowrap;}
+.rah-title{font-family:var(--font-display);font-weight:700;font-size:1.05rem;color:var(--white);letter-spacing:0.03em;}
+.rah-right{display:flex;align-items:center;gap:14px;}
+.rah-date{font-family:var(--font-data);font-size:0.8rem;color:var(--silver-dim);letter-spacing:0.04em;white-space:nowrap;}
+.rah-winner{font-family:var(--font-display);font-weight:700;font-size:0.78rem;letter-spacing:0.07em;color:#ffd700;background:rgba(255,215,0,0.1);padding:3px 10px;border-radius:3px;white-space:nowrap;}
+.rah-chevron{color:var(--silver-dim);font-size:0.85rem;transition:transform 0.2s;flex-shrink:0;}
+.race-accordion-header.open .rah-chevron{transform:rotate(180deg);}
+.race-accordion-body{
+  display:none;
+  border:1px solid var(--border-red);border-top:none;
+  border-bottom-left-radius:6px;border-bottom-right-radius:6px;
+  overflow:hidden;
+}
+.race-accordion-body.open{display:block;}
+/* NEW badge */
+.badge-new{display:inline-flex;align-items:center;font-family:var(--font-display);font-weight:700;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#fff;background:var(--red);padding:2px 7px;border-radius:3px;margin-left:6px;animation:pulse-new 2s infinite;}
+@keyframes pulse-new{0%,100%{opacity:1;}50%{opacity:0.6;}}
+@media(max-width:600px){.rah-date,.rah-winner{display:none;}.rah-left{flex-wrap:wrap;gap:8px;}}
+</style>
 </head>
 <body data-page="results">
 <script src="nav.js"></script>
 <div class="page-wrap">
   <div class="page-header">
     <h1>Race <span>Results</span></h1>
-    <p>Full race-by-race results — Moonday Nights &amp; Thursday Ovals</p>
+    <p>Full race-by-race results — click any round to expand · Moonday Nights &amp; Thursday Ovals</p>
   </div>
 
   <div class="series-tabs">
@@ -20,284 +52,224 @@
 
   <div class="season-bar">
     <label>Season:</label>
-    <select class="season-select" id="seasonSelect">
-      <option value="2026s2">2026 Season 2</option>
-    </select>
+    <select class="season-select" id="seasonSelect"><option value="2026s2">2026 Season 2</option></select>
   </div>
 
-  <!-- ===== MOONDAY ===== -->
+  <!-- ====================================================
+       MOONDAY NIGHTS — newest first, accordion
+  ==================================================== -->
   <div id="series-moonday">
-    <div class="section-label">2026 Season 2 · Moonday Nights TCR</div>
+    <div class="section-label">2026 Season 2 · Moonday Nights TCR · Newest First</div>
 
-    <!-- ROUND 1 RACE 1 -->
-    <div style="margin-bottom:24px;">
-      <div class="card">
-        <div class="card-header">
-          <span>Round 1 · Race 1 — <span class="accent">Okayama International Circuit</span></span>
-          <span style="font-family:'Rajdhani',sans-serif;font-size:0.8rem;color:#888;letter-spacing:0.05em;">Mon Mar 16, 2026 · 8:30 PM ET · 13 Laps · Winner: John Agudelo</span>
+    <!-- ROUND 2 · RACE 2 — newest -->
+    <div class="race-accordion">
+      <div class="race-accordion-header open" onclick="toggleAcc(this)">
+        <div class="rah-left">
+          <span class="rah-round">Round 2 · Race 2</span>
+          <span class="rah-title">Summit Point Raceway<span class="badge-new">NEW</span></span>
         </div>
-        <div class="card-body" style="padding:0;">
-          <div class="table-wrap" style="border:none;border-radius:0;box-shadow:none;">
-            <table>
-              <thead><tr><th>Pos</th><th>Driver</th><th>Car #</th><th>Car</th><th>Laps Led</th><th>Best Lap</th><th>Avg Lap</th><th>Inc</th><th>Pts</th><th>Result</th></tr></thead>
-              <tbody>
-                <tr><td class="td-pos pos-1">1</td><td class="td-driver">John Agudelo</td><td class="td-highlight">#48</td><td>Honda Civic TCR</td><td>3</td><td>1:36.004</td><td>1:37.255</td><td>2</td><td>30</td><td><span class="badge badge-win">WIN</span></td></tr>
-                <tr><td class="td-pos pos-2">2</td><td class="td-driver">Ryan Rider</td><td class="td-highlight">#18</td><td>Hyundai Elantra N</td><td>2</td><td>1:35.695</td><td>1:37.448</td><td>3</td><td>26</td><td><span class="badge badge-pod">P2</span></td></tr>
-                <tr><td class="td-pos pos-3">3</td><td class="td-driver">Wadih Maalouf</td><td class="td-highlight">#72</td><td>Hyundai Elantra N</td><td>8</td><td>1:36.125</td><td>1:37.530</td><td>0</td><td>21</td><td><span class="badge badge-pod">P3</span></td></tr>
-                <tr><td class="td-pos">4</td><td class="td-driver">Kevin Corea</td><td class="td-highlight">#13</td><td>Honda Civic TCR</td><td>0</td><td>1:35.968</td><td>1:37.537</td><td>3</td><td>17</td><td>—</td></tr>
-                <tr><td class="td-pos">5</td><td class="td-driver">Byron Forest II</td><td class="td-highlight">#824</td><td>Hyundai Elantra N</td><td>0</td><td>1:36.303</td><td>1:37.806</td><td>2</td><td>14</td><td>—</td></tr>
-                <tr><td class="td-pos">6</td><td class="td-driver">Phillip Poole</td><td class="td-highlight">#46</td><td>Hyundai Elantra N</td><td>0</td><td>1:36.574</td><td>1:37.924</td><td>2</td><td>11</td><td>—</td></tr>
-                <tr><td class="td-pos">7</td><td class="td-driver">Connor Menard</td><td class="td-highlight">#5</td><td>Honda Civic TCR</td><td>0</td><td>1:36.653</td><td>1:37.967</td><td>1</td><td>9</td><td>—</td></tr>
-                <tr><td class="td-pos">8</td><td class="td-driver">Anthony Orr2</td><td class="td-highlight">#77</td><td>Hyundai Veloster N</td><td>0</td><td>1:36.371</td><td>1:38.094</td><td>0</td><td>8</td><td>—</td></tr>
-                <tr><td class="td-pos">9</td><td class="td-driver">Jake Harrigan</td><td class="td-highlight">#11</td><td>Hyundai Elantra N</td><td>0</td><td>1:36.806</td><td>1:39.030</td><td>6</td><td>7</td><td>—</td></tr>
-                <tr><td class="td-pos">10</td><td class="td-driver">Frank Perreault2</td><td class="td-highlight">#999</td><td>Hyundai Veloster N</td><td>0</td><td>1:37.274</td><td>1:39.828</td><td>6</td><td>6</td><td>—</td></tr>
-                <tr><td class="td-pos">11</td><td class="td-driver">Ryan Nixon</td><td class="td-highlight">#12</td><td>Audi RS3 LMS Gen2</td><td>0</td><td>1:37.872</td><td>1:40.956</td><td>3</td><td>5</td><td>—</td></tr>
-                <tr><td class="td-pos">12</td><td class="td-driver">Matt Bond6</td><td class="td-highlight">#19</td><td>Audi RS3 LMS Gen2</td><td>0</td><td>1:37.448</td><td>1:41.980</td><td>10</td><td>4</td><td>—</td></tr>
-                <tr><td class="td-pos">13</td><td class="td-driver">Dylan Foster9</td><td class="td-highlight">#88</td><td>Hyundai Elantra N</td><td>0</td><td>1:36.707</td><td>1:49.439</td><td>9</td><td>3</td><td>—</td></tr>
-                <tr><td class="td-pos">14</td><td class="td-driver">Aaron Liebling</td><td class="td-highlight">#6</td><td>Honda Civic TCR</td><td>0</td><td>1:37.936</td><td>1:50.877</td><td>9</td><td>2</td><td>—</td></tr>
-                <tr><td class="td-pos">15</td><td class="td-driver">Joshua S Smith</td><td class="td-highlight">#23</td><td>Hyundai Elantra N</td><td>0</td><td>1:37.267</td><td>1:43.057</td><td>6</td><td>1</td><td><span class="badge badge-dnf">DNF</span></td></tr>
-              </tbody>
-            </table>
-          </div>
+        <div class="rah-right">
+          <span class="rah-winner">🏆 John Agudelo</span>
+          <span class="rah-date">Mon Mar 23, 2026</span>
+          <span class="rah-chevron">▼</span>
+        </div>
+      </div>
+      <div class="race-accordion-body open">
+        <div class="table-wrap" style="border:none;border-radius:0;box-shadow:none;">
+          <table>
+            <thead><tr><th>Pos</th><th>Driver</th><th>Car #</th><th>Car</th><th>Laps Led</th><th>Best Lap</th><th>Avg Lap</th><th>Inc</th><th>Pts</th><th>Agg Pts</th><th>Result</th></tr></thead>
+            <tbody>
+              <tr><td class="td-pos pos-1">1</td><td class="td-driver">John Agudelo</td><td class="td-highlight">#48</td><td>Honda Civic TCR</td><td>15</td><td>1:14.467</td><td>1:15.564</td><td>3</td><td>30</td><td class="td-highlight">31</td><td><span class="badge badge-win">WIN</span></td></tr>
+              <tr><td class="td-pos pos-2">2</td><td class="td-driver">Anthony Orr2</td><td class="td-highlight">#77</td><td>Hyundai Veloster N</td><td>1</td><td>1:14.378</td><td>1:15.664</td><td>3</td><td>25</td><td>28</td><td><span class="badge badge-pod">P2</span></td></tr>
+              <tr><td class="td-pos pos-3">3</td><td class="td-driver">Byron Forest II</td><td class="td-highlight">#824</td><td>Hyundai Elantra N</td><td>0</td><td>1:14.208</td><td>1:15.756</td><td>2</td><td>22</td><td class="td-highlight">53</td><td><span class="badge badge-pod">P3</span></td></tr>
+              <tr><td class="td-pos">4</td><td class="td-driver">Wadih Maalouf</td><td class="td-highlight">#72</td><td>Hyundai Elantra N</td><td>0</td><td>1:14.549</td><td>1:16.012</td><td>4</td><td>17</td><td>38</td><td>—</td></tr>
+              <tr><td class="td-pos">5</td><td class="td-driver">Kevin Corea</td><td class="td-highlight">#13</td><td>Honda Civic TCR</td><td>0</td><td>1:14.302</td><td>1:16.023</td><td>0</td><td>14</td><td>25</td><td>—</td></tr>
+              <tr><td class="td-pos">6</td><td class="td-driver">Ryan Rider</td><td class="td-highlight">#18</td><td>Hyundai Elantra N</td><td>0</td><td>1:14.438</td><td>1:16.082</td><td>0</td><td>11</td><td>36</td><td>—</td></tr>
+              <tr><td class="td-pos">7</td><td class="td-driver">Matt Bond6</td><td class="td-highlight">#19</td><td>Audi RS3 LMS Gen2</td><td>0</td><td>1:14.904</td><td>1:16.172</td><td>7</td><td>9</td><td>11</td><td>—</td></tr>
+              <tr><td class="td-pos">8</td><td class="td-driver">Luke Harrigan</td><td class="td-highlight">#11</td><td>Hyundai Elantra N</td><td>0</td><td>1:15.028</td><td>1:16.556</td><td>0</td><td>8</td><td>15</td><td>—</td></tr>
+              <tr><td class="td-pos">9</td><td class="td-driver">Connor Menard</td><td class="td-highlight">#5</td><td>Honda Civic TCR</td><td>0</td><td>1:14.615</td><td>1:16.560</td><td>6</td><td>7</td><td>16</td><td>—</td></tr>
+              <tr><td class="td-pos">10</td><td class="td-driver">Jake Harrigan</td><td class="td-highlight">#14</td><td>Hyundai Elantra N</td><td>0</td><td>1:14.697</td><td>1:16.683</td><td>7</td><td>6</td><td>12</td><td>—</td></tr>
+              <tr><td class="td-pos">11</td><td class="td-driver">Phillip Poole</td><td class="td-highlight">#46</td><td>Hyundai Elantra N</td><td>0</td><td>1:14.926</td><td>1:16.810</td><td>14</td><td>5</td><td>22</td><td>—</td></tr>
+              <tr><td class="td-pos">12</td><td class="td-driver">Frank Perreault2</td><td class="td-highlight">#999</td><td>Hyundai Veloster N</td><td>0</td><td>1:14.661</td><td>1:16.811</td><td>10</td><td>4</td><td>18</td><td>—</td></tr>
+              <tr><td class="td-pos">13</td><td class="td-driver">Joshua S Smith</td><td class="td-highlight">#23</td><td>Hyundai Elantra N</td><td>0</td><td>1:14.936</td><td>1:16.936</td><td>7</td><td>3</td><td>11</td><td>—</td></tr>
+              <tr><td class="td-pos">14</td><td class="td-driver">William Stiern</td><td class="td-highlight">#418</td><td>Honda Civic TCR</td><td>0</td><td>1:14.881</td><td>1:18.073</td><td>8</td><td>2</td><td>6</td><td>—</td></tr>
+              <tr><td class="td-pos">15</td><td class="td-driver">Aaron Liebling</td><td class="td-highlight">#66</td><td>Honda Civic TCR</td><td>0</td><td>1:15.268</td><td>1:21.997</td><td>5</td><td>1</td><td>6</td><td>—</td></tr>
+              <tr><td class="td-pos">16</td><td class="td-driver">Kevin Currais</td><td class="td-highlight">#16</td><td>Honda Civic TCR</td><td>0</td><td>—</td><td>—</td><td>0</td><td>0</td><td>0</td><td><span class="badge badge-dnf">DNF</span></td></tr>
+              <tr><td class="td-pos">17</td><td class="td-driver">Dylan Foster9</td><td class="td-highlight">#88</td><td>Hyundai Elantra N</td><td>0</td><td>—</td><td>—</td><td>0</td><td>0</td><td>0</td><td><span class="badge badge-dnf">DNF</span></td></tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
 
-    <!-- ROUND 1 RACE 2 -->
-    <div style="margin-bottom:32px;">
-      <div class="card">
-        <div class="card-header">
-          <span>Round 1 · Race 2 — <span class="accent">Okayama International Circuit</span></span>
-          <span style="font-family:'Rajdhani',sans-serif;font-size:0.8rem;color:#888;letter-spacing:0.05em;">Mon Mar 16, 2026 · 8:30 PM ET · 13 Laps · Winner: Byron Forest II</span>
-        </div>
-        <div class="card-body" style="padding:0;">
-          <div class="table-wrap" style="border:none;border-radius:0;box-shadow:none;">
-            <table>
-              <thead><tr><th>Pos</th><th>Driver</th><th>Car #</th><th>Car</th><th>Laps Led</th><th>Best Lap</th><th>Avg Lap</th><th>Inc</th><th>Pts</th><th>Agg Pts</th><th>Result</th></tr></thead>
-              <tbody>
-                <tr><td class="td-pos pos-1">1</td><td class="td-driver">Byron Forest II</td><td class="td-highlight">#824</td><td>Hyundai Elantra N</td><td>12</td><td>1:35.739</td><td>1:37.097</td><td>0</td><td>30</td><td class="td-highlight">44</td><td><span class="badge badge-win">WIN</span></td></tr>
-                <tr><td class="td-pos pos-2">2</td><td class="td-driver">Ryan Rider</td><td class="td-highlight">#18</td><td>Hyundai Elantra N</td><td>0</td><td>1:35.438</td><td>1:37.249</td><td>3</td><td>26</td><td class="td-highlight">52</td><td><span class="badge badge-pod">P2</span></td></tr>
-                <tr><td class="td-pos pos-3">3</td><td class="td-driver">Jake Harrigan</td><td class="td-highlight">#11</td><td>Hyundai Elantra N</td><td>0</td><td>1:36.975</td><td>1:38.545</td><td>5</td><td>21</td><td>28</td><td><span class="badge badge-pod">P3</span></td></tr>
-                <tr><td class="td-pos">4</td><td class="td-driver">Anthony Orr2</td><td class="td-highlight">#77</td><td>Hyundai Veloster N</td><td>0</td><td>1:36.426</td><td>1:38.556</td><td>0</td><td>17</td><td>25</td><td>—</td></tr>
-                <tr><td class="td-pos">5</td><td class="td-driver">Wadih Maalouf</td><td class="td-highlight">#72</td><td>Hyundai Elantra N</td><td>0</td><td>1:37.060</td><td>1:38.585</td><td>4</td><td>14</td><td>35</td><td>—</td></tr>
-                <tr><td class="td-pos">6</td><td class="td-driver">Dylan Foster9</td><td class="td-highlight">#88</td><td>Hyundai Elantra N</td><td>0</td><td>1:37.131</td><td>1:38.648</td><td>0</td><td>11</td><td>14</td><td>—</td></tr>
-                <tr><td class="td-pos">7</td><td class="td-driver">Matt Bond6</td><td class="td-highlight">#19</td><td>Audi RS3 LMS Gen2</td><td>0</td><td>1:37.309</td><td>1:38.947</td><td>5</td><td>9</td><td>13</td><td>—</td></tr>
-                <tr><td class="td-pos">8</td><td class="td-driver">Connor Menard</td><td class="td-highlight">#5</td><td>Honda Civic TCR</td><td>0</td><td>1:37.190</td><td>1:38.986</td><td>5</td><td>8</td><td>17</td><td>—</td></tr>
-                <tr><td class="td-pos">9</td><td class="td-driver">Kevin Corea</td><td class="td-highlight">#13</td><td>Honda Civic TCR</td><td>0</td><td>1:36.022</td><td>1:39.281</td><td>4</td><td>7</td><td>24</td><td>—</td></tr>
-                <tr><td class="td-pos">10</td><td class="td-driver">Aaron Liebling</td><td class="td-highlight">#6</td><td>Honda Civic TCR</td><td>1</td><td>1:37.784</td><td>1:40.276</td><td>8</td><td>6</td><td>8</td><td>—</td></tr>
-                <tr><td class="td-pos">11</td><td class="td-driver">Ryan Nixon</td><td class="td-highlight">#12</td><td>Audi RS3 LMS Gen2</td><td>0</td><td>1:37.733</td><td>1:41.361</td><td>9</td><td>5</td><td>10</td><td>—</td></tr>
-                <tr><td class="td-pos">12</td><td class="td-driver">Frank Perreault2</td><td class="td-highlight">#999</td><td>Hyundai Veloster N</td><td>0</td><td>1:37.411</td><td>2:03.158</td><td>2</td><td>4</td><td>10</td><td>—</td></tr>
-                <tr><td class="td-pos">13</td><td class="td-driver">Phillip Poole</td><td class="td-highlight">#46</td><td>Hyundai Elantra N</td><td>0</td><td>1:36.527</td><td>1:40.737</td><td>12</td><td>3</td><td>14</td><td>—</td></tr>
-                <tr><td class="td-pos">14</td><td class="td-driver">John Agudelo</td><td class="td-highlight">#48</td><td>Honda Civic TCR</td><td>0</td><td>—</td><td>1:50.078</td><td>6</td><td>2</td><td>32</td><td><span class="badge badge-dnf">DNF</span></td></tr>
-                <tr><td class="td-pos">15</td><td class="td-driver">Joshua S Smith</td><td class="td-highlight">#23</td><td>Hyundai Elantra N</td><td>0</td><td>—</td><td>—</td><td>0</td><td>1</td><td>1</td><td><span class="badge badge-dnf">DNF</span></td></tr>
-              </tbody>
-            </table>
-          </div>
+    <!-- ROUND 2 · RACE 1 -->
+    <div class="race-accordion">
+      <div class="race-accordion-header" onclick="toggleAcc(this)">
+        <div class="rah-left"><span class="rah-round">Round 2 · Race 1</span><span class="rah-title">Summit Point Raceway</span></div>
+        <div class="rah-right"><span class="rah-winner">🏆 Byron Forest II</span><span class="rah-date">Mon Mar 23, 2026</span><span class="rah-chevron">▼</span></div>
+      </div>
+      <div class="race-accordion-body">
+        <div class="table-wrap" style="border:none;border-radius:0;box-shadow:none;">
+          <table>
+            <thead><tr><th>Pos</th><th>Driver</th><th>Car #</th><th>Car</th><th>Laps Led</th><th>Best Lap</th><th>Avg Lap</th><th>Inc</th><th>Pts</th><th>Result</th></tr></thead>
+            <tbody>
+              <tr><td class="td-pos pos-1">1</td><td class="td-driver">Byron Forest II</td><td class="td-highlight">#824</td><td>Hyundai Elantra N</td><td>16</td><td>1:14.129</td><td>1:15.055</td><td>0</td><td>31</td><td><span class="badge badge-win">WIN</span></td></tr>
+              <tr><td class="td-pos pos-2">2</td><td class="td-driver">Ryan Rider</td><td class="td-highlight">#18</td><td>Hyundai Elantra N</td><td>0</td><td>1:14.252</td><td>1:15.409</td><td>0</td><td>25</td><td><span class="badge badge-pod">P2</span></td></tr>
+              <tr><td class="td-pos pos-3">3</td><td class="td-driver">Wadih Maalouf</td><td class="td-highlight">#72</td><td>Hyundai Elantra N</td><td>0</td><td>1:14.323</td><td>1:15.583</td><td>4</td><td>21</td><td><span class="badge badge-pod">P3</span></td></tr>
+              <tr><td class="td-pos">4</td><td class="td-driver">Phillip Poole</td><td class="td-highlight">#46</td><td>Hyundai Elantra N</td><td>0</td><td>1:14.386</td><td>1:15.752</td><td>8</td><td>17</td><td>—</td></tr>
+              <tr><td class="td-pos">5</td><td class="td-driver">Frank Perreault2</td><td class="td-highlight">#999</td><td>Hyundai Veloster N</td><td>0</td><td>1:14.466</td><td>1:15.765</td><td>2</td><td>14</td><td>—</td></tr>
+              <tr><td class="td-pos">6</td><td class="td-driver">Kevin Corea</td><td class="td-highlight">#13</td><td>Honda Civic TCR</td><td>0</td><td>1:14.215</td><td>1:15.778</td><td>0</td><td>11</td><td>—</td></tr>
+              <tr><td class="td-pos">7</td><td class="td-driver">Connor Menard</td><td class="td-highlight">#5</td><td>Honda Civic TCR</td><td>0</td><td>1:14.637</td><td>1:15.940</td><td>1</td><td>9</td><td>—</td></tr>
+              <tr><td class="td-pos">8</td><td class="td-driver">Joshua S Smith</td><td class="td-highlight">#23</td><td>Hyundai Elantra N</td><td>0</td><td>1:14.665</td><td>1:16.208</td><td>6</td><td>8</td><td>—</td></tr>
+              <tr><td class="td-pos">9</td><td class="td-driver">Luke Harrigan</td><td class="td-highlight">#11</td><td>Hyundai Elantra N</td><td>0</td><td>1:14.891</td><td>1:16.263</td><td>4</td><td>7</td><td>—</td></tr>
+              <tr><td class="td-pos">10</td><td class="td-driver">Jake Harrigan</td><td class="td-highlight">#14</td><td>Hyundai Elantra N</td><td>0</td><td>1:14.912</td><td>1:16.561</td><td>8</td><td>6</td><td>—</td></tr>
+              <tr><td class="td-pos">11</td><td class="td-driver">Aaron Liebling</td><td class="td-highlight">#66</td><td>Honda Civic TCR</td><td>0</td><td>1:15.183</td><td>1:17.044</td><td>1</td><td>5</td><td>—</td></tr>
+              <tr><td class="td-pos">12</td><td class="td-driver">William Stiern</td><td class="td-highlight">#418</td><td>Honda Civic TCR</td><td>0</td><td>1:15.026</td><td>1:17.060</td><td>5</td><td>4</td><td>—</td></tr>
+              <tr><td class="td-pos">13</td><td class="td-driver">Anthony Orr2</td><td class="td-highlight">#77</td><td>Hyundai Veloster N</td><td>0</td><td>1:15.033</td><td>1:17.077</td><td>3</td><td>3</td><td>—</td></tr>
+              <tr><td class="td-pos">14</td><td class="td-driver">Matt Bond6</td><td class="td-highlight">#19</td><td>Audi RS3 LMS Gen2</td><td>0</td><td>1:14.872</td><td>1:17.347</td><td>10</td><td>2</td><td>—</td></tr>
+              <tr><td class="td-pos">15</td><td class="td-driver">John Agudelo</td><td class="td-highlight">#48</td><td>Honda Civic TCR</td><td>0</td><td>1:14.563</td><td>1:18.269</td><td>15</td><td>1</td><td>—</td></tr>
+              <tr><td class="td-pos">16</td><td class="td-driver">Dylan Foster9</td><td class="td-highlight">#88</td><td>Hyundai Elantra N</td><td>0</td><td>—</td><td>—</td><td>0</td><td>0</td><td><span class="badge badge-dnf">DNF</span></td></tr>
+              <tr><td class="td-pos">17</td><td class="td-driver">Kevin Currais</td><td class="td-highlight">#16</td><td>Honda Civic TCR</td><td>0</td><td>—</td><td>—</td><td>0</td><td>0</td><td><span class="badge badge-dnf">DNF</span></td></tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
 
-    <!-- ROUND 2 — RACE 1 -->
-    <div style="margin-bottom:24px;">
-      <div class="card">
-        <div class="card-header">
-          <span>Round 2 · Race 1 — <span class="accent">Summit Point Raceway</span></span>
-          <span style="font-family:'Rajdhani',sans-serif;font-size:0.8rem;color:#888;letter-spacing:0.05em;">Mon Mar 23, 2026 · 8:30 PM ET · 16 Laps · Winner: Byron Forest II</span>
-        </div>
-        <div class="card-body" style="padding:0;">
-          <div class="table-wrap" style="border:none;border-radius:0;box-shadow:none;">
-            <table>
-              <thead><tr><th>Pos</th><th>Driver</th><th>Car #</th><th>Car</th><th>Laps Led</th><th>Best Lap</th><th>Avg Lap</th><th>Inc</th><th>Pts</th><th>Result</th></tr></thead>
-              <tbody>
-                <tr><td class="td-pos pos-1">1</td><td class="td-driver">Byron Forest II</td><td class="td-highlight">#824</td><td>Hyundai Elantra N</td><td>16</td><td>1:14.129</td><td>1:15.055</td><td>0</td><td>31</td><td><span class="badge badge-win">WIN</span></td></tr>
-                <tr><td class="td-pos pos-2">2</td><td class="td-driver">Ryan Rider</td><td class="td-highlight">#18</td><td>Hyundai Elantra N</td><td>0</td><td>1:14.252</td><td>1:15.409</td><td>0</td><td>25</td><td><span class="badge badge-pod">P2</span></td></tr>
-                <tr><td class="td-pos pos-3">3</td><td class="td-driver">Wadih Maalouf</td><td class="td-highlight">#72</td><td>Hyundai Elantra N</td><td>0</td><td>1:14.323</td><td>1:15.583</td><td>4</td><td>21</td><td><span class="badge badge-pod">P3</span></td></tr>
-                <tr><td class="td-pos">4</td><td class="td-driver">Phillip Poole</td><td class="td-highlight">#46</td><td>Hyundai Elantra N</td><td>0</td><td>1:14.386</td><td>1:15.752</td><td>8</td><td>17</td><td>—</td></tr>
-                <tr><td class="td-pos">5</td><td class="td-driver">Frank Perreault2</td><td class="td-highlight">#999</td><td>Hyundai Veloster N</td><td>0</td><td>1:14.466</td><td>1:15.765</td><td>2</td><td>14</td><td>—</td></tr>
-                <tr><td class="td-pos">6</td><td class="td-driver">Kevin Corea</td><td class="td-highlight">#13</td><td>Honda Civic TCR</td><td>0</td><td>1:14.215</td><td>1:15.778</td><td>0</td><td>11</td><td>—</td></tr>
-                <tr><td class="td-pos">7</td><td class="td-driver">Connor Menard</td><td class="td-highlight">#5</td><td>Honda Civic TCR</td><td>0</td><td>1:14.637</td><td>1:15.940</td><td>1</td><td>9</td><td>—</td></tr>
-                <tr><td class="td-pos">8</td><td class="td-driver">Joshua S Smith</td><td class="td-highlight">#23</td><td>Hyundai Elantra N</td><td>0</td><td>1:14.665</td><td>1:16.208</td><td>6</td><td>8</td><td>—</td></tr>
-                <tr><td class="td-pos">9</td><td class="td-driver">Luke Harrigan</td><td class="td-highlight">#11</td><td>Hyundai Elantra N</td><td>0</td><td>1:14.891</td><td>1:16.263</td><td>4</td><td>7</td><td>—</td></tr>
-                <tr><td class="td-pos">10</td><td class="td-driver">Jake Harrigan</td><td class="td-highlight">#14</td><td>Hyundai Elantra N</td><td>0</td><td>1:14.912</td><td>1:16.561</td><td>8</td><td>6</td><td>—</td></tr>
-                <tr><td class="td-pos">11</td><td class="td-driver">Aaron Liebling</td><td class="td-highlight">#66</td><td>Honda Civic TCR</td><td>0</td><td>1:15.183</td><td>1:17.044</td><td>1</td><td>5</td><td>—</td></tr>
-                <tr><td class="td-pos">12</td><td class="td-driver">William Stiern</td><td class="td-highlight">#418</td><td>Honda Civic TCR</td><td>0</td><td>1:15.026</td><td>1:17.060</td><td>5</td><td>4</td><td>—</td></tr>
-                <tr><td class="td-pos">13</td><td class="td-driver">Anthony Orr2</td><td class="td-highlight">#77</td><td>Hyundai Veloster N</td><td>0</td><td>1:15.033</td><td>1:17.077</td><td>3</td><td>3</td><td>—</td></tr>
-                <tr><td class="td-pos">14</td><td class="td-driver">Matt Bond6</td><td class="td-highlight">#19</td><td>Audi RS3 LMS Gen2</td><td>0</td><td>1:14.872</td><td>1:17.347</td><td>10</td><td>2</td><td>—</td></tr>
-                <tr><td class="td-pos">15</td><td class="td-driver">John Agudelo</td><td class="td-highlight">#48</td><td>Honda Civic TCR</td><td>0</td><td>1:14.563</td><td>1:18.269</td><td>15</td><td>1</td><td>—</td></tr>
-                <tr><td class="td-pos">16</td><td class="td-driver">Dylan Foster9</td><td class="td-highlight">#88</td><td>Hyundai Elantra N</td><td>0</td><td>—</td><td>—</td><td>0</td><td>0</td><td><span class="badge badge-dnf">DNF</span></td></tr>
-                <tr><td class="td-pos">17</td><td class="td-driver">Kevin Currais</td><td class="td-highlight">#16</td><td>Honda Civic TCR</td><td>0</td><td>—</td><td>—</td><td>0</td><td>0</td><td><span class="badge badge-dnf">DNF</span></td></tr>
-              </tbody>
-            </table>
-          </div>
+    <!-- ROUND 1 · RACE 2 -->
+    <div class="race-accordion">
+      <div class="race-accordion-header" onclick="toggleAcc(this)">
+        <div class="rah-left"><span class="rah-round">Round 1 · Race 2</span><span class="rah-title">Okayama International Circuit</span></div>
+        <div class="rah-right"><span class="rah-winner">🏆 Byron Forest II</span><span class="rah-date">Mon Mar 16, 2026</span><span class="rah-chevron">▼</span></div>
+      </div>
+      <div class="race-accordion-body">
+        <div class="table-wrap" style="border:none;border-radius:0;box-shadow:none;">
+          <table>
+            <thead><tr><th>Pos</th><th>Driver</th><th>Car #</th><th>Car</th><th>Laps Led</th><th>Best Lap</th><th>Avg Lap</th><th>Inc</th><th>Pts</th><th>Agg Pts</th><th>Result</th></tr></thead>
+            <tbody>
+              <tr><td class="td-pos pos-1">1</td><td class="td-driver">Byron Forest II</td><td class="td-highlight">#824</td><td>Hyundai Elantra N</td><td>12</td><td>1:35.739</td><td>1:37.097</td><td>0</td><td>30</td><td class="td-highlight">44</td><td><span class="badge badge-win">WIN</span></td></tr>
+              <tr><td class="td-pos pos-2">2</td><td class="td-driver">Ryan Rider</td><td class="td-highlight">#18</td><td>Hyundai Elantra N</td><td>0</td><td>1:35.438</td><td>1:37.249</td><td>3</td><td>26</td><td class="td-highlight">52</td><td><span class="badge badge-pod">P2</span></td></tr>
+              <tr><td class="td-pos pos-3">3</td><td class="td-driver">Jake Harrigan</td><td class="td-highlight">#11</td><td>Hyundai Elantra N</td><td>0</td><td>1:36.975</td><td>1:38.545</td><td>5</td><td>21</td><td>28</td><td><span class="badge badge-pod">P3</span></td></tr>
+              <tr><td class="td-pos">4</td><td class="td-driver">Anthony Orr2</td><td class="td-highlight">#77</td><td>Hyundai Veloster N</td><td>0</td><td>1:36.426</td><td>1:38.556</td><td>0</td><td>17</td><td>25</td><td>—</td></tr>
+              <tr><td class="td-pos">5</td><td class="td-driver">Wadih Maalouf</td><td class="td-highlight">#72</td><td>Hyundai Elantra N</td><td>0</td><td>1:37.060</td><td>1:38.585</td><td>4</td><td>14</td><td>35</td><td>—</td></tr>
+              <tr><td class="td-pos">6</td><td class="td-driver">Dylan Foster9</td><td class="td-highlight">#88</td><td>Hyundai Elantra N</td><td>0</td><td>1:37.131</td><td>1:38.648</td><td>0</td><td>11</td><td>14</td><td>—</td></tr>
+              <tr><td class="td-pos">7</td><td class="td-driver">Matt Bond6</td><td class="td-highlight">#19</td><td>Audi RS3 LMS Gen2</td><td>0</td><td>1:37.309</td><td>1:38.947</td><td>5</td><td>9</td><td>13</td><td>—</td></tr>
+              <tr><td class="td-pos">8</td><td class="td-driver">Connor Menard</td><td class="td-highlight">#5</td><td>Honda Civic TCR</td><td>0</td><td>1:37.190</td><td>1:38.986</td><td>5</td><td>8</td><td>17</td><td>—</td></tr>
+              <tr><td class="td-pos">9</td><td class="td-driver">Kevin Corea</td><td class="td-highlight">#13</td><td>Honda Civic TCR</td><td>0</td><td>1:36.022</td><td>1:39.281</td><td>4</td><td>7</td><td>24</td><td>—</td></tr>
+              <tr><td class="td-pos">10</td><td class="td-driver">Aaron Liebling</td><td class="td-highlight">#6</td><td>Honda Civic TCR</td><td>1</td><td>1:37.784</td><td>1:40.276</td><td>8</td><td>6</td><td>8</td><td>—</td></tr>
+              <tr><td class="td-pos">11</td><td class="td-driver">Ryan Nixon</td><td class="td-highlight">#12</td><td>Audi RS3 LMS Gen2</td><td>0</td><td>1:37.733</td><td>1:41.361</td><td>9</td><td>5</td><td>10</td><td>—</td></tr>
+              <tr><td class="td-pos">12</td><td class="td-driver">Frank Perreault2</td><td class="td-highlight">#999</td><td>Hyundai Veloster N</td><td>0</td><td>1:37.411</td><td>2:03.158</td><td>2</td><td>4</td><td>10</td><td>—</td></tr>
+              <tr><td class="td-pos">13</td><td class="td-driver">Phillip Poole</td><td class="td-highlight">#46</td><td>Hyundai Elantra N</td><td>0</td><td>1:36.527</td><td>1:40.737</td><td>12</td><td>3</td><td>14</td><td>—</td></tr>
+              <tr><td class="td-pos">14</td><td class="td-driver">John Agudelo</td><td class="td-highlight">#48</td><td>Honda Civic TCR</td><td>0</td><td>—</td><td>1:50.078</td><td>6</td><td>2</td><td>32</td><td><span class="badge badge-dnf">DNF</span></td></tr>
+              <tr><td class="td-pos">15</td><td class="td-driver">Joshua S Smith</td><td class="td-highlight">#23</td><td>Hyundai Elantra N</td><td>0</td><td>—</td><td>—</td><td>0</td><td>1</td><td>1</td><td><span class="badge badge-dnf">DNF</span></td></tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
 
-    <!-- ROUND 2 — RACE 2 -->
-    <div style="margin-bottom:32px;">
-      <div class="card">
-        <div class="card-header">
-          <span>Round 2 · Race 2 — <span class="accent">Summit Point Raceway</span></span>
-          <span style="font-family:'Rajdhani',sans-serif;font-size:0.8rem;color:#888;letter-spacing:0.05em;">Mon Mar 23, 2026 · 8:30 PM ET · 16 Laps · Winner: John Agudelo</span>
-        </div>
-        <div class="card-body" style="padding:0;">
-          <div class="table-wrap" style="border:none;border-radius:0;box-shadow:none;">
-            <table>
-              <thead><tr><th>Pos</th><th>Driver</th><th>Car #</th><th>Car</th><th>Laps Led</th><th>Best Lap</th><th>Avg Lap</th><th>Inc</th><th>Pts</th><th>Agg Pts</th><th>Result</th></tr></thead>
-              <tbody>
-                <tr><td class="td-pos pos-1">1</td><td class="td-driver">John Agudelo</td><td class="td-highlight">#48</td><td>Honda Civic TCR</td><td>15</td><td>1:14.467</td><td>1:15.564</td><td>3</td><td>30</td><td class="td-highlight">31</td><td><span class="badge badge-win">WIN</span></td></tr>
-                <tr><td class="td-pos pos-2">2</td><td class="td-driver">Anthony Orr2</td><td class="td-highlight">#77</td><td>Hyundai Veloster N</td><td>1</td><td>1:14.378</td><td>1:15.664</td><td>3</td><td>25</td><td>28</td><td><span class="badge badge-pod">P2</span></td></tr>
-                <tr><td class="td-pos pos-3">3</td><td class="td-driver">Byron Forest II</td><td class="td-highlight">#824</td><td>Hyundai Elantra N</td><td>0</td><td>1:14.208</td><td>1:15.756</td><td>2</td><td>22</td><td class="td-highlight">53</td><td><span class="badge badge-pod">P3</span></td></tr>
-                <tr><td class="td-pos">4</td><td class="td-driver">Wadih Maalouf</td><td class="td-highlight">#72</td><td>Hyundai Elantra N</td><td>0</td><td>1:14.549</td><td>1:16.012</td><td>4</td><td>17</td><td>38</td><td>—</td></tr>
-                <tr><td class="td-pos">5</td><td class="td-driver">Kevin Corea</td><td class="td-highlight">#13</td><td>Honda Civic TCR</td><td>0</td><td>1:14.302</td><td>1:16.023</td><td>0</td><td>14</td><td>25</td><td>—</td></tr>
-                <tr><td class="td-pos">6</td><td class="td-driver">Ryan Rider</td><td class="td-highlight">#18</td><td>Hyundai Elantra N</td><td>0</td><td>1:14.438</td><td>1:16.082</td><td>0</td><td>11</td><td>36</td><td>—</td></tr>
-                <tr><td class="td-pos">7</td><td class="td-driver">Matt Bond6</td><td class="td-highlight">#19</td><td>Audi RS3 LMS Gen2</td><td>0</td><td>1:14.904</td><td>1:16.172</td><td>7</td><td>9</td><td>11</td><td>—</td></tr>
-                <tr><td class="td-pos">8</td><td class="td-driver">Luke Harrigan</td><td class="td-highlight">#11</td><td>Hyundai Elantra N</td><td>0</td><td>1:15.028</td><td>1:16.556</td><td>0</td><td>8</td><td>15</td><td>—</td></tr>
-                <tr><td class="td-pos">9</td><td class="td-driver">Connor Menard</td><td class="td-highlight">#5</td><td>Honda Civic TCR</td><td>0</td><td>1:14.615</td><td>1:16.560</td><td>6</td><td>7</td><td>16</td><td>—</td></tr>
-                <tr><td class="td-pos">10</td><td class="td-driver">Jake Harrigan</td><td class="td-highlight">#14</td><td>Hyundai Elantra N</td><td>0</td><td>1:14.697</td><td>1:16.683</td><td>7</td><td>6</td><td>12</td><td>—</td></tr>
-                <tr><td class="td-pos">11</td><td class="td-driver">Phillip Poole</td><td class="td-highlight">#46</td><td>Hyundai Elantra N</td><td>0</td><td>1:14.926</td><td>1:16.810</td><td>14</td><td>5</td><td>22</td><td>—</td></tr>
-                <tr><td class="td-pos">12</td><td class="td-driver">Frank Perreault2</td><td class="td-highlight">#999</td><td>Hyundai Veloster N</td><td>0</td><td>1:14.661</td><td>1:16.811</td><td>10</td><td>4</td><td>18</td><td>—</td></tr>
-                <tr><td class="td-pos">13</td><td class="td-driver">Joshua S Smith</td><td class="td-highlight">#23</td><td>Hyundai Elantra N</td><td>0</td><td>1:14.936</td><td>1:16.936</td><td>7</td><td>3</td><td>11</td><td>—</td></tr>
-                <tr><td class="td-pos">14</td><td class="td-driver">William Stiern</td><td class="td-highlight">#418</td><td>Honda Civic TCR</td><td>0</td><td>1:14.881</td><td>1:18.073</td><td>8</td><td>2</td><td>6</td><td>—</td></tr>
-                <tr><td class="td-pos">15</td><td class="td-driver">Aaron Liebling</td><td class="td-highlight">#66</td><td>Honda Civic TCR</td><td>0</td><td>1:15.268</td><td>1:21.997</td><td>5</td><td>1</td><td>6</td><td>—</td></tr>
-                <tr><td class="td-pos">16</td><td class="td-driver">Kevin Currais</td><td class="td-highlight">#16</td><td>Honda Civic TCR</td><td>0</td><td>—</td><td>—</td><td>0</td><td>0</td><td>0</td><td><span class="badge badge-dnf">DNF</span></td></tr>
-                <tr><td class="td-pos">17</td><td class="td-driver">Dylan Foster9</td><td class="td-highlight">#88</td><td>Hyundai Elantra N</td><td>0</td><td>—</td><td>—</td><td>0</td><td>0</td><td>0</td><td><span class="badge badge-dnf">DNF</span></td></tr>
-              </tbody>
-            </table>
-          </div>
+    <!-- ROUND 1 · RACE 1 -->
+    <div class="race-accordion">
+      <div class="race-accordion-header" onclick="toggleAcc(this)">
+        <div class="rah-left"><span class="rah-round">Round 1 · Race 1</span><span class="rah-title">Okayama International Circuit</span></div>
+        <div class="rah-right"><span class="rah-winner">🏆 John Agudelo</span><span class="rah-date">Mon Mar 16, 2026</span><span class="rah-chevron">▼</span></div>
+      </div>
+      <div class="race-accordion-body">
+        <div class="table-wrap" style="border:none;border-radius:0;box-shadow:none;">
+          <table>
+            <thead><tr><th>Pos</th><th>Driver</th><th>Car #</th><th>Car</th><th>Laps Led</th><th>Best Lap</th><th>Avg Lap</th><th>Inc</th><th>Pts</th><th>Result</th></tr></thead>
+            <tbody>
+              <tr><td class="td-pos pos-1">1</td><td class="td-driver">John Agudelo</td><td class="td-highlight">#48</td><td>Honda Civic TCR</td><td>3</td><td>1:36.004</td><td>1:37.255</td><td>2</td><td>30</td><td><span class="badge badge-win">WIN</span></td></tr>
+              <tr><td class="td-pos pos-2">2</td><td class="td-driver">Ryan Rider</td><td class="td-highlight">#18</td><td>Hyundai Elantra N</td><td>2</td><td>1:35.695</td><td>1:37.448</td><td>3</td><td>26</td><td><span class="badge badge-pod">P2</span></td></tr>
+              <tr><td class="td-pos pos-3">3</td><td class="td-driver">Wadih Maalouf</td><td class="td-highlight">#72</td><td>Hyundai Elantra N</td><td>8</td><td>1:36.125</td><td>1:37.530</td><td>0</td><td>21</td><td><span class="badge badge-pod">P3</span></td></tr>
+              <tr><td class="td-pos">4</td><td class="td-driver">Kevin Corea</td><td class="td-highlight">#13</td><td>Honda Civic TCR</td><td>0</td><td>1:35.968</td><td>1:37.537</td><td>3</td><td>17</td><td>—</td></tr>
+              <tr><td class="td-pos">5</td><td class="td-driver">Byron Forest II</td><td class="td-highlight">#824</td><td>Hyundai Elantra N</td><td>0</td><td>1:36.303</td><td>1:37.806</td><td>2</td><td>14</td><td>—</td></tr>
+              <tr><td class="td-pos">6</td><td class="td-driver">Phillip Poole</td><td class="td-highlight">#46</td><td>Hyundai Elantra N</td><td>0</td><td>1:36.574</td><td>1:37.924</td><td>2</td><td>11</td><td>—</td></tr>
+              <tr><td class="td-pos">7</td><td class="td-driver">Connor Menard</td><td class="td-highlight">#5</td><td>Honda Civic TCR</td><td>0</td><td>1:36.653</td><td>1:37.967</td><td>1</td><td>9</td><td>—</td></tr>
+              <tr><td class="td-pos">8</td><td class="td-driver">Anthony Orr2</td><td class="td-highlight">#77</td><td>Hyundai Veloster N</td><td>0</td><td>1:36.371</td><td>1:38.094</td><td>0</td><td>8</td><td>—</td></tr>
+              <tr><td class="td-pos">9</td><td class="td-driver">Jake Harrigan</td><td class="td-highlight">#11</td><td>Hyundai Elantra N</td><td>0</td><td>1:36.806</td><td>1:39.030</td><td>6</td><td>7</td><td>—</td></tr>
+              <tr><td class="td-pos">10</td><td class="td-driver">Frank Perreault2</td><td class="td-highlight">#999</td><td>Hyundai Veloster N</td><td>0</td><td>1:37.274</td><td>1:39.828</td><td>6</td><td>6</td><td>—</td></tr>
+              <tr><td class="td-pos">11</td><td class="td-driver">Ryan Nixon</td><td class="td-highlight">#12</td><td>Audi RS3 LMS Gen2</td><td>0</td><td>1:37.872</td><td>1:40.956</td><td>3</td><td>5</td><td>—</td></tr>
+              <tr><td class="td-pos">12</td><td class="td-driver">Matt Bond6</td><td class="td-highlight">#19</td><td>Audi RS3 LMS Gen2</td><td>0</td><td>1:37.448</td><td>1:41.980</td><td>10</td><td>4</td><td>—</td></tr>
+              <tr><td class="td-pos">13</td><td class="td-driver">Dylan Foster9</td><td class="td-highlight">#88</td><td>Hyundai Elantra N</td><td>0</td><td>1:36.707</td><td>1:49.439</td><td>9</td><td>3</td><td>—</td></tr>
+              <tr><td class="td-pos">14</td><td class="td-driver">Aaron Liebling</td><td class="td-highlight">#6</td><td>Honda Civic TCR</td><td>0</td><td>1:37.936</td><td>1:50.877</td><td>9</td><td>2</td><td>—</td></tr>
+              <tr><td class="td-pos">15</td><td class="td-driver">Joshua S Smith</td><td class="td-highlight">#23</td><td>Hyundai Elantra N</td><td>0</td><td>1:37.267</td><td>1:43.057</td><td>6</td><td>1</td><td><span class="badge badge-dnf">DNF</span></td></tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
+    <!-- ADD NEW ROUNDS ABOVE THIS LINE — newest first -->
 
-    <!-- ADD ROUND 3 HERE -->
+  </div><!-- end series-moonday -->
 
-  </div>
-
-  <!-- ===== THURSDAY ===== -->
+  <!-- ====================================================
+       THURSDAY OVALS — newest first, accordion
+  ==================================================== -->
   <div id="series-thursday" style="display:none;">
-    <div class="section-label">2026 Season 2 · Thursday Ovals ARCA</div>
+    <div class="section-label">2026 Season 2 · Thursday Ovals ARCA · Newest First</div>
 
-    <!-- ROUND 1 -->
-    <div style="margin-bottom:32px;">
-      <div class="card">
-        <div class="card-header">
-          <span>Round 1 — <span class="accent">Texas Motor Speedway</span></span>
-          <span style="font-family:'Rajdhani',sans-serif;font-size:0.8rem;color:#888;letter-spacing:0.05em;">Thu Mar 19, 2026 · 8:30 PM ET · 115 Laps · Winner: Dylan Foster9</span>
+    <!-- ROUND 1 — only round so far, mark as newest -->
+    <div class="race-accordion">
+      <div class="race-accordion-header open" onclick="toggleAcc(this)">
+        <div class="rah-left">
+          <span class="rah-round">Round 1</span>
+          <span class="rah-title">Texas Motor Speedway<span class="badge-new">NEW</span></span>
         </div>
-        <div class="card-body" style="padding:0;">
-          <div class="table-wrap" style="border:none;border-radius:0;box-shadow:none;">
-            <table>
-              <thead><tr><th>Pos</th><th>Driver</th><th>Car #</th><th>Car</th><th>Laps Led</th><th>Best Lap</th><th>Avg Lap</th><th>Inc</th><th>Pts</th><th>Result</th></tr></thead>
-              <tbody>
-                <tr><td class="td-pos pos-1">1</td><td class="td-driver">Dylan Foster9</td><td class="td-highlight">#88</td><td>ARCA Toyota Camry</td><td>64</td><td>29.734</td><td>35.096</td><td>2</td><td>43</td><td><span class="badge badge-win">WIN</span></td></tr>
-                <tr><td class="td-pos pos-2">2</td><td class="td-driver">Ryan Rider</td><td class="td-highlight">#18</td><td>ARCA Ford Mustang</td><td>15</td><td>29.687</td><td>35.101</td><td>17</td><td>42</td><td><span class="badge badge-pod">P2</span></td></tr>
-                <tr><td class="td-pos pos-3">3</td><td class="td-driver">Joshua S Smith</td><td class="td-highlight">#23</td><td>ARCA Toyota Camry</td><td>4</td><td>29.690</td><td>35.103</td><td>1</td><td>41</td><td><span class="badge badge-pod">P3</span></td></tr>
-                <tr><td class="td-pos">4</td><td class="td-driver">Thomas Pfannkoch</td><td class="td-highlight">#132</td><td>ARCA Ford Mustang</td><td>0</td><td>29.730</td><td>35.148</td><td>12</td><td>40</td><td>—</td></tr>
-                <tr><td class="td-pos">5</td><td class="td-driver">Phillip Poole</td><td class="td-highlight">#46</td><td>ARCA Chevrolet SS</td><td>0</td><td>29.707</td><td>35.201</td><td>12</td><td>39</td><td>—</td></tr>
-                <tr><td class="td-pos">6</td><td class="td-driver">Jake Harrigan</td><td class="td-highlight">#14</td><td>ARCA Toyota Camry</td><td>0</td><td>29.906</td><td>36.437</td><td>6</td><td>38</td><td>—</td></tr>
-                <tr><td class="td-pos">7</td><td class="td-driver">Matt Bond6</td><td class="td-highlight">#19</td><td>ARCA Toyota Camry</td><td>0</td><td>30.155</td><td>37.259</td><td>18</td><td>37</td><td>—</td></tr>
-                <tr><td class="td-pos">8</td><td class="td-driver">John Agudelo</td><td class="td-highlight">#48</td><td>ARCA Chevrolet SS</td><td>29</td><td>29.671</td><td>35.895</td><td>8</td><td>36</td><td><span class="badge badge-dnf">DNF</span></td></tr>
-                <tr><td class="td-pos">9</td><td class="td-driver">Frank Perreault2</td><td class="td-highlight">#999</td><td>ARCA Ford Mustang</td><td>3</td><td>29.803</td><td>37.030</td><td>20</td><td>35</td><td>—</td></tr>
-                <tr><td class="td-pos">10</td><td class="td-driver">William Stiern</td><td class="td-highlight">#418</td><td>ARCA Toyota Camry</td><td>0</td><td>29.922</td><td>44.206</td><td>17</td><td>34</td><td><span class="badge badge-dnf">DNF</span></td></tr>
-                <tr><td class="td-pos">11</td><td class="td-driver">Aaron Liebling</td><td class="td-highlight">#66</td><td>ARCA Toyota Camry</td><td>0</td><td>30.094</td><td>1:02.280</td><td>13</td><td>33</td><td><span class="badge badge-dnf">DNF</span></td></tr>
-                <tr><td class="td-pos">12</td><td class="td-driver">Ryan Nixon</td><td class="td-highlight">#12</td><td>ARCA Toyota Camry</td><td>0</td><td>29.968</td><td>1:00.138</td><td>3</td><td>32</td><td><span class="badge badge-dnf">DNF</span></td></tr>
-              </tbody>
-            </table>
-          </div>
+        <div class="rah-right">
+          <span class="rah-winner">🏆 Dylan Foster9</span>
+          <span class="rah-date">Thu Mar 19, 2026</span>
+          <span class="rah-chevron">▼</span>
+        </div>
+      </div>
+      <div class="race-accordion-body open">
+        <div class="table-wrap" style="border:none;border-radius:0;box-shadow:none;">
+          <table>
+            <thead><tr><th>Pos</th><th>Driver</th><th>Car #</th><th>Car</th><th>Laps Led</th><th>Best Lap</th><th>Avg Lap</th><th>Inc</th><th>Pts</th><th>Result</th></tr></thead>
+            <tbody>
+              <tr><td class="td-pos pos-1">1</td><td class="td-driver">Dylan Foster9</td><td class="td-highlight">#88</td><td>ARCA Toyota Camry</td><td>64</td><td>29.734</td><td>35.096</td><td>2</td><td>43</td><td><span class="badge badge-win">WIN</span></td></tr>
+              <tr><td class="td-pos pos-2">2</td><td class="td-driver">Ryan Rider</td><td class="td-highlight">#18</td><td>ARCA Ford Mustang</td><td>15</td><td>29.687</td><td>35.101</td><td>17</td><td>42</td><td><span class="badge badge-pod">P2</span></td></tr>
+              <tr><td class="td-pos pos-3">3</td><td class="td-driver">Joshua S Smith</td><td class="td-highlight">#23</td><td>ARCA Toyota Camry</td><td>4</td><td>29.690</td><td>35.103</td><td>1</td><td>41</td><td><span class="badge badge-pod">P3</span></td></tr>
+              <tr><td class="td-pos">4</td><td class="td-driver">Thomas Pfannkoch</td><td class="td-highlight">#132</td><td>ARCA Ford Mustang</td><td>0</td><td>29.730</td><td>35.148</td><td>12</td><td>40</td><td>—</td></tr>
+              <tr><td class="td-pos">5</td><td class="td-driver">Phillip Poole</td><td class="td-highlight">#46</td><td>ARCA Chevrolet SS</td><td>0</td><td>29.707</td><td>35.201</td><td>12</td><td>39</td><td>—</td></tr>
+              <tr><td class="td-pos">6</td><td class="td-driver">Jake Harrigan</td><td class="td-highlight">#14</td><td>ARCA Toyota Camry</td><td>0</td><td>29.906</td><td>36.437</td><td>6</td><td>38</td><td>—</td></tr>
+              <tr><td class="td-pos">7</td><td class="td-driver">Matt Bond6</td><td class="td-highlight">#19</td><td>ARCA Toyota Camry</td><td>0</td><td>30.155</td><td>37.259</td><td>18</td><td>37</td><td>—</td></tr>
+              <tr><td class="td-pos">8</td><td class="td-driver">John Agudelo</td><td class="td-highlight">#48</td><td>ARCA Chevrolet SS</td><td>29</td><td>29.671</td><td>35.895</td><td>8</td><td>36</td><td><span class="badge badge-dnf">DNF</span></td></tr>
+              <tr><td class="td-pos">9</td><td class="td-driver">Frank Perreault2</td><td class="td-highlight">#999</td><td>ARCA Ford Mustang</td><td>3</td><td>29.803</td><td>37.030</td><td>20</td><td>35</td><td>—</td></tr>
+              <tr><td class="td-pos">10</td><td class="td-driver">William Stiern</td><td class="td-highlight">#418</td><td>ARCA Toyota Camry</td><td>0</td><td>29.922</td><td>44.206</td><td>17</td><td>34</td><td><span class="badge badge-dnf">DNF</span></td></tr>
+              <tr><td class="td-pos">11</td><td class="td-driver">Aaron Liebling</td><td class="td-highlight">#66</td><td>ARCA Toyota Camry</td><td>0</td><td>30.094</td><td>1:02.280</td><td>13</td><td>33</td><td><span class="badge badge-dnf">DNF</span></td></tr>
+              <tr><td class="td-pos">12</td><td class="td-driver">Ryan Nixon</td><td class="td-highlight">#12</td><td>ARCA Toyota Camry</td><td>0</td><td>29.968</td><td>1:00.138</td><td>3</td><td>32</td><td><span class="badge badge-dnf">DNF</span></td></tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
+    <!-- ADD NEW THURSDAY ROUNDS ABOVE THIS LINE — newest first -->
 
-    <!-- ROUND 2 — RACE 1 -->
-    <div style="margin-bottom:24px;">
-      <div class="card">
-        <div class="card-header">
-          <span>Round 2 · Race 1 — <span class="accent">Summit Point Raceway</span></span>
-          <span style="font-family:'Rajdhani',sans-serif;font-size:0.8rem;color:#888;letter-spacing:0.05em;">Mon Mar 23, 2026 · 8:30 PM ET · 16 Laps · Winner: Byron Forest II</span>
-        </div>
-        <div class="card-body" style="padding:0;">
-          <div class="table-wrap" style="border:none;border-radius:0;box-shadow:none;">
-            <table>
-              <thead><tr><th>Pos</th><th>Driver</th><th>Car #</th><th>Car</th><th>Laps Led</th><th>Best Lap</th><th>Avg Lap</th><th>Inc</th><th>Pts</th><th>Result</th></tr></thead>
-              <tbody>
-                <tr><td class="td-pos pos-1">1</td><td class="td-driver">Byron Forest II</td><td class="td-highlight">#824</td><td>Hyundai Elantra N</td><td>16</td><td>1:14.129</td><td>1:15.055</td><td>0</td><td>31</td><td><span class="badge badge-win">WIN</span></td></tr>
-                <tr><td class="td-pos pos-2">2</td><td class="td-driver">Ryan Rider</td><td class="td-highlight">#18</td><td>Hyundai Elantra N</td><td>0</td><td>1:14.252</td><td>1:15.409</td><td>0</td><td>25</td><td><span class="badge badge-pod">P2</span></td></tr>
-                <tr><td class="td-pos pos-3">3</td><td class="td-driver">Wadih Maalouf</td><td class="td-highlight">#72</td><td>Hyundai Elantra N</td><td>0</td><td>1:14.323</td><td>1:15.583</td><td>4</td><td>21</td><td><span class="badge badge-pod">P3</span></td></tr>
-                <tr><td class="td-pos">4</td><td class="td-driver">Phillip Poole</td><td class="td-highlight">#46</td><td>Hyundai Elantra N</td><td>0</td><td>1:14.386</td><td>1:15.752</td><td>8</td><td>17</td><td>—</td></tr>
-                <tr><td class="td-pos">5</td><td class="td-driver">Frank Perreault2</td><td class="td-highlight">#999</td><td>Hyundai Veloster N</td><td>0</td><td>1:14.466</td><td>1:15.765</td><td>2</td><td>14</td><td>—</td></tr>
-                <tr><td class="td-pos">6</td><td class="td-driver">Kevin Corea</td><td class="td-highlight">#13</td><td>Honda Civic TCR</td><td>0</td><td>1:14.215</td><td>1:15.778</td><td>0</td><td>11</td><td>—</td></tr>
-                <tr><td class="td-pos">7</td><td class="td-driver">Connor Menard</td><td class="td-highlight">#5</td><td>Honda Civic TCR</td><td>0</td><td>1:14.637</td><td>1:15.940</td><td>1</td><td>9</td><td>—</td></tr>
-                <tr><td class="td-pos">8</td><td class="td-driver">Joshua S Smith</td><td class="td-highlight">#23</td><td>Hyundai Elantra N</td><td>0</td><td>1:14.665</td><td>1:16.208</td><td>6</td><td>8</td><td>—</td></tr>
-                <tr><td class="td-pos">9</td><td class="td-driver">Luke Harrigan</td><td class="td-highlight">#11</td><td>Hyundai Elantra N</td><td>0</td><td>1:14.891</td><td>1:16.263</td><td>4</td><td>7</td><td>—</td></tr>
-                <tr><td class="td-pos">10</td><td class="td-driver">Jake Harrigan</td><td class="td-highlight">#14</td><td>Hyundai Elantra N</td><td>0</td><td>1:14.912</td><td>1:16.561</td><td>8</td><td>6</td><td>—</td></tr>
-                <tr><td class="td-pos">11</td><td class="td-driver">Aaron Liebling</td><td class="td-highlight">#66</td><td>Honda Civic TCR</td><td>0</td><td>1:15.183</td><td>1:17.044</td><td>1</td><td>5</td><td>—</td></tr>
-                <tr><td class="td-pos">12</td><td class="td-driver">William Stiern</td><td class="td-highlight">#418</td><td>Honda Civic TCR</td><td>0</td><td>1:15.026</td><td>1:17.060</td><td>5</td><td>4</td><td>—</td></tr>
-                <tr><td class="td-pos">13</td><td class="td-driver">Anthony Orr2</td><td class="td-highlight">#77</td><td>Hyundai Veloster N</td><td>0</td><td>1:15.033</td><td>1:17.077</td><td>3</td><td>3</td><td>—</td></tr>
-                <tr><td class="td-pos">14</td><td class="td-driver">Matt Bond6</td><td class="td-highlight">#19</td><td>Audi RS3 LMS Gen2</td><td>0</td><td>1:14.872</td><td>1:17.347</td><td>10</td><td>2</td><td>—</td></tr>
-                <tr><td class="td-pos">15</td><td class="td-driver">John Agudelo</td><td class="td-highlight">#48</td><td>Honda Civic TCR</td><td>0</td><td>1:14.563</td><td>1:18.269</td><td>15</td><td>1</td><td>—</td></tr>
-                <tr><td class="td-pos">16</td><td class="td-driver">Dylan Foster9</td><td class="td-highlight">#88</td><td>Hyundai Elantra N</td><td>0</td><td>—</td><td>—</td><td>0</td><td>0</td><td><span class="badge badge-dnf">DNF</span></td></tr>
-                <tr><td class="td-pos">17</td><td class="td-driver">Kevin Currais</td><td class="td-highlight">#16</td><td>Honda Civic TCR</td><td>0</td><td>—</td><td>—</td><td>0</td><td>0</td><td><span class="badge badge-dnf">DNF</span></td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
+  </div><!-- end series-thursday -->
 
-    <!-- ROUND 2 — RACE 2 -->
-    <div style="margin-bottom:32px;">
-      <div class="card">
-        <div class="card-header">
-          <span>Round 2 · Race 2 — <span class="accent">Summit Point Raceway</span></span>
-          <span style="font-family:'Rajdhani',sans-serif;font-size:0.8rem;color:#888;letter-spacing:0.05em;">Mon Mar 23, 2026 · 8:30 PM ET · 16 Laps · Winner: John Agudelo</span>
-        </div>
-        <div class="card-body" style="padding:0;">
-          <div class="table-wrap" style="border:none;border-radius:0;box-shadow:none;">
-            <table>
-              <thead><tr><th>Pos</th><th>Driver</th><th>Car #</th><th>Car</th><th>Laps Led</th><th>Best Lap</th><th>Avg Lap</th><th>Inc</th><th>Pts</th><th>Agg Pts</th><th>Result</th></tr></thead>
-              <tbody>
-                <tr><td class="td-pos pos-1">1</td><td class="td-driver">John Agudelo</td><td class="td-highlight">#48</td><td>Honda Civic TCR</td><td>15</td><td>1:14.467</td><td>1:15.564</td><td>3</td><td>30</td><td class="td-highlight">31</td><td><span class="badge badge-win">WIN</span></td></tr>
-                <tr><td class="td-pos pos-2">2</td><td class="td-driver">Anthony Orr2</td><td class="td-highlight">#77</td><td>Hyundai Veloster N</td><td>1</td><td>1:14.378</td><td>1:15.664</td><td>3</td><td>25</td><td>28</td><td><span class="badge badge-pod">P2</span></td></tr>
-                <tr><td class="td-pos pos-3">3</td><td class="td-driver">Byron Forest II</td><td class="td-highlight">#824</td><td>Hyundai Elantra N</td><td>0</td><td>1:14.208</td><td>1:15.756</td><td>2</td><td>22</td><td class="td-highlight">53</td><td><span class="badge badge-pod">P3</span></td></tr>
-                <tr><td class="td-pos">4</td><td class="td-driver">Wadih Maalouf</td><td class="td-highlight">#72</td><td>Hyundai Elantra N</td><td>0</td><td>1:14.549</td><td>1:16.012</td><td>4</td><td>17</td><td>38</td><td>—</td></tr>
-                <tr><td class="td-pos">5</td><td class="td-driver">Kevin Corea</td><td class="td-highlight">#13</td><td>Honda Civic TCR</td><td>0</td><td>1:14.302</td><td>1:16.023</td><td>0</td><td>14</td><td>25</td><td>—</td></tr>
-                <tr><td class="td-pos">6</td><td class="td-driver">Ryan Rider</td><td class="td-highlight">#18</td><td>Hyundai Elantra N</td><td>0</td><td>1:14.438</td><td>1:16.082</td><td>0</td><td>11</td><td>36</td><td>—</td></tr>
-                <tr><td class="td-pos">7</td><td class="td-driver">Matt Bond6</td><td class="td-highlight">#19</td><td>Audi RS3 LMS Gen2</td><td>0</td><td>1:14.904</td><td>1:16.172</td><td>7</td><td>9</td><td>11</td><td>—</td></tr>
-                <tr><td class="td-pos">8</td><td class="td-driver">Luke Harrigan</td><td class="td-highlight">#11</td><td>Hyundai Elantra N</td><td>0</td><td>1:15.028</td><td>1:16.556</td><td>0</td><td>8</td><td>15</td><td>—</td></tr>
-                <tr><td class="td-pos">9</td><td class="td-driver">Connor Menard</td><td class="td-highlight">#5</td><td>Honda Civic TCR</td><td>0</td><td>1:14.615</td><td>1:16.560</td><td>6</td><td>7</td><td>16</td><td>—</td></tr>
-                <tr><td class="td-pos">10</td><td class="td-driver">Jake Harrigan</td><td class="td-highlight">#14</td><td>Hyundai Elantra N</td><td>0</td><td>1:14.697</td><td>1:16.683</td><td>7</td><td>6</td><td>12</td><td>—</td></tr>
-                <tr><td class="td-pos">11</td><td class="td-driver">Phillip Poole</td><td class="td-highlight">#46</td><td>Hyundai Elantra N</td><td>0</td><td>1:14.926</td><td>1:16.810</td><td>14</td><td>5</td><td>22</td><td>—</td></tr>
-                <tr><td class="td-pos">12</td><td class="td-driver">Frank Perreault2</td><td class="td-highlight">#999</td><td>Hyundai Veloster N</td><td>0</td><td>1:14.661</td><td>1:16.811</td><td>10</td><td>4</td><td>18</td><td>—</td></tr>
-                <tr><td class="td-pos">13</td><td class="td-driver">Joshua S Smith</td><td class="td-highlight">#23</td><td>Hyundai Elantra N</td><td>0</td><td>1:14.936</td><td>1:16.936</td><td>7</td><td>3</td><td>11</td><td>—</td></tr>
-                <tr><td class="td-pos">14</td><td class="td-driver">William Stiern</td><td class="td-highlight">#418</td><td>Honda Civic TCR</td><td>0</td><td>1:14.881</td><td>1:18.073</td><td>8</td><td>2</td><td>6</td><td>—</td></tr>
-                <tr><td class="td-pos">15</td><td class="td-driver">Aaron Liebling</td><td class="td-highlight">#66</td><td>Honda Civic TCR</td><td>0</td><td>1:15.268</td><td>1:21.997</td><td>5</td><td>1</td><td>6</td><td>—</td></tr>
-                <tr><td class="td-pos">16</td><td class="td-driver">Kevin Currais</td><td class="td-highlight">#16</td><td>Honda Civic TCR</td><td>0</td><td>—</td><td>—</td><td>0</td><td>0</td><td>0</td><td><span class="badge badge-dnf">DNF</span></td></tr>
-                <tr><td class="td-pos">17</td><td class="td-driver">Dylan Foster9</td><td class="td-highlight">#88</td><td>Hyundai Elantra N</td><td>0</td><td>—</td><td>—</td><td>0</td><td>0</td><td>0</td><td><span class="badge badge-dnf">DNF</span></td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
+</div><!-- end page-wrap -->
 
-    <!-- ADD ROUND 3 HERE -->
-
-  </div>
-
-</div>
-<footer><div class="footer-logo">TEN<span>10</span> MOTORSPORTS</div><p>iRacing · Moonday Nights &amp; Thursday Ovals · &copy; <span class="yr"></span></p></footer>
+<footer>
+  <div class="footer-logo">TEN<span>10</span> MOTORSPORTS</div>
+  <p>iRacing · Moonday Nights &amp; Thursday Ovals · &copy; <span class="yr"></span></p>
+</footer>
 <script>
-function switchSeries(s,btn){
-  document.getElementById('series-moonday').style.display=s==='moonday'?'':'none';
-  document.getElementById('series-thursday').style.display=s==='thursday'?'':'none';
-  document.querySelectorAll('.series-tab').forEach(t=>t.classList.remove('active'));
+function toggleAcc(header) {
+  const body = header.nextElementSibling;
+  const isOpen = header.classList.contains('open');
+  header.classList.toggle('open', !isOpen);
+  body.classList.toggle('open', !isOpen);
+}
+function switchSeries(s, btn) {
+  document.getElementById('series-moonday').style.display = s==='moonday' ? '' : 'none';
+  document.getElementById('series-thursday').style.display = s==='thursday' ? '' : 'none';
+  document.querySelectorAll('.series-tab').forEach(t => t.classList.remove('active'));
   btn.classList.add('active');
 }
-// Read URL params on load to open correct series
 (function(){
   const p = new URLSearchParams(window.location.search);
-  const series = p.get('series');
-  if (series === 'thursday') {
+  if (p.get('series') === 'thursday') {
     document.getElementById('series-moonday').style.display = 'none';
     document.getElementById('series-thursday').style.display = '';
     const tabs = document.querySelectorAll('.series-tab');

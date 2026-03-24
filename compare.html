@@ -181,9 +181,8 @@ function renderCompare() {
     const v2 = s2[stat.key];
     const w1 = stat.higherBetter ? v1 > v2 : v1 < v2;
     const w2 = stat.higherBetter ? v2 > v1 : v2 < v1;
-    const fmt = k => stat.key === 'winPct' ? v1.toFixed(1)+'%' : v1;
-    const d1val = stat.key === 'winPct' ? v1.toFixed(1)+'%' : v1;
-    const d2val = stat.key === 'winPct' ? v2.toFixed(1)+'%' : v2;
+    const d1val = stat.key === 'winPct' ? Number(v1).toFixed(1)+'%' : v1;
+    const d2val = stat.key === 'winPct' ? Number(v2).toFixed(1)+'%' : v2;
     return `<tr>
       <td class="stat-label">${stat.label}</td>
       <td class="${w1?'winner-cell':''}">${d1val}</td>
