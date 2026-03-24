@@ -14,8 +14,6 @@
 .hero h1 span{color:#cc0000;}
 .hero-sub{font-family:'Rajdhani',sans-serif;font-size:1rem;letter-spacing:0.2em;text-transform:uppercase;color:#888;margin-bottom:32px;}
 .hero-ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
-
-/* COUNTDOWN */
 .cd-section{position:relative;z-index:1;background:#111;border-top:1px solid rgba(192,192,192,0.12);border-bottom:1px solid rgba(192,192,192,0.12);padding:32px 24px;}
 .cd-inner{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:20px;}
 .cd-card{background:#141414;border:1px solid rgba(192,192,192,0.12);border-radius:6px;overflow:hidden;transition:border-color 0.2s,box-shadow 0.2s;}
@@ -24,8 +22,9 @@
 .cd-head .sname{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.1rem;letter-spacing:0.07em;text-transform:uppercase;color:#fff;}
 .cd-head .sday{font-family:'Rajdhani',sans-serif;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.75);}
 .cd-body{padding:18px 20px;}
-.cd-track{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.2rem;color:#f0f0f0;margin-bottom:2px;}
-.cd-tracksub{font-family:'Rajdhani',sans-serif;font-size:0.78rem;letter-spacing:0.07em;text-transform:uppercase;color:#666;margin-bottom:14px;}
+.cd-round{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;color:#cc0000;margin-bottom:3px;}
+.cd-track{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.2rem;color:#f0f0f0;line-height:1.1;}
+.cd-tracksub{font-family:'Rajdhani',sans-serif;font-size:0.76rem;letter-spacing:0.06em;color:#555;margin-bottom:14px;margin-top:2px;}
 .cd-nums{display:flex;gap:8px;align-items:flex-start;}
 .cd-unit{text-align:center;flex:1;}
 .cd-val{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:2.2rem;color:#ff1a1a;line-height:1;display:block;background:#1a1a1a;border-radius:4px;padding:7px 4px;border:1px solid rgba(192,192,192,0.1);}
@@ -34,12 +33,7 @@
 .live-badge{display:none;align-items:center;gap:6px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.9rem;letter-spacing:0.1em;text-transform:uppercase;color:#ff1a1a;margin-top:12px;}
 .live-dot{width:8px;height:8px;background:#ff1a1a;border-radius:50%;animation:blink 1s infinite;}
 @keyframes blink{0%,100%{opacity:1;}50%{opacity:0.2;}}
-
-/* HOME GRID */
 .home-grid{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:40px 24px 80px;position:relative;z-index:1;}
-.home-card-full{grid-column:1/-1;}
-
-/* LAST WINNER CARD */
 .winner-card{background:linear-gradient(135deg,#141414 0%,#1a1a1a 100%);border:1px solid rgba(192,192,192,0.12);border-radius:8px;overflow:hidden;}
 .winner-card-head{background:rgba(204,0,0,0.12);border-bottom:1px solid rgba(204,0,0,0.2);padding:10px 18px;display:flex;align-items:center;justify-content:space-between;}
 .winner-card-head .series-tag{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;color:#cc0000;}
@@ -50,8 +44,6 @@
 .winner-detail{font-family:'Rajdhani',sans-serif;font-size:0.85rem;color:#888;margin-top:6px;letter-spacing:0.04em;line-height:1.6;}
 .winner-detail strong{color:#c0c0c0;font-weight:600;}
 .winner-car{display:inline-block;margin-top:8px;font-family:'Barlow Condensed',sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#cc0000;background:rgba(204,0,0,0.1);padding:3px 10px;border-radius:3px;}
-
-/* RECENT RESULTS */
 .rr-row{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid rgba(192,192,192,0.07);}
 .rr-row:last-child{border-bottom:none;}
 .rr-pos{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.2rem;width:30px;text-align:center;}
@@ -59,8 +51,7 @@
 .rr-track{font-family:'Rajdhani',sans-serif;font-size:0.78rem;color:#888;}
 .rr-series-tag{font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:#cc0000;background:rgba(204,0,0,0.1);padding:2px 8px;border-radius:3px;flex-shrink:0;}
 .card-link{font-size:0.74rem;color:#cc0000;text-decoration:none;font-family:'Rajdhani',sans-serif;letter-spacing:0.08em;text-transform:uppercase;}
-
-@media(max-width:768px){.cd-inner,.home-grid{grid-template-columns:1fr;}.cd-inner{padding:0;}.home-grid{padding:24px 14px 60px;}}
+@media(max-width:768px){.cd-inner,.home-grid{grid-template-columns:1fr;}.home-grid{padding:24px 14px 60px;}}
 </style>
 </head>
 <body data-page="index">
@@ -78,19 +69,18 @@
   </div>
 </section>
 
-<!-- COUNTDOWN -->
+<!-- COUNTDOWN — auto-updates from SCHEDULE data below -->
 <section class="cd-section">
   <div class="cd-inner">
-    <!-- MOONDAY -->
     <div class="cd-card">
       <div class="cd-head">
         <span class="sname">🌙 Moonday Nights</span>
         <span class="sday">Every Monday · 8:30 PM ET</span>
       </div>
       <div class="cd-body">
-        <!-- UPDATE TRACK NAME EACH WEEK -->
-        <div class="cd-track">Summit Point Raceway</div>
-        <div class="cd-tracksub">Round 2 · Summit Point Raceway - Summit Point · 2026 S2</div>
+        <div class="cd-round" id="mn-round">Loading...</div>
+        <div class="cd-track" id="mn-track">—</div>
+        <div class="cd-tracksub" id="mn-sub">—</div>
         <div class="cd-nums" id="mn-display">
           <div class="cd-unit"><span class="cd-val" id="mn-d">--</span><div class="cd-lbl">Days</div></div>
           <div class="cd-sep">:</div>
@@ -103,16 +93,15 @@
         <div class="live-badge" id="mn-live"><div class="live-dot"></div>RACE IS LIVE NOW</div>
       </div>
     </div>
-    <!-- THURSDAY -->
     <div class="cd-card">
       <div class="cd-head">
         <span class="sname">🏁 Thursday Ovals</span>
         <span class="sday">Every Thursday · 8:30 PM ET</span>
       </div>
       <div class="cd-body">
-        <!-- UPDATE TRACK NAME EACH WEEK -->
-        <div class="cd-track">Southern National Motorsports Park</div>
-        <div class="cd-tracksub">Round 2 · Southern National Motorsports Park · 2026 S2</div>
+        <div class="cd-round" id="th-round">Loading...</div>
+        <div class="cd-track" id="th-track">—</div>
+        <div class="cd-tracksub" id="th-sub">—</div>
         <div class="cd-nums" id="th-display">
           <div class="cd-unit"><span class="cd-val" id="th-d">--</span><div class="cd-lbl">Days</div></div>
           <div class="cd-sep">:</div>
@@ -128,29 +117,26 @@
   </div>
 </section>
 
-<!-- MAIN CONTENT -->
 <div class="home-grid">
-
-  <!-- MOONDAY LAST WINNER -->
+  <!-- MOONDAY LAST WINNER — UPDATE EACH WEEK -->
   <div>
     <div class="winner-card">
       <div class="winner-card-head">
         <span class="series-tag">🌙 Moonday Nights — Last Winner</span>
-        <span class="round-tag">Round 1 · Race 2 · Mar 16, 2026</span>
+        <span class="round-tag">Round 2 · Race 1 · Mar 23, 2026</span>
       </div>
       <div class="winner-card-body">
         <div class="winner-trophy">🏆</div>
         <div class="winner-name">Byron Forest II</div>
         <div class="winner-detail">
-          <strong>Okayama International Circuit</strong><br>
-          Led 12 of 13 laps · Zero incidents · Race 2 winner
+          <strong>Summit Point Raceway</strong><br>
+          Led all 16 laps · Zero incidents · Dominant wire-to-wire
         </div>
         <span class="winner-car">#824 · Hyundai Elantra N TCR</span>
       </div>
     </div>
   </div>
-
-  <!-- THURSDAY LAST WINNER -->
+  <!-- THURSDAY LAST WINNER — UPDATE EACH WEEK -->
   <div>
     <div class="winner-card">
       <div class="winner-card-head">
@@ -173,41 +159,19 @@
   <div class="card">
     <div class="card-header">Recent Results <a href="results.html" class="card-link">All Results →</a></div>
     <div class="card-body">
-      <!-- UPDATE AFTER EACH RACE — copy/paste rows -->
-      <div class="rr-row">
-        <div class="rr-pos" style="color:#ffd700;">1</div>
-        <div><div class="rr-name">Dylan Foster9</div><div class="rr-track">Texas Motor Speedway · R1</div></div>
-        <span class="rr-series-tag">Thursday</span>
-      </div>
-      <div class="rr-row">
-        <div class="rr-pos" style="color:#ffd700;">1</div>
-        <div><div class="rr-name">Byron Forest II</div><div class="rr-track">Okayama Int'l Circuit · R2</div></div>
-        <span class="rr-series-tag">Moonday</span>
-      </div>
-      <div class="rr-row">
-        <div class="rr-pos" style="color:#ffd700;">1</div>
-        <div><div class="rr-name">John Agudelo</div><div class="rr-track">Okayama Int'l Circuit · R1</div></div>
-        <span class="rr-series-tag">Moonday</span>
-      </div>
+      <div class="rr-row"><div class="rr-pos" style="color:#ffd700;">1</div><div><div class="rr-name">John Agudelo</div><div class="rr-track">Summit Point · R2</div></div><span class="rr-series-tag">Moonday</span></div>
+      <div class="rr-row"><div class="rr-pos" style="color:#ffd700;">1</div><div><div class="rr-name">Byron Forest II</div><div class="rr-track">Summit Point · R1</div></div><span class="rr-series-tag">Moonday</span></div>
+      <div class="rr-row"><div class="rr-pos" style="color:#ffd700;">1</div><div><div class="rr-name">Dylan Foster9</div><div class="rr-track">Texas Motor Speedway</div></div><span class="rr-series-tag">Thursday</span></div>
     </div>
   </div>
 
-  <!-- UPCOMING -->
+  <!-- UPCOMING — auto-populated by JS below -->
   <div class="card">
     <div class="card-header">Upcoming Races <a href="schedule.html" class="card-link">Full Schedule →</a></div>
-    <div class="card-body">
-      <!-- UPDATE EACH WEEK -->
-      <div class="rr-row">
-        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.78rem;color:#cc0000;text-align:center;min-width:44px;">MON<br><span style="font-size:1.3rem;color:#f0f0f0;">23</span><br><span style="font-size:0.65rem;color:#666;">MAR</span></div>
-        <div><div class="rr-name">Moonday Nights — Round 2</div><div class="rr-track">Summit Point Raceway · 8:30 PM ET</div></div>
-      </div>
-      <div class="rr-row">
-        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.78rem;color:#cc0000;text-align:center;min-width:44px;">THU<br><span style="font-size:1.3rem;color:#f0f0f0;">26</span><br><span style="font-size:0.65rem;color:#666;">MAR</span></div>
-        <div><div class="rr-name">Thursday Ovals — Round 2</div><div class="rr-track">Southern National Motorsports Park · 8:30 PM ET</div></div>
-      </div>
+    <div class="card-body" id="upcomingRaces">
+      <div style="color:#555;font-family:'Rajdhani',sans-serif;font-size:0.85rem;letter-spacing:0.08em;text-transform:uppercase;">Loading schedule...</div>
     </div>
   </div>
-
 </div>
 
 <footer>
@@ -216,27 +180,144 @@
 </footer>
 
 <script>
-function nextRace(dow){
-  const now=new Date();
-  const et=new Date(now.toLocaleString('en-US',{timeZone:'America/New_York'}));
-  let diff=(dow-et.getDay()+7)%7;
-  if(diff===0){const mins=et.getHours()*60+et.getMinutes();if(mins>=20*60+30+90)diff=7;}
-  const t=new Date(et);t.setDate(et.getDate()+diff);t.setHours(20,30,0,0);
-  return t-et;
+// ================================================================
+// FULL SEASON SCHEDULE — drives countdown track names + upcoming races
+// Dates are race night dates (Monday / Thursday) in ET
+// ================================================================
+const SCHEDULE = {
+  moonday: [
+    {round:1,  date:"2026-03-16", track:"Okayama International Circuit",    sub:"Full Course · TCR"},
+    {round:2,  date:"2026-03-23", track:"Summit Point Raceway",              sub:"Summit Point Raceway · TCR"},
+    {round:3,  date:"2026-03-30", track:"Hockenheimring",                    sub:"Grand Prix · TCR"},
+    {round:4,  date:"2026-04-06", track:"Road America",                      sub:"Full Course · TCR"},
+    {round:5,  date:"2026-04-13", track:"Sebring International Raceway",     sub:"International · TCR"},
+    {round:6,  date:"2026-04-20", track:"Motorsport Arena Oschersleben",     sub:"Grand Prix · TCR"},
+    {round:7,  date:"2026-04-27", track:"Winton Motor Raceway",              sub:"National Circuit · TCR"},
+    {round:8,  date:"2026-05-04", track:"Long Beach Street Circuit",         sub:"Street Circuit · TCR"},
+    {round:9,  date:"2026-05-11", track:"Circuit Zolder",                    sub:"Grand Prix · TCR"},
+    {round:10, date:"2026-05-18", track:"Phoenix Raceway",                   sub:"Road Course · TCR"},
+    {round:11, date:"2026-05-25", track:"Rudskogen Motorsenter",             sub:"Rudskogen · TCR"},
+    {round:12, date:"2026-06-01", track:"Road Atlanta",                      sub:"Full Course · TCR"},
+  ],
+  thursday: [
+    {round:1,  date:"2026-03-19", track:"Texas Motor Speedway",              sub:"Oval · ARCA"},
+    {round:2,  date:"2026-03-26", track:"Southern National Motorsports Park",sub:"Oval · ARCA"},
+    {round:3,  date:"2026-04-02", track:"Pocono Raceway",                    sub:"Oval · ARCA"},
+    {round:4,  date:"2026-04-09", track:"Charlotte Motor Speedway",          sub:"Oval · ARCA"},
+    {round:5,  date:"2026-04-16", track:"Concord Speedway",                  sub:"Oval · ARCA"},
+    {round:6,  date:"2026-04-23", track:"Michigan International Speedway",   sub:"Oval · ARCA"},
+    {round:7,  date:"2026-04-30", track:"Kentucky Speedway",                 sub:"Oval · ARCA"},
+    {round:8,  date:"2026-05-07", track:"Thompson Speedway",                 sub:"Oval · ARCA"},
+    {round:9,  date:"2026-05-14", track:"Daytona International Speedway",    sub:"Oval · ARCA"},
+    {round:10, date:"2026-05-21", track:"Phoenix Raceway",                   sub:"Oval · ARCA"},
+    {round:11, date:"2026-05-28", track:"Indianapolis Motor Speedway",       sub:"NASCAR Oval · ARCA"},
+    {round:12, date:"2026-06-04", track:"USA International Speedway",        sub:"Asphalt Oval · ARCA"},
+  ]
+};
+
+// Get next race from schedule (returns race object or null if season over)
+function getNextRace(series) {
+  const now = new Date();
+  const etNow = new Date(now.toLocaleString('en-US', {timeZone:'America/New_York'}));
+  for (const race of SCHEDULE[series]) {
+    const [y,mo,d] = race.date.split('-').map(Number);
+    const raceDate = new Date(y, mo-1, d, 20, 30, 0); // 8:30 PM ET
+    // Consider race "passed" 90 min after start
+    if ((etNow - raceDate) < 90*60*1000) return race;
+  }
+  return null; // season over
 }
-function fmt(ms,pre,liveId,dispId){
-  const live=document.getElementById(liveId);
-  const disp=document.getElementById(dispId);
-  if(ms<=0&&ms>-5400000){disp.style.display='none';live.style.display='flex';return;}
-  disp.style.display='flex';live.style.display='none';
-  const d=Math.floor(ms/86400000),h=Math.floor((ms%86400000)/3600000),m=Math.floor((ms%3600000)/60000),s=Math.floor((ms%60000)/1000);
-  document.getElementById(pre+'-d').textContent=String(d).padStart(2,'0');
-  document.getElementById(pre+'-h').textContent=String(h).padStart(2,'0');
-  document.getElementById(pre+'-m').textContent=String(m).padStart(2,'0');
-  document.getElementById(pre+'-s').textContent=String(s).padStart(2,'0');
+
+function msUntilRace(series) {
+  const next = getNextRace(series);
+  if (!next) return -1;
+  const etNow = new Date(new Date().toLocaleString('en-US',{timeZone:'America/New_York'}));
+  const [y,mo,d] = next.date.split('-').map(Number);
+  const raceDate = new Date(y, mo-1, d, 20, 30, 0);
+  return raceDate - etNow;
 }
-function tick(){fmt(nextRace(1),'mn','mn-live','mn-display');fmt(nextRace(4),'th','th-live','th-display');}
-tick();setInterval(tick,1000);
+
+function updateCountdown(series, prefix) {
+  const next = getNextRace(series);
+  const roundEl  = document.getElementById(prefix+'-round');
+  const trackEl  = document.getElementById(prefix+'-track');
+  const subEl    = document.getElementById(prefix+'-sub');
+  const disp     = document.getElementById(prefix+'-display');
+  const liveEl   = document.getElementById(prefix+'-live');
+
+  if (!next) {
+    if (roundEl) roundEl.textContent = '2026 Season 2';
+    if (trackEl) trackEl.textContent = 'Season Complete';
+    if (subEl)   subEl.textContent   = 'See you next season!';
+    return;
+  }
+
+  if (roundEl) roundEl.textContent = `Round ${next.round} · 2026 Season 2`;
+  if (trackEl) trackEl.textContent = next.track;
+  if (subEl)   subEl.textContent   = next.sub;
+
+  const ms = msUntilRace(series);
+  if (ms <= 0 && ms > -5400000) {
+    disp.style.display = 'none';
+    liveEl.style.display = 'flex';
+    return;
+  }
+  disp.style.display = 'flex';
+  liveEl.style.display = 'none';
+  const dd = Math.floor(ms/86400000);
+  const hh = Math.floor((ms%86400000)/3600000);
+  const mm = Math.floor((ms%3600000)/60000);
+  const ss = Math.floor((ms%60000)/1000);
+  document.getElementById(prefix+'-d').textContent = String(dd).padStart(2,'0');
+  document.getElementById(prefix+'-h').textContent = String(hh).padStart(2,'0');
+  document.getElementById(prefix+'-m').textContent = String(mm).padStart(2,'0');
+  document.getElementById(prefix+'-s').textContent = String(ss).padStart(2,'0');
+}
+
+// Build upcoming races section
+function buildUpcoming() {
+  const DOW = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const MON = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const etNow = new Date(new Date().toLocaleString('en-US',{timeZone:'America/New_York'}));
+  const upcoming = [];
+
+  for (const series of ['moonday','thursday']) {
+    for (const race of SCHEDULE[series]) {
+      const [y,mo,d] = race.date.split('-').map(Number);
+      const rd = new Date(y, mo-1, d, 20, 30, 0);
+      if ((rd - etNow) > -5400000 && upcoming.length < 4) {
+        upcoming.push({...race, series, dateObj:rd, month:MON[mo-1], day:d, dow:DOW[rd.getDay()]});
+      }
+    }
+  }
+
+  // Sort by date
+  upcoming.sort((a,b) => a.dateObj - b.dateObj);
+  const next4 = upcoming.slice(0,4);
+
+  const container = document.getElementById('upcomingRaces');
+  if (!next4.length) { container.innerHTML = '<div style="color:#555;font-family:\'Rajdhani\',sans-serif;font-size:0.85rem;text-transform:uppercase;letter-spacing:0.08em;">Season complete</div>'; return; }
+
+  container.innerHTML = next4.map(r => `
+    <div class="rr-row">
+      <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.75rem;color:#cc0000;text-align:center;min-width:44px;line-height:1.2;">
+        ${r.dow}<br><span style="font-size:1.3rem;color:#f0f0f0;">${r.day}</span><br><span style="font-size:0.65rem;color:#666;">${r.month}</span>
+      </div>
+      <div style="flex:1;">
+        <div style="font-weight:600;font-size:0.9rem;">${r.series==='moonday'?'🌙':'🏁'} Round ${r.round} — ${r.track}</div>
+        <div style="font-family:'Rajdhani',sans-serif;font-size:0.78rem;color:#888;">${r.series==='moonday'?'Moonday Nights':'Thursday Ovals'} · 8:30 PM ET</div>
+      </div>
+    </div>`).join('');
+}
+
+function tick() {
+  updateCountdown('moonday','mn');
+  updateCountdown('thursday','th');
+}
+
+tick();
+setInterval(tick, 1000);
+buildUpcoming();
 </script>
 <script>document.querySelectorAll(".yr").forEach(function(e){e.textContent=new Date().getFullYear();});</script>
 </body>
